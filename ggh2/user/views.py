@@ -6,16 +6,26 @@ from pay.models import *
 from wish.models import *
 
 def home(req):
-    user=User.objects.all()
-    cabinets=Cabinet_manage.objects.all()
-    goods=Goods.objects.all()
+    # if req.method=="POST":
+    #     searchtext = req.POST['searchtext']
+    #     location = req.POST['location']
+    #     cabinet = req.POST['cabinet']
     user_pk = req.session.get('user')
     context = {
         'user_pk' : user_pk,
-        'cabinets' : cabinets,
-        'goods' : goods
     }
     return render(req, 'home.html',context)
+
+# def search(req):
+#     if req.method == "POST":
+#         searchtext = req.POST['searchtext']
+#         cabinet=Cabinet_manage.objects.filter(location_contains=searchtext)
+#         goods=Goods.objects.filter(name_contaions=searchtext)
+#         user=User.objects.filter(nickname=searchtext)
+#         if not cabinet :
+
+
+
 
 def check_password(checkpw,originalpw):
     if checkpw==originalpw:
@@ -59,7 +69,10 @@ def user_create(req):
         user.nickname = req.POST['nickname']
         user.password = req.POST['password']
         user.ph_no = req.POST['phone_number']
-        user.birth = req.POST['birthday']
+        year = req.POST['year']
+        month = req.POST['month']
+        day = req.POST['day']
+        user.birth=str(year)+str(month)+str(day)
         user.location = req.POST['location']
         user.cabinet = req.POST['cabinet']
         user.save()

@@ -16,12 +16,12 @@ class Goods(TimeStampModel):
         ('그외','그 외 모두')
     )
     name = models.CharField(max_length=10)
-    price = models.IntegerField(max_length=50)
+    price = models.IntegerField()
     type = models.CharField(choices=fresh_or_not, max_length=5) #냉장식품인지 냉동식품인지 그 외의 물건인지
     category = models.CharField(max_length=50) # 조금 더 상세한 내용을 적을 수 있도록 ex) 냉동 도시락, 과자, 비누...
     title = models.CharField(max_length=100)
     content = models.TextField()
-    recruitment_no = models.IntegerField(max_length=10) #모집인원
+    recruitment_no = models.IntegerField() #모집인원
     expired = models.CharField(max_length=8)
-    pre_people = models.IntegerField(max_length=10) #이미 공구에 참여한 사람
+    pre_people = models.IntegerField() #이미 공구에 참여한 사람
     uploader = models.ForeignKey(User,on_delete=models.CASCADE,verbose_name="작성자")

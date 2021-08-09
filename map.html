@@ -7,7 +7,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-   
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
     <style>
         body{
             background-size: cover;
@@ -18,8 +19,8 @@
             background-color: white;
             width: 100%;
             border-radius: 50px;
-            margin-top: 6%;
             height: 7.1vh;
+            position: relative;
         }
         .setting i{
             color:#212194;
@@ -50,17 +51,17 @@
             color: white;
             position: absolute;
             right: 5%;
-            bottom: 13%;
+            bottom: 30%;
         }
         .setting #setbylocker{
             position: absolute;
             left: 50%;
             transform: translate(-50%);
-            bottom:8%
+            top:5%;
         }
         .setting #setbylocal{
             position: absolute;
-            bottom: 8%;
+            top:5%;
             left:4%
         }
         .center{
@@ -72,20 +73,60 @@
         #map{
             border-radius: 50px;
             position: relative;
-            top: 50%;
+            top: 43%;
             left: 50%;
             transform: translate(-50%,-50%);
             width:70%;height:60vh;
 
         }
         #infowindow{
-            background-color:#212194 ;
+            background-color:#0475F4 ;
             color:white;
             border-radius: 50px;
+        }
+        .box{
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+        .box::before{
+            content: "";
+            background: url('back.jpg');
+            background-size: cover;
+            opacity: 0.5;
+            position: absolute;
+            top:0px;
+            left:0px;
+            right:0px;
+            bottom:0px;
+        }
+
+        .header{
+            background-color: white;
         }
     </style>
 </head>
 <body>
+    <div class="box">
+    <header>
+        <div id="header_menu">
+            <ul>
+                <li><a class="link" href="#">로그인</a>|</li>
+                <li><a class="link" href="#">회원가입</a>|</li>
+                <li><a class="link" href="#">마이페이지</a>|</li>
+                <li><a class="link" href="#">장바구니</a></li>
+            </ul> 
+        </div>
+       
+
+        <div id="box">
+            <div id="search-box">
+                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
+                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
+            </div>
+            <a class="position-btn" href="#"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+        </div>
+    </header>
     <div class="center">
         
         <div class="setting">
@@ -105,6 +146,31 @@
 
 
     <div id="map"></div>
+
+    <footer>
+        <br/><br/>
+        <div class="footer">
+          <div id="parft">
+            <div id="chift">
+              고객센터<br />
+              1633-9311<br />
+            </div>
+            <div id="chift">
+              주식회사 공구함<br />
+              497 제 2021-경기판교-01325호<br />
+              +44 345 678 903<br />
+            </div>
+            <div id="chift">
+              사업자 정보 확인<br />
+              사업자 등록번호:232-2322-52342<br />
+              주소 : 경기 판교 백현동 153, 100층<br />
+              제휴문의 : LALALA@naver.com
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
 
 	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=222be475b2102ee4f6eada300cb969fe"></script>
 	<script>

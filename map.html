@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+   
+    <style>
+        body{
+            background-size: cover;
+            background-image: url('back.jpg');
+            height: 100vh;
+        }
+        .setting{
+            background-color: white;
+            width: 100%;
+            border-radius: 50px;
+            margin-top: 6%;
+            height: 7.1vh;
+        }
+        .setting i{
+            color:#212194;
+            font-size: 170%;
+            position: relative;
+            top: 9px;
+        }
+        .setting div{
+            display: inline-block;
+        }
+        .setting .word{
+            font-weight: bold;
+            font-size: 95%;
+        }
+        .setting .sentence{
+            font-size: 50%;
+            color:gray;
+            display: block;
+            left: 24%;
+            position: relative;
+        }
+        .setting button{
+            background-color: #212194;
+            border-radius: 50px;
+            width: 12%;
+            height: 2.9vh;
+            font-size: 2vh;
+            color: white;
+            position: absolute;
+            right: 5%;
+            bottom: 13%;
+        }
+        .setting #setbylocker{
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            bottom:8%
+        }
+        .setting #setbylocal{
+            position: absolute;
+            bottom: 8%;
+            left:4%
+        }
+        .center{
+            position: absolute;
+            left:50%;
+            transform: translate(-50%);
+            width: 57%;
+        }
+        #map{
+            border-radius: 50px;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width:70%;height:60vh;
+
+        }
+        #infowindow{
+            background-color:#212194 ;
+            color:white;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        
+        <div class="setting">
+                <div id="setbylocal">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="word">지역</span>
+                    <span class="sentence">어느 지역이신가요?</span>
+                </div>
+                <div id="setbylocker">
+                    <i class="fas fa-compass"></i>
+                    <span class="word">보관함</span>
+                    <span class="sentence">우리 주변 어디 보관함인가요?</span>
+                </div>
+                <button>검색</button>
+        </div>
+    </div>
+
+
+    <div id="map"></div>
+
+	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=222be475b2102ee4f6eada300cb969fe"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(37.450179, 126.653498), // 지도의 중심좌표
+		        level: 3, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+
+		// 지도를 생성한다 
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+		// 지도에 마커를 생성하고 표시한다
+		var marker = new kakao.maps.Marker({
+		    position: new kakao.maps.LatLng(37.450179, 126.653498), // 마커의 좌표
+		    draggable : true, // 마커를 드래그 가능하도록 설정한다
+		    map: map // 마커를 표시할 지도 객체
+		});
+
+        var marker1 = new kakao.maps.Marker({
+		    position: new kakao.maps.LatLng(37.4511083188623, 126.65816673829944), // 마커의 좌표
+		    draggable : true, // 마커를 드래그 가능하도록 설정한다
+		    map: map // 마커를 표시할 지도 객체
+		});
+
+        var marker2 = new kakao.maps.Marker({
+		    position: new kakao.maps.LatLng(37.449480, 126.652564), // 마커의 좌표
+		    draggable : true, // 마커를 드래그 가능하도록 설정한다
+		    map: map // 마커를 표시할 지도 객체
+		});
+
+		// 마커 위에 표시할 인포윈도우를 생성한다
+		var infowindow = new kakao.maps.InfoWindow({
+		    content : '<div style="padding:5px;" id="infowindow">인하대학교용현캠퍼스</div>' // 인포윈도우에 표시할 내용
+		});
+
+		// 인포윈도우를 지도에 표시한다
+		infowindow.open(map, marker);
+
+		// 마커에 클릭 이벤트를 등록한다 (우클릭 : rightclick)
+		kakao.maps.event.addListener(marker, 'click', function() {
+		    alert('마커를 클릭했습니다!');
+		});
+
+	</script>
+</body>
+</html>

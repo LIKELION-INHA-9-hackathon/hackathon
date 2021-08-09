@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공구함</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    
+    <style>
+        .setting{
+            background-color: white;
+            width: 100%;
+            border-radius: 50px;
+            margin-top: 6%;
+            height: 7.3vh;
+        }
+        body{
+            background-size: cover;
+           /* background-image: url('back.jpg');*/
+            height: 100vh;
+        }
+
+        .center{
+            position: absolute;
+            left:50%;
+            transform: translate(-50%,-50%);
+            top: 45%;
+            width: 55%;
+        }
+        #logo{
+            position: relative;
+            top: 3%;
+            left: 3%;
+            z-index: -1;
+        }
+        #logo img{
+            width:10%;
+        }
+        .search{
+            background-color: white;
+            border-radius: 15px;
+            width: 19%;
+            height: 30px;
+            left: 63.5%;
+            top: -2.6vh;
+            position: relative;
+            border-color: lightgray;
+            border-width: 100%;
+        }
+        #searchtext{
+            border:none;
+            position: absolute;
+            left: 3%;
+            width: 80%;
+            height: 70%;
+            margin: 2%;
+            font-size: 1.5vh;
+            color: lightgray;
+        }
+        #searchtext:focus{
+            outline: none;
+        }
+        #searchbtn{
+            border:none;
+            background-color:transparent ;
+            font-size: 2.3vh;
+            position: absolute;
+            top: 13%;
+            left:85%
+        }
+        .movepage a{
+            color: black;
+            text-decoration: none;
+            font-size: 1.8vh;
+        }
+        .movepage{
+            left: 86%;
+            position: relative;
+            top: -6vh;
+        }#middle_line{
+            border:5%;
+            margin: 1%;
+        }
+        #mainword{
+            font-size: 4.5vh;
+            font-weight: bold;
+            text-align: center;
+            margin: 1.3%;
+        }
+        #mainsentence{
+            text-align: center;
+            font-size: 3.5vh;
+            color: #707070;
+            font-weight: normal;
+            margin: 1.3%;
+        }
+        .setting i{
+            color:#212194;
+            font-size: 170%;
+            position: relative;
+            top: 9px;
+        }
+        .setting div{
+            display: inline-block;
+        }
+        .setting .word{
+            font-weight: bold;
+            font-size: 90%;
+        }
+        .setting .sentence{
+            font-size: 10px;
+            color:gray;
+            display: block;
+            left: 24%;
+            position: relative;
+        }
+        .setting button{
+            background-color: #212194;
+            border-radius: 50px;
+            width: 12%;
+            height: 2.9vh;
+            font-size: 2vh;
+            color: white;
+            position: absolute;
+            right: 5%;
+            bottom: 8%;
+        }
+        .setting #setbylocker{
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            bottom:6%
+        }
+        .setting #setbylocal{
+            position: absolute;
+            bottom: 6%;
+            left:4%
+        }
+        .box{
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+        .box::before{
+            content: "";
+            background: url('back.jpg');
+            background-size: cover;
+            opacity: 0.5;
+            position: absolute;
+            top:0px;
+            left:0px;
+            right:0px;
+            bottom:0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div id="logo"><img src="logo.png" alt=""></div>
+        <div class="top">
+            <div class="search">
+                <input type="text" id="searchtext" value="검색어를 입력하세요">
+                <button type="button" id="searchbtn"><i class="fas fa-search"></i></button>
+            </div>
+            <span class="movepage">
+                <a href="">로그인</a>
+                <span id="middle_line">|</span>
+                <a href="">회원가입</a>
+            </span>
+        </div>
+<!--투명도조절하기 https://codingbroker.tistory.com/58-->
+        <div class="center">
+            <div class="intro">
+                <!--정중앙 배치하기 https://gocoder.tistory.com/798-->
+                    <h2 id="mainword">우리 동네 공구 찾기</h2>
+                    <h4 id="mainsentence">공동구매를 위한 당신의 첫번째 선택</h4>
+            </div>
+            <div class="setting">
+                    <div id="setbylocal">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span class="word">지역</span>
+                        <span class="sentence">어느 지역이신가요?</span>
+                    </div>
+                    <div id="setbylocker">
+                        <i class="fas fa-compass"></i>
+                        <span class="word">보관함</span>
+                        <span class="sentence">우리 주변 어디 보관함인가요?</span>
+                    </div>
+                    <button>검색</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

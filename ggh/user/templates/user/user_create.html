@@ -1,0 +1,60 @@
+<h1> user_create.html</h1>
+<h1> 회원가입 창</h1>
+
+<form action ="" method ="POST">
+    {% csrf_token %}
+
+    <div>
+        <label for ="user_email"> 1. 이메일 user_email </label>
+        <input type ="text" id ="user_email" placeholder ="이메일을 입력하세요" name="user_email">
+    </div>
+    <div>
+        <label for ="name"> 2. 이름 name </label>
+        <input type ="text" id ="name" placeholder ="이름을 입력하세요" name="name">
+    </div>
+
+    <div>
+        <label for ="nickname"> 3. 아이디 nickname </label>
+        <input type ="text" id ="nickname" placeholder ="아이디 입력하세요" name="nickname">
+    </div>
+    <div>
+        <label for ="password"> 4. 비밀번호 password</label>
+        <input type ="password" id ="password" placeholder ="비밀번호를 입력하세요" name="password">
+    </div>
+    <div>
+        <label for ="re_password"> 5. 비밀번호 확인 re_password </label>
+        <input type ="password" id ="re_password" placeholder ="비밀번호를 입력하세요" name="re_password">
+    </div>
+
+    <div>
+        <label for ="ph_no"> 6. 휴대폰 번호 ph_no </label>
+        <input type ="text" id ="ph_no" placeholder ="생일을 입력하세요" name="ph_no">
+    </div>
+
+    <div>
+        <label for ="birth"> 7. 생일 birth</label>
+        <input type ="text" id ="birth" placeholder ="생일을 입력하세요" name="birth">
+    </div>
+
+    <div>
+        <label for ="location"> 8. 위치 location </label>
+        <input type ="text" id ="location" placeholder ="생일을 입력하세요" name="location">
+    </div>
+    <div>
+        <label for ="cabinet"> 9. 사물함 cabinet </label>
+        <input type ="text" id ="cabinet" placeholder ="생일을 입력하세요" name="cabinet">
+    </div>
+    <div>
+        <label for ="image"> 10. 프로필 사진 image </label>
+        <input type ="text" id ="image" placeholder ="생일을 입력하세요" name="image">
+    </div>
+    <div>
+        <label for ="gender"> 11. 성별 gender</label>
+        <input type ="text" id ="gender" placeholder ="생일을 입력하세요" name="gender">
+    </div>
+    <div>
+        <label for ="marketing"> 마케팅 동의하니? </label>
+        <input type ="checkbox" id ="marketing" placeholder ="생일을 입력하세요" name="marketing">
+    </div>
+    <button type="submit" name ="register-submit" value="regitser">회원가입 버튼</button>
+</form> 

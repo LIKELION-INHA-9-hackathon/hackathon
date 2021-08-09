@@ -1,0 +1,47 @@
+<h1> login html</h1>
+<h1> 로그인 화면 </h1>
+
+
+<div class =" container">
+    {{error}}
+</div>
+<form action ="" method ="POST">
+    {% csrf_token %}
+
+    {{error}}
+
+    <div>
+        <label for ="nickname"> 아이디 </label>
+        <input type ="text" id ="nickname" placeholder ="아이디를 입력하세요" name="nickname"/>
+    </div>
+    <div>
+        <label for ="password"> 비밀번호 </label>
+        <input type ="password" id ="password" placeholder ="비밀번호를 입력하세요" name="password">
+    </div>
+    <button type="submit">로그인 버튼</button>
+
+
+</form> 
+
+<!-- <div class = "container">
+    <form method = "POST" action="">
+        {% csrf_token %}
+
+        {% for form in form %}
+
+        <div>
+            <label form ="{{form.id_for_label}}">{{form.label}}</label>"
+            <input type = "{{form.field.widget.input_type}}" id ="{{form.id_for_label}}" 
+                    placeholder= "{{form.label}}" name ="{{form.nickname}}"/>
+        </div>
+        {% endfor %}
+        {% if form.errors %}
+            <span style="color:red">{{form.errors}}</span>
+        {% endif %}
+
+        <button type = "submit">로그인 버튼 </button>
+    </form>
+
+</div> -->
+
+

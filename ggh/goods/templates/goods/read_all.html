@@ -1,0 +1,26 @@
+<h1>goods/read_all.html</h1>
+
+
+{% for data in data %}
+
+<p> <a href="{% url 'goods:goods_read_one' data.id %}">name : {{data.name}}</p> </a>
+<p> price : {{data.price}}</p>
+<p> type : {{data.type}}</p>
+<p> category : {{data.category}}</p>
+<p> sub_category : {{data.sub_category}}</p>
+<p> title : {{data.title}}</p>
+<p> content : {{data.content}}</p>
+<p> recruitement_no : {{data.recruitement_no}}</p>
+<p> expired : {{data.expired}}</p>
+<p> pre_people : {{data.pre_people}}</p>
+<p> image : {{data.image}}</p>
+
+<p> url : {{data.url}}</p>
+
+----------------------------------
+
+{% endfor %}
+
+<li><a href ="{% url 'user:login' %}"> 로그인 화면 </a></li>
+<li><a href = "{% url 'user:logout' %}">로그아웃 </a></li>
+<li><a href = "{% url 'user:user_create' %}">회원가입</li>

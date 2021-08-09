@@ -1,0 +1,81 @@
+<h1> create.html</h1>
+<h1> 로그인 해야만 보임</h1>
+<h1> new/ </h1>
+
+<form action = ""method="POST">
+    {% csrf_token %}
+    {% for form in forms %}
+    <div>
+        <label for ="{{ form.id_for_label }}">{{ form.label }} </label>
+        {{ form }}
+    </div>
+    {% endfor %}
+    {% if error %}
+    {{ error }}
+    {% endif %}
+    <button type = "submit">글 작성하기</button>
+
+</form>>
+
+
+
+
+
+<!--
+<form action = ""method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <label for ="name"> 상품이름 name </label>
+        <input type ="text" id ="name" name="name">
+    </div>
+    <div>
+        <label for ="price"> 가격 price </label>
+        <input type ="number" id ="price" name="price">
+    </div>
+    <div>
+        <label for ="type"> 종류 chocies</label>
+        <input type ="text" id ="type" name="type">
+    </div> 
+    <div>
+        <label for ="price"> 카테고리 </label>
+        <input type ="text" id ="price" name="price">
+    </div>
+    <div>
+        <label for ="sub_category"> sub_category </label>
+        <input type ="text" id ="sub_category" name="sub_category">
+    </div>
+    <div>
+        <label for ="title"> title </label>
+        <input type ="text" id ="title" name="title">
+    </div>
+    <div>
+        <label for ="content"> content </label>
+        <input type ="text" id ="content" name="content">
+    </div>
+    <div>
+        <label for ="recruitement_no"> recruitement_no </label>
+        <input type ="number" id ="recruitement_no" name="recruitement_no">
+    </div>
+    <div>
+        <label for ="expired"> expired </label>
+        <input type ="number" id ="expired" name="expired">
+    </div>
+    <div>
+        <label for ="pre_people"> pre_people </label>
+        <input type ="number" id ="pre_people" name="pre_people">
+    </div>
+    <div>
+        <label for ="image"> image </label>
+        <input type ="image" id ="image" name="image">
+    </div>
+    <div>
+        <label for ="url"> url </label>
+        <input type ="url" id ="url" name="url">
+    </div>
+    <div>
+        <label for ="uploader"> uploader </label>
+        <input type ="text" id ="uploader" name="uploader">
+    </div>
+    <button type="submit">게시글 올리기 </button>
+
+</form> -->

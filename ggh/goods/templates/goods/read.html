@@ -1,0 +1,11 @@
+<h1>read.html</h1>
+Detail page
+
+
+    <p>price : {{data.price}} 원 </p>
+    <p>title : {{data.title}}</p>
+    <p>name : {{data.name}}</p>
+    <p>uploader : {{data.uploader}}</p>
+    <p>content : {{data.content}}</p>
+
+    <button type = "submit"><a href ="{% url 'pay:kakao' data.id %}">제출</a>  </button> 

@@ -7,7 +7,7 @@ from django.db.models.fields import CharField
 
 class User(models.Model):
     # pk : django 자동으로 제공하는 id 값으로 할거임
-    user_email = models.CharField(max_length=20,default='dydrkfsla0821@gmail.com')
+    user_email = models.CharField(max_length=200,default='dydrkfsla0821@gmail.com')
     name = models.CharField(max_length=10)
     nickname = models.CharField(max_length=20)
     password = models.CharField(max_length=30)

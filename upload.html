@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+
+    <style>
+     /*
+      .profileImgBox{
+            overflow: hidden;
+            display:block;
+            width: 220px;
+            height: 220px;
+            border-radius: 70%;
+            overflow: hidden;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        #profileImg{
+            width:100%;
+            height:100%;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+            object-fit: cover;
+        }
+        */
+        
+        body{
+            height:1000px
+        }
+        .upload{
+            position:relative;
+            height:100%;
+        }
+        h3{
+            text-align: center;
+        }
+        .userData{ 
+            position:absolute;
+            left:50%;
+            transform: translate(-50%);
+            width:70%;
+        }
+        .information label{
+            margin: 19px 0 8px;
+            font-size: 2.7vh;
+            font-weight:bold ;
+        }
+        .user_area label{
+            font-size: 15px;
+        }
+        .user_area>div{
+          border:1px solid gray;
+        }
+        .box{
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            margin:0;
+        }
+        .int{
+            position: relative;
+            height: 45px;
+            width: 80%;
+        }
+        
+        .step_url{
+            position: absolute;
+            right: 1%;
+            top: 30%;
+            color: #8e8e8e;
+            font-size: 5%;
+        }
+        .btn_area{
+            margin: 30px 0 91px;
+        }
+        #btnUpload{
+            width: 10%;
+        padding: 1.5% 0.3% 1.5% 0.3%;
+        border: 0;
+        color: white;
+        background-color: #212194;
+        font-size: 5%;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+        }
+        input{
+            border:none ;
+        }
+        input:focus{
+          outline:none;
+        }
+        
+        div{
+            margin: 10px;
+        }
+        
+        .button_area .btnUpload{
+            width:300px;
+            margin:0 auto;
+        }
+        
+        .Information{
+          margin-bottom: 20%;
+        }
+        /*
+        .Information>div{
+            margin-bottom: 10%;
+        }
+        */
+        .box .intro{
+          margin-left:3%;
+          margin-right: 1%;
+          color:gray;
+          font-size: 1.5vh;
+        }
+        
+        .lockerBtn{
+          display: inline-block;
+          margin-left: 1%;
+        }
+        #lockerBtnIcon{
+          color:#212194;
+        }
+        .uploadImgBox{
+          position: relative;
+          left: 70%;
+          transform: translate(-50%);
+        }
+        .imgBox{
+          overflow: hidden;
+            display:inline-block;
+            width: 150px;
+            height: 150px;
+            border-radius: 70%;
+            overflow: hidden;
+            position: relative;
+            border:1px solid #EFEFEF;
+        }
+        .img{
+          width:100%;
+          position: relative;
+          object-fit: cover;
+        }
+        #uploadIcon{  
+          color: #212194;
+          position: absolute;
+          top: 45%;
+          transform: translate(-50%,-50%);
+          left: 50%;
+          font-size: 200%;
+        }
+        .imgUploadBtn{
+          border-radius: 50px;
+          background-color: #efefef;
+          width: 50px;
+          height: 50px;
+          position: relative;
+        }
+        #chooseFile{
+          visibility: hidden;
+        }
+        
+    </style>
+
+    <script>
+      function popup(){
+        var openWin;
+        window.name="parentForm";
+        openWin=window.open("popup.html","childForm","width=500,heught=500, top=100,left=200, location=no" )
+      }
+      
+    </script>
+</head>
+<body>
+    <header>
+        <div id="header_menu">
+            <ul>
+                <li><a class="link" href="#">로그인</a>|</li>
+                <li><a class="link" href="#">회원가입</a>|</li>
+                <li><a class="link" href="#">마이페이지</a>|</li>
+                <li><a class="link" href="#">장바구니</a></li>
+            </ul> 
+        </div>
+        <br/><br/>
+        <img src="logo.png" id="logo">
+
+        <div id="box">
+            <div id="search-box">
+                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
+                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
+            </div>
+            
+        </div>
+    </header>
+
+   
+    
+    <div class="upload">
+      <div class="userData">
+          <h3>매물등록</h3>
+      <div class="uploadImgBox">
+        
+          <div class="imgBox">
+            <img src="mainImg.jpg" alt="uploadImg" class="img" id="4">
+          </div>
+          <div class="imgBox">
+            <img src="img1.jpg" alt="Img1"class="img" id="1">
+          </div>
+          <div class="imgBox">
+            <img src="img2.jpg" alt="Img2" class="img" id="2">
+          </div>
+          <div class="imgBox">
+            <img src="img3.jpg" alt="Img3" class="img" id="3">
+          </div>
+          <form method="post" enctype="multipart/form-data">
+            <div class="button imgUploadBtn">
+              <label for="chooseFile" id="uploadIcon">
+                +
+              </label>
+            </div>
+            <input type="file" id="chooseFile" name="chooseFile" accept="image/*" value="" onchange="loadFile(this)">
+          </form>
+      </div>   
+      
+      <div class="Information">
+
+      <br>
+      <div class="user_area"> 
+        
+        <hr>
+        <br><br>
+          <div>
+              <div class="box int_title">
+                  <span class="intro">제목</span>
+                  <input type="text" id="title" class="int" maxlength="20"  >
+                  <span class="step_url">한글 15자, 영문 30자까지 가능합니다.</span>
+              </div>
+          </div>
+          <div>
+              <div class="box int_kind">
+                <span class="intro">매물종류</span>
+                <input type="text" id="kind" class="int" maxlength="30"  >
+                  
+              </div>
+          </div>
+          <div>
+              <div class="box int_price">
+                <span class="intro" >가격</span>
+                  <input type="text" id="price" class="int" maxlength="30" >
+                  <span class="step_url">모집인원을 고려한 정확한 구매 가격을 입력해주세요.</span>
+              </div>
+          </div>
+          <div>
+              
+              <div class="box int_deadline">
+                <span class="intro">마감기한</span>
+                  <input type="text=" id="deadline" class="int" maxlength="30" placeholder="YYYY  /  MM  /  DD">
+              </div>
+          </div>
+          <div>
+              <div class="box int_lockerarea"> 
+                <a class="lockerBtn" href="javascript:popup()"><i class="fas fa-map-marker-alt" id="lockerBtnIcon"></i></a>
+                <span class="intro"style="margin-left: 0;">사물함위치</span>
+                  <input type="text" id="lockerarea" class="int" maxlength="40" >
+                  <span class="step_url">지도를 통해 사물함위치를 확인하세요.</span>
+              </div>
+          </div>
+
+          <div>
+            <div class="box int_numberofuser"> 
+              <span class="intro">모집인원</span>
+                <input type="text" id="numberofuser" class="int" maxlength="20" >
+            </div>
+        </div>
+
+        <div>
+          <span class="box int_comment"> 
+            <span class="intro">제품에 대한 설명을 입력하세요.</span>
+              <input type="text" id="comment" class="int" maxlength="20" >
+          </span>
+      </div>
+
+      </div>
+      
+      <div class="btn_area">
+        <button type="button" id="btnUpload">
+            <span>등록하기</span>
+        </button>
+      </div>
+    </div>
+    </div>  
+      
+      
+
+    <footer>
+        <br/><br/>
+        <div class="footer">
+          <div id="parft">
+            <div id="chift">
+              고객센터<br />
+              1633-9311<br />
+            </div>
+            <div id="chift">
+              주식회사 공구함<br />
+              497 제 2021-경기판교-01325호<br />
+              +44 345 678 903<br />
+            </div>
+            <div id="chift">
+              사업자 정보 확인<br />
+              사업자 등록번호:232-2322-52342<br />
+              주소 : 경기 판교 백현동 153, 100층<br />
+              제휴문의 : LALALA@naver.com
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
+     
+</body>
+</html>

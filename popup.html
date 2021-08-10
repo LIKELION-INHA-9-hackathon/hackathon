@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+        <style>
+            button{
+        width: 10%;
+        padding: 1.5% 0.3% 1.5% 0.3%;
+        border: 0;
+        color: white;
+        background-color: #212194;
+        font-size: 5%;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+        }
+        </style>
+
+</head>
+<body>
+    <div id="map" style="width:500px;height:350px;"></div>
+    <button onclick="setArea()">등록</button>
+
+    <script>
+         function setArea(){
+            var upload= confirm('등록하시겠습니까?');
+            if(upload){
+               opener.document.getElementById("lockerarea").value=document.KaKao.map.getCenter();
+               self.close();
+            }
+
+        }
+        
+    </script>
+	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=222be475b2102ee4f6eada300cb969fe"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(37.56678, 126.97899), // 지도의 중심좌표
+		        level: 3, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+
+		// 지도를 생성한다 
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+		// 지도에 마커를 생성하고 표시한다
+		var marker = new kakao.maps.Marker({
+		    position: new kakao.maps.LatLng(37.56678, 126.97899), // 마커의 좌표
+		    draggable : true, // 마커를 드래그 가능하도록 설정한다
+		    map: map // 마커를 표시할 지도 객체
+		});
+
+       
+	</script>
+</body>
+</html>

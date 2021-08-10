@@ -40,6 +40,7 @@
             transform: translate(-50%);
             object-fit: cover;
         }
+        
         input[type=radio]{
             width: 25px;
             height: 25px;
@@ -252,9 +253,26 @@
 </head>
 <body>
     <header>
+        <div id="header_menu">
+            <ul>
+                <li><a class="link" href="#">로그인</a>|</li>
+                <li><a class="link" href="#">회원가입</a>|</li>
+                <li><a class="link" href="#">마이페이지</a>|</li>
+                <li><a class="link" href="#">장바구니</a></li>
+            </ul> 
+        </div>
+        <br/><br/>
+        <img src="logo.png">
+
+        <div id="box">
+            <div id="search-box">
+                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
+                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
+            </div>
+            <a class="position-btn" href="#"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+        </div>
 
     </header>
-
     <div class="mypage">
         <div class="userData">
             <h3>마이페이지</h3>
@@ -390,13 +408,34 @@
         </div>
     </div>
 
-    </div>
-
-
     <footer>
-
+        <br/><br/>
+        <div class="footer">
+          <div id="parft">
+            <div id="chift">
+              고객센터<br />
+              1633-9311<br />
+            </div>
+            <div id="chift">
+              주식회사 공구함<br />
+              497 제 2021-경기판교-01325호<br />
+              +44 345 678 903<br />
+            </div>
+            <div id="chift">
+              사업자 정보 확인<br />
+              사업자 등록번호:232-2322-52342<br />
+              주소 : 경기 판교 백현동 153, 100층<br />
+              제휴문의 : LALALA@naver.com
+            </div>
+          </div>
+        </div>
     </footer>
+</div>
 
-   
+</div>
+
+
+
+
 </body>
 </html>

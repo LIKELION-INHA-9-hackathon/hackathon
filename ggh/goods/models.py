@@ -41,7 +41,7 @@ class Goods(models.Model):
 
     recruitment_no = models.PositiveBigIntegerField(validators=[MaxValueValidator(10)]) #모집인원
     expired = models.CharField(max_length=8)
-    pre_people = models.PositiveBigIntegerField(validators=[MaxValueValidator(10)]) #이미 공구에 참여한 사람
+    pre_people = models.PositiveBigIntegerField(validators=[MaxValueValidator(10)] ,blank=True, null = True) #이미 공구에 참여한 사람
 
     uploader = models.ForeignKey(User,on_delete=models.CASCADE,verbose_name="작성자")
 

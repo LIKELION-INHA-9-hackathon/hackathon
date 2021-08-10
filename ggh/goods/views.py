@@ -29,13 +29,14 @@ def goods_create(req):
 
     if req.method == 'GET' : 
         create_form = CreateForm()
-        return render (req, 'goods/create.html', create_form)
+        context['forms'] =create_form
+        return render (req, 'goods/create.html', context)
 
     elif req.method == 'POST' : 
         create_form = CreateForm(req.POST)
 
         if create_form.is_valid():
-            uploaders= User.objects.get(user_id = user_session)
+            #uploaders= User.objects.get(user_id = user_session)
             
             create = Goods(
                 name = create_form.name,
@@ -50,7 +51,7 @@ def goods_create(req):
                 deadline = create_form.deadline,
                 image=create_form.image,
                 url=create_form.url,
-                uploader = uploaders
+                #uploader = uploaders
             )
             create.save()
             

@@ -12,6 +12,7 @@ def goods_create(req):
     elif user_pk:
         if req.method == 'POST':
             goods = Goods()
+            goods_img=Goods_img()
             goods.name = req.POST['name']
             goods.price = int(req.POST['price'])
             goods.type = req.POST['type']
@@ -24,6 +25,10 @@ def goods_create(req):
             user = User.objects.get(pk=user_pk)
             goods.uploader = user
             goods.save()
+            goods_img.goods_id = goods
+            goods_img.thumbnail = req.FILES['thumbnail']
+            goods_img.otherimg = goods.thumbnail = req.FILES['image']
+            goods_img.save()
             return redirect('/goods/'+str(goods.id))
     return render(req,'goods_create.html')
 
@@ -36,10 +41,19 @@ def goods_read_all(req):
 
 def goods_read_one(req,id):
     goods = get_object_or_404(Goods,pk=id)
-    req.session['goods'] = goods.id
     context = {
         'data' : goods
     }
+    user_pk = req.session.get('user')
+    if not user_pk :
+        return redirect('/login')
+    elif user_pk:
+        if req.method == 'POST':
+            pay = Payment()
+            pay.user_id = User.objects.get(pk=user_pk)
+            pay.goods_update_id = goods
+            pay.quantity = req.POST['quantity']
+            pay.save()
     return render(req,'goods_read.html',context)
 
 def goods_update(req,id):

@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
+from django.contrib.auth import logout as auth_logout
 from user.models import *
 from cabinet.models import *
 from goods.models import *
@@ -55,7 +56,12 @@ def login(req):
                 return redirect('/')
             else:
                 res_data['error'] = "비밀번호가 틀렸습니다."
+                return redirect('/login/')
         return render(req,'login.html',res_data) #응답 데이터 res_data 전달
+
+def logout(req):
+    auth_logout(req)
+    return redirect('/')
 
                                                                                    # 기본구현
 ######################################################################################
@@ -75,6 +81,7 @@ def user_create(req):
         user.birth=str(year)+str(month)+str(day)
         user.location = req.POST['location']
         user.cabinet = req.POST['cabinet']
+        user.image = req.FILES['images']
         user.save()
         return redirect('/user/'+str(user.id))
     return render(req,'user/user_create.html')
@@ -99,6 +106,7 @@ def user_update(req,id):
         user.birth = req.POST['birthday']
         user.location = req.POST['location']
         user.cabinet = req.POST['cabinet']
+        user.image = req.FILES['images']
         user.save()
         return redirect('/user/'+str(user.id))
     return render(req,'user/user_update.html',{'data' : user})

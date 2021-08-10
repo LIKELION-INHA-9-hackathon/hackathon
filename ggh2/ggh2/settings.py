@@ -149,3 +149,6 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+MEDIA_URL = '/barcoad/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'barcoad')

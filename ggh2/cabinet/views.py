@@ -10,7 +10,7 @@ def cabinet_read_all(req):
     context={
         'data' : cabinet
     }
-    return render(req,'cabinet_read_all.html',context)
+    return render(req,'location.html',context)
 
 def cabinet_read_one(req,id):
     if id == 1:

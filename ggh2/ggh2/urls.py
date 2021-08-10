@@ -19,11 +19,13 @@ from user import views as user
 from goods import views as goods
 from cabinet import views as cabinet
 from chat import views as chat
+from pay import views as pay
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',user.home,name="home"),
     path('login/',user.login,name="login"),
+    path('logout/', user.logout, name='logout'),
 
     path('user/new',user.user_create,name="user_create"),
     path('user/<int:id>',user.user_read,name="user_read"),
@@ -43,4 +45,10 @@ urlpatterns = [
 
     path('chat/<int:id>', chat.index, name='index'),
     path('chat/<int:id>/<str:room_name>/', chat.room, name='room'),
+
+    path('pay/<int:id>', pay.kakaoPay, name = "kakao"),
+    path('pay/<int:id>/kakaoPayLogic', pay.kakaoPayLogic, name = "kakaopay"),
+    path('pay/<int:id>/paySuccess', pay.paySuccess),
+    path('pay/<int:id>/payFail', pay.payFail),
+    path('pay/<int:id>/payCancel', pay.payCancel),
 ]

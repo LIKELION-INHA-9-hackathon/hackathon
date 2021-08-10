@@ -10,9 +10,10 @@ from cabinet.models import Cabinet_manage
 
 class Payment(TimeStampModel):
     goods_update_id=models.ForeignKey(Goods,on_delete=CASCADE,verbose_name="결제제품")
-    pay_time = models.CharField(max_length=20) # 결제 소요 시간
+    user_id = models.ForeignKey(User,on_delete=CASCADE,verbose_name="주문자")
+    quantity = models.IntegerField(verbose_name="주문수량")
 
-class Delivery(models.Model):
-    order_id = models.ForeignKey(Payment,on_delete=CASCADE,verbose_name="주문번호")
-    location = models.ForeignKey(Cabinet_manage,on_delete=CASCADE,verbose_name="배송위치")
-    due_date = models.CharField(max_length=8) # 배송예송 날짜
+class Barcoad(TimeStampModel):
+    order_id = models.ForeignKey(Payment,on_delete=CASCADE)
+    user_id = models.ForeignKey(User,on_delete=CASCADE)
+    order_barcode = models.ImageField(upload_to="")

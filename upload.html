@@ -133,8 +133,16 @@
         }
         .uploadImgBox{
           position: relative;
-          left: 70%;
+          left: 50%;
           transform: translate(-50%);
+          width: 100%;
+          display: inline-block;
+        }
+        #uploadImgfirst{
+          width: 35%;
+          left: 50%;
+          transform: translate(-50%);
+          position: relative;
         }
         .imgBox{
           overflow: hidden;
@@ -165,10 +173,13 @@
           width: 50px;
           height: 50px;
           position: relative;
+          box-shadow: 7px 7px 7px lightgrey;
         }
         #chooseFile{
           visibility: hidden;
+          width: 0%;
         }
+        /*
         #firstCircle{
           width: 200px;
           height: 200px;
@@ -176,9 +187,29 @@
           border-radius: 50%;
           position: relative;
           overflow: visible;
+          background-color: transparent;
         }
+        */
         #uploadBtnForm{
-          position:absolute
+          position:absolute;
+          width: 30%;
+          left: 60%;
+          bottom: 2.5%;
+        }
+        #uploadBlank {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          border: 1px solid #EFEFEF;
+          padding: 15%;
+        }
+       
+        .uploadImgBox img{
+          width: 200px;
+          height: 200px;
+          margin: 1%;
+    border-radius: 15%;
+    border: 5px solid #EFEFEF;
         }
     </style>
 
@@ -190,10 +221,16 @@
       }
       var num=0;
       function loadImg(event){
+        
         for(var image of event.target.files){
+          
           var reader=new FileReader();
 
           reader.onload=function(event){
+            if(document.getElementById("uploadBlank")){
+              var header=document.getElementById("uploadBlank");
+              header.parentNode.removeChild(header);
+            }
             var img=document.createElement("img");
             img.setAttribute("src",event.target.result);
             document.querySelector("div.uploadImgBox").appendChild(img);
@@ -232,33 +269,21 @@
       <div class="userData">
           <h3>매물등록</h3>
       <div class="uploadImgBox">
-          <div id="firstCircle">
-          <form method="post" enctype="multipart/form-data" id="uploadBtnForm">
-            <div class="button imgUploadBtn">
-              <label for="chooseFile" id="uploadIcon">
-                +
-              </label>
-            </div>
-            <input type="file" id="chooseFile" name="chooseFile" accept="image/*" value="" onchange="loadImg(event)">
-          </form>
-        </div>
-          <!--
-            <div class="imgBox">
-            <img src="mainImg.jpg" alt="uploadImg" class="img" id="4">
-          </div>
-          <div class="imgBox">
-            <img src="img1.jpg" alt="Img1"class="img" id="1">
-          </div>
-          <div class="imgBox">
-            <img src="img2.jpg" alt="Img2" class="img" id="2">
-          </div>
-          <div class="imgBox">
-            <img src="img3.jpg" alt="Img3" class="img" id="3">
-          </div>
-
-          -->
-          <div id="getImg"></div>
-
+       <!--   <div id="firstCircle"> -->
+           <div id="uploadImgfirst">
+            <img src="uploadBlank.png" alt="" id="uploadBlank">
+            <!--</div>-->
+            <form method="post" enctype="multipart/form-data" id="uploadBtnForm">
+              <div class="button imgUploadBtn">
+                <label for="chooseFile" id="uploadIcon">
+                  +
+                </label>
+              </div>
+              <input type="file" id="chooseFile" name="chooseFile" accept="image/*" value="" onchange="loadImg(event)">
+            </form>
+           </div>
+        
+         
          
       </div>   
       

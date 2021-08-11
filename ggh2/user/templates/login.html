@@ -12,15 +12,14 @@
     <header>
         <div id="header_menu">
             <ul>
-                {% if not user_pk %}
-                <a href="{%url 'login' %}">로그인</a>
-                <span id="middle_line">|</span>
-                <a href="{% url 'user_create' %}">회원가입</a>
-                {% endif %}
-                {% if user_pk %}
-                
-                <a href="{% url '' %}"><button id="signup">마이페이지</button></a>
-                {% endif %}
+              {% if not user_pk %}
+              <a href="{%url 'login' %}">로그인</a>
+              <span id="middle_line">|</span>
+              <a href="{% url 'user_create' %}">회원가입</a>
+              {% endif %}
+              {% if user_pk %}
+              <a href="{%url 'logout'%}">로그아웃</a>
+              <a href="{% url 'user_read' user_pk%}">마이페이지</a>
             </ul> 
         </div>
         <br/><br/>

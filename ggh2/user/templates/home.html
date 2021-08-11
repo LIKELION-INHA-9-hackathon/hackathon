@@ -1,203 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공구함</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메인</title>
+    <link rel="stylesheet" href="../../static/css/home.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-    
-    <style>
-        .setting{
-            background-color: white;
-            width: 100%;
-            border-radius: 50px;
-            margin-top: 6%;
-            height: 7.3vh;
-        }
-        body{
-            background-size: cover;
-            /*background-image: url('../back.jpg');*/
-            height: 100vh;
-        }
 
-        .center{
-            position: absolute;
-            left:50%;
-            transform: translate(-50%,-50%);
-            top: 45%;
-            width: 55%;
-        }
-        #logo{
-            position: relative;
-            top: 3%;
-            left: 3%;
-            z-index: -1;
-        }
-        #logo img{
-            width:10%;
-        }
-        .search{
-            background-color: white;
-            border-radius: 15px;
-            width: 19%;
-            height: 30px;
-            left: 63.5%;
-            top: -2.6vh;
-            position: relative;
-            border-color: lightgray;
-            border-width: 100%;
-        }
-        #searchtext{
-            border:none;
-            position: absolute;
-            left: 3%;
-            width: 80%;
-            height: 70%;
-            margin: 2%;
-            font-size: 1.5vh;
-            color: lightgray;
-        }
-        #searchtext:focus{
-            outline: none;
-        }
-        #searchbtn{
-            border:none;
-            background-color:transparent ;
-            font-size: 2.3vh;
-            position: absolute;
-            top: 13%;
-            left:85%
-        }
-        .movepage a{
-            color: black;
-            text-decoration: none;
-            font-size: 1.8vh;
-        }
-        .movepage{
-            left: 86%;
-            position: relative;
-            top: -6vh;
-        }#middle_line{
-            border:5%;
-            margin: 1%;
-        }
-        #mainword{
-            font-size: 4.5vh;
-            font-weight: bold;
-            text-align: center;
-            margin: 1.3%;
-        }
-        #mainsentence{
-            text-align: center;
-            font-size: 3.5vh;
-            color: #707070;
-            font-weight: normal;
-            margin: 1.3%;
-        }
-        .setting i{
-            color:#212194;
-            font-size: 170%;
-            position: relative;
-            top: 9px;
-        }
-        .setting div{
-            display: inline-block;
-        }
-        .setting .word{
-            font-weight: bold;
-            font-size: 90%;
-        }
-        .setting .sentence{
-            font-size: 10px;
-            color:gray;
-            display: block;
-            left: 24%;
-            position: relative;
-        }
-        .setting button{
-            background-color: #212194;
-            border-radius: 50px;
-            width: 12%;
-            height: 2.9vh;
-            font-size: 2vh;
-            color: white;
-            position: absolute;
-            right: 5%;
-            bottom: 8%;
-        }
-        .setting #setbylocker{
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%);
-            bottom:6%
-        }
-        .setting #setbylocal{
-            position: absolute;
-            bottom: 6%;
-            left:4%
-        }
-        .box{
-            width: 100%;
-            height: 100vh;
-            position: relative;
-        }
-        .box::before{
-            content: "";
-            background: url('../../static/img/back.jpg');
-            background-size: cover;
-            opacity: 0.5;
-            position: absolute;
-            top:0px;
-            left:0px;
-            right:0px;
-            bottom:0px;
-        }
-    </style>
-</head>
+    <link rel="stylesheet" href="../../static/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="../../static/css/owl.theme.default.css" />
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+      $(document).on('mouseover', '.topMenu span', function () {
+      $('.sub').slideDown(700);
+      });
+      $(document).on('mouseover', 'div', function () {
+      if (!$(this).hasClass('topMenu')) {
+      $('.sub').slideUp(500);
+      }
+      }); 
+  </script>
+  
+
+    <script src="./lib/jquery-3.4.1.js"></script>
+    <script src="../../static/js/owl.carousel.min.js"></script>
+    <script src="../../static/js/app.js"></script>
+    
+  </head>
+
 <body>
-    <div class="box">
-        <div id="logo"><img src="../../static/img/logo.png" alt=""></div>
-        <div class="top">
-            <div class="search">
-                <input type="text" id="searchtext" value="검색어를 입력하세요" onfocus="this.value=''">
-                <button type="button" id="searchbtn"><i class="fas fa-search"></i></button>
-            </div>
-            <span class="movepage">
+    <header>
+        <div id="header_menu">
+            <ul>
                 {% if not user_pk %}
                 <a href="{%url 'login' %}">로그인</a>
                 <span id="middle_line">|</span>
                 <a href="{% url 'user_create' %}">회원가입</a>
                 {% endif %}
                 {% if user_pk %}
-                <a href=""><button id="login">로그아웃</button></a>
-                <a href="{% url 'user_read' user_pk%}"><button id="signup">마이페이지</button></a>
+                <a href="{%url 'logout'%}">로그아웃</a>
+                <a href="{% url 'user_read' user_pk%}">마이페이지</a>
                 {% endif %}
-            </span>
+            </ul> 
         </div>
-<!--투명도조절하기 https://codingbroker.tistory.com/58-->
-        <div class="center">
-            <div class="intro">
-                <!--정중앙 배치하기 https://gocoder.tistory.com/798-->
-                    <h2 id="mainword">우리 동네 공구 찾기</h2>
-                    <h4 id="mainsentence">공동구매를 위한 당신의 첫번째 선택</h4>
-            </div>
-            <div class="setting">
-                    <div id="setbylocal">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span class="word">지역</span>
-                        <span class="sentence">어느 지역이신가요?</span>
-                    </div>
-                    <div id="setbylocker">
-                        <i class="fas fa-compass"></i>
-                        <span class="word">보관함</span>
-                        <span class="sentence">우리 주변 어디 보관함인가요?</span>
-                    </div>
-                    <button>검색</button>
-            </div>
-        </div>
+        <br/><br/>
+        <img src="../../static/img/logo.png">
 
+        <div id="box">
+            <div id="search-box">
+                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
+                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
+            </div>
+            <a class="position-btn" href="#"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+        </div>
+    </header>
+
+    <nav>
+        <div class="topMenu">
+            <ul>
+                <li class="main" id="li_left">
+                  <span><i class="fas fa-bars"><a class="link" href="#">전체 카테고리</a></i></span>
+                  <ul class="sub" style="display:none">
+                    <li><i class="fas fa-fire"><a class="link" href="#">데코/조명</a></i></li>
+                    <li><i class="fas fa-tshirt"><a class="link" href="#">패브릭/생활</a></i></li>
+                    <li><i class="fas fa-drum-steelpan"><a class="link" href="#">키친</a></i></li>
+                    <li><i class="fas fa-campground"><a class="link" href="#">캠핑/트래블</a></i></li>
+                    <li><i class="fas fa-pencil-alt"><a class="link" href="#">디자인문구</a></i></li>
+                    <li><i class="fas fa-mobile-alt"><a class="link" href="#">디지털/핸드폰</a></i></li>
+                    <li><i class="fas fa-blender"><a class="link" href="#">디자인가전</a></i></li>
+                    <li><i class="fas fa-couch"><a class="link" href="#">가구/수납</a></i></li>
+                    <li><i class="fas fa-cookie"><a class="link" href="#">푸드</a></i></li>
+                    <li><i class="fas fa-eye-dropper"><a class="link" href="#">뷰티</a></i></li>
+                    <li><i class="fas fa-paw"><a class="link" href="#">캣앤독</a></i></li>
+                    <li><i class="fas fa-democrat"><a class="link" href="#">토이</a></i></li>
+                    <li><i class="fas fa-baby"><a class="link" href="#">베이비/키즈</a></i></li>
+                  </ul>
+                </li>
+                <li id="li_left"><a class="link" href="#">인기 매물</a></li>
+                <li id="li_left"><a class="link" href="#">최신 매물</a></li>
+            </ul>
+        </div>
+    </nav>
+    <br/><br/>
+
+    <section>
+      <div class="owl-carousel owl-theme">
+        <div class="main_banner owl-carousel owl-theme">
+          <div class="item first">
+            <h2 class="title">올해 여름 물놀이를 위한 <strong class="em">필수품들 대박 공구!</strong></h2>
+            <span class="subtitle">멀리나갈 필요없이 펜션에서부터 집에서까지 즐길 수 있는 물놀이 용품!</span>
+          </div>
+          <div class="item second">
+            <h2 class="title">스포츠클럽은 <strong class="em">Lorem ipsum dolor sit amet.</strong></h2>
+            <span class="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, sit?</span>
+          </div>
+          <div class="item third">
+            <h2 class="title">세번째 배너 <strong class="em">Lorem ipsum dolor sit amet.</strong></h2>
+            <span class="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, sit?</span>
+          </div>
+          </div>
+      </div>
+    </section>
+
+    <!--item cards-->
+    <article>
+      <img src="../../img/advertisement1.png" id="advertisement1"> 
+    </article>
+    <div id="filter">
+    <form method="GET" action="" class="form">
+      <select id = "sort" name ="sort">
+        <option value="recently" id="recently">최신매물순</option>
+        <option value="fast" id="fast">마감빠른순</option>
+        <option value="slow" id="slow">마감느린순</option>
+        <option value="low" id="low">낮은가격</option>
+        <option value="high" id="high">높은가격</option>
+      </select>
+    </form>
+    <script>
+        $(document).ready(function() {
+            $( "select[name=sort]" ).val( "{{ sort_text }}" );
+            $('select[name=sort]').change(function () {
+            console.log($('select[name=sort]').val());
+            month = $('select[name=sort]').val();
+            $('.form').submit();
+        });
+    });
+    </script>
     </div>
+    <br/>
+
+    <div id="cards1">
+      <div id="card1">
+        {% for g in goods %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
+        <img src={{g.thumbnail.url}}>
+        <div id="discount">
+          24%
+        </div>
+        <br/><br/>
+        <div>
+          <div id="card_title">{{g.title}}</div>
+          <div id="amount">
+            <span id="amount1">정상가</span> <span id="amount1_2">{{g.ori_price}}</span><br/>
+            <span id="amount2">공구가</span> <span id="amount2_2">{{g.price}}</span>
+          </div>
+          <div id="card_bottom">
+            <span id="time">{{g.expired}}</span>
+            <span id="total_person">{{g.pre_people}} / {{g.recruitment_no}}</span>
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+      <div id="card2">
+        <img src="../img/item2.png">
+        <br/><br/>
+        <div>
+          <div id="card_title">세상 이 가격 어디서도 구하지 못하는 미국 직구 맥 립스틱 공구</div>
+          <div id="amount">
+            <span id="amount1">정상가</span> <span id="amount1_2">33,000원</span><br/>
+            <span id="amount2">공구가</span> <span id="amount2_2">7000원</span>
+          </div>
+          <div id="card_bottom">
+            <span id="time">남은시간: 20일 21시간 30분</span>
+            <span id="total_person">모집인원 1/3</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="card3">
+        <img src="../img/item3.png">
+        <br/><br/>
+        <div>
+          <div id="card_title">집에 향기로운 꽃냄새로 가득 방향제 30개 급공구!!!!!</div>
+          <div id="amount">
+            <span id="amount1">정상가</span> <span id="amount1_2">55,000원</span><br/>
+            <span id="amount2">공구가</span> <span id="amount2_2">5000원</span>
+          </div>
+          <div id="card_bottom">
+            <span id="time">남은시간: 7일 3시간 20분</span>
+            <span id="total_person">모집인원 5/8</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br/><br/>
+    
+  
+    
+    <div id="cards2">
+      <div id="card1">
+        <img src="../img/item4.png">
+        <br/><br/>
+        <div>
+          <div id="card_title">모든 빨아들이는 강한 흡입력! LG 로봇 청소기 공구진행</div>
+          <div id="amount">
+            <span id="amount1">정상가</span> <span id="amount1_2">750,000원</span><br/>
+            <span id="amount2">공구가</span> <span id="amount2_2">150,000원</span>
+          </div>
+          <div id="card_bottom">
+            <span id="time">남은시간: 4일 23시간 30분</span>
+            <span id="total_person">모집인원 4/20</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="card2">
+        <img src="../img/item5.png">
+        <br/><br/>
+        <div>
+          <div id="card_title">제주도에서 올라오는 신선한 귤 10박스 공구 진행</div>
+          <div id="amount">
+            <span id="amount1">정상가</span> <span id="amount1_2">45,000원</span><br/>
+            <span id="amount2">공구가</span> <span id="amount2_2">6000원</span>
+          </div>
+          <div id="card_bottom">
+            <span id="time">남은시간: 1일 1시간 10분</span>
+            <span id="total_person">모집인원 9/10</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="card3">
+        <img src="../img/item6.png">
+        <br/><br/>
+        <div>
+          <div id="card_title">공구로 쉽게 효도하자. 정관장 한정 50팩 공구 인원 급구!!</div>
+          <div id="amount">
+            <span id="amount1">정상가</span> <span id="amount1_2">65,000원</span><br/>
+            <span id="amount2">공구가</span> <span id="amount2_2">30,000원</span>
+          </div>
+          <div id="card_bottom">
+            <span id="time">남은시간: 28일 23시간 30분</span>
+            <span id="total_person">모집인원 2/5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br/><br/>
+
+    <div id="add">더보기</div>
+    <br/><br/><br/>
+
+    <!--추천 상품-->
+    <div id="bottom">
+      <div id="recommend1">
+        <div id="sub_box">
+          <span id="sub1">MD'S 추천 상품</span><br/>
+          <span id="sub2">#핵심 키워드</span>
+        </div>
+        <i class="fas fa-angle-right" id="arrow"><a class="link" href="#"></a></i>
+
+        <div id="keywords">
+          <div id="keywords1">
+            <span id="keyword1"><a class="link" href="#">의류</a></span>
+            <span id="keyword2_ex">원피스</span>
+            <span id="keyword3"><a class="link" href="#">뷔스티에</a></span>
+          </div>
+          <div id="keywords2">
+            <span id="keyword1"><a class="link" href="#">향수</a></span>
+            <span id="keyword2"><a class="link" href="#">DIY</a></span>
+            <span id="keyword3"><a class="link" href="#">캠핑용품</a></span>
+          </div>
+          <div id="keywords3">
+            <span id="keyword1"><a class="link" href="#">화장품</a></span>
+            <span id="keyword2"><a class="link" href="#">어덜트 토이</a></span>
+            <span id="keyword3"><a class="link" href="#">여름 이불</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="recommend2">
+        <img src="../../static/img/advertisement2.png" id="advertisement2">
+        <div id="rec_box">
+          <span id="rec1">여름 휴가 가기 전</span><br/>
+          <span id="rec2">준비해야할 필수 아이템,</span><br/>
+          <span id="rec3">하늘하늘 원피스 공구 모음</span>
+          <span id="rec4">5500원~</span>
+        </div>
+        <button type="text" id="recBtn">더보기</button>
+      </div>
+    </div>
+
+    <!--광고배너-->
+    <div id="fAd">
+      <img src="../../static/img/advertisement3.png" id="advertisement3">
+      <img src="../../static/img/advertisement4.png" id="advertisement4">
+    </div id="fAd">
+
+
+    <br/><br/>
+    <footer>
+      <br/><br/>
+      <div class="footer">
+        <div id="parft">
+          <div id="chift">
+            고객센터<br />
+            1633-9311<br />
+          </div>
+          <div id="chift">
+            주식회사 공구함<br />
+            497 제 2021-경기판교-01325호<br />
+            +44 345 678 903<br />
+          </div>
+          <div id="chift">
+            사업자 정보 확인<br />
+            사업자 등록번호:232-2322-52342<br />
+            주소 : 경기 판교 백현동 153, 100층<br />
+            제휴문의 : LALALA@naver.com
+          </div>
+        </div>
+      </div>
+    </footer>
 </body>
 </html>

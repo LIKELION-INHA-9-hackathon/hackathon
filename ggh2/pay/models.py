@@ -13,7 +13,7 @@ class Payment(TimeStampModel):
     user_id = models.ForeignKey(User,on_delete=CASCADE,verbose_name="주문자")
     quantity = models.IntegerField(verbose_name="주문수량")
 
-class Barcoad(TimeStampModel):
+class Barcode(TimeStampModel):
     order_id = models.ForeignKey(Payment,on_delete=CASCADE)
     user_id = models.ForeignKey(User,on_delete=CASCADE)
     order_barcode = models.ImageField(upload_to="")

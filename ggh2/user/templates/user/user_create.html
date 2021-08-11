@@ -32,7 +32,7 @@
     </header>
 
     <section>
-        <form name="signup" action="" method="POST">
+        <form name="signup" action="" method="POST" enctype="multipart/form-data">
             {%csrf_token%}
             <br/><br/>
             <div><h3>회원가입</h3></div>
@@ -91,7 +91,9 @@
                     </div>  
             </div>
 
-
+            <div>
+                <span id="photo">프로필 사진 등록  | </span><input type="file" name="images" id = "choose-file" accept="image/jpeg">
+            </div>
 
 
             <label id="alarm"><input type="checkbox" name="alarm" value="alarm" id="alarm"/>쿠폰/혜택/이벤트 발생 시 카카오톡/문자로 알림받기(선택)</label>

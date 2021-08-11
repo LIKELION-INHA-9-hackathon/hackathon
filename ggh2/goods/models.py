@@ -32,11 +32,11 @@ class Goods(TimeStampModel):
     description = models.TextField()
     cabinet = models.ForeignKey(Cabinet_manage,on_delete=CASCADE,verbose_name="배송지")
     due_date = models.CharField(max_length=8) # 배송예송 날짜
+    thumbnail = models.ImageField(upload_to="thumbnail",null=True,blank=True)
 
 
 
 class Goods_img(models.Model):
     goods_id = models.ForeignKey(Goods,on_delete=CASCADE)
-    thumbnail = models.ImageField(upload_to="thumbnail",null=True)
-    otherimg = models.ImageField(upload_to="goods",null=True)
+    otherimg = models.ImageField(upload_to="goods",null=True,blank=True)
 

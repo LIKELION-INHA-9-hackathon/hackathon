@@ -6,24 +6,33 @@ from goods.models import *
 from pay.models import *
 from wish.models import *
 
+
+
 def home(req):
     # if req.method=="POST":
     #     searchtext = req.POST['searchtext']
     #     location = req.POST['location']
     #     cabinet = req.POST['cabinet']
+    sort_text = req.GET.get('sort')
+    if sort_text == 'fast':
+        goods = Goods.objects.order_by('expired')
+    elif sort_text == 'slow':
+        goods = Goods.objects.order_by('-expired')
+    elif sort_text == 'low':
+        goods = Goods.objects.order_by('price')
+    elif sort_text == 'high':
+        goods = Goods.objects.order_by('-price')
+    else :
+        goods = Goods.objects.order_by('-created')
     user_pk = req.session.get('user')
     context = {
         'user_pk' : user_pk,
+        'goods' : goods,
+
     }
     return render(req, 'home.html',context)
 
-# def search(req):
-#     if req.method == "POST":
-#         searchtext = req.POST['searchtext']
-#         cabinet=Cabinet_manage.objects.filter(location_contains=searchtext)
-#         goods=Goods.objects.filter(name_contaions=searchtext)
-#         user=User.objects.filter(nickname=searchtext)
-#         if not cabinet :
+
 
 
 
@@ -60,6 +69,7 @@ def login(req):
         return render(req,'login.html',res_data) #응답 데이터 res_data 전달
 
 def logout(req):
+    req.session.clear()
     auth_logout(req)
     return redirect('/')
 
@@ -81,7 +91,7 @@ def user_create(req):
         user.birth=str(year)+str(month)+str(day)
         user.location = req.POST['location']
         user.cabinet = req.POST['cabinet']
-        user.image = req.FILES['images']
+        user.image=req.FILES['images']
         user.save()
         return redirect('/user/'+str(user.id))
     return render(req,'user/user_create.html')

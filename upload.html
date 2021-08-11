@@ -169,7 +169,17 @@
         #chooseFile{
           visibility: hidden;
         }
-        
+        #firstCircle{
+          width: 200px;
+          height: 200px;
+          border:1px solid #EFEFEF;
+          border-radius: 50%;
+          position: relative;
+          overflow: visible;
+        }
+        #uploadBtnForm{
+          position:absolute
+        }
     </style>
 
     <script>
@@ -178,7 +188,20 @@
         window.name="parentForm";
         openWin=window.open("popup.html","childForm","width=500,heught=500, top=100,left=200, location=no" )
       }
-      
+      var num=0;
+      function loadImg(event){
+        for(var image of event.target.files){
+          var reader=new FileReader();
+
+          reader.onload=function(event){
+            var img=document.createElement("img");
+            img.setAttribute("src",event.target.result);
+            document.querySelector("div.uploadImgBox").appendChild(img);
+          };
+          console.log(image);
+          reader.readAsDataURL(image);
+        }
+      }
     </script>
 </head>
 <body>
@@ -209,8 +232,18 @@
       <div class="userData">
           <h3>매물등록</h3>
       <div class="uploadImgBox">
-        
-          <div class="imgBox">
+          <div id="firstCircle">
+          <form method="post" enctype="multipart/form-data" id="uploadBtnForm">
+            <div class="button imgUploadBtn">
+              <label for="chooseFile" id="uploadIcon">
+                +
+              </label>
+            </div>
+            <input type="file" id="chooseFile" name="chooseFile" accept="image/*" value="" onchange="loadImg(event)">
+          </form>
+        </div>
+          <!--
+            <div class="imgBox">
             <img src="mainImg.jpg" alt="uploadImg" class="img" id="4">
           </div>
           <div class="imgBox">
@@ -222,14 +255,11 @@
           <div class="imgBox">
             <img src="img3.jpg" alt="Img3" class="img" id="3">
           </div>
-          <form method="post" enctype="multipart/form-data">
-            <div class="button imgUploadBtn">
-              <label for="chooseFile" id="uploadIcon">
-                +
-              </label>
-            </div>
-            <input type="file" id="chooseFile" name="chooseFile" accept="image/*" value="" onchange="loadFile(this)">
-          </form>
+
+          -->
+          <div id="getImg"></div>
+
+         
       </div>   
       
       <div class="Information">

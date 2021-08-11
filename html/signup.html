@@ -5,21 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link rel="stylesheet" href="./signup.css" media="(min-width:600px)" />
+    <link rel="stylesheet" href="../css/signup.css" media="(min-width:600px)" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    <script>
+        $('#choose-file').inputFileText({
+            text: 'Select File'
+        });
+    </script>
 </head>
 <body>
     <header>
         <div id="header_menu">
             <ul>
-                <li><a class="link" href="#">로그인</a>|</li>
-                <li><a class="link" href="#">회원가입</a>|</li>
-                <li><a class="link" href="#">마이페이지</a>|</li>
-                <li><a class="link" href="#">장바구니</a></li>
+                {% if not user_pk %}
+                <a href="{%url 'login' %}">로그인</a>
+                <span id="middle_line">|</span>
+                <a href="{% url 'user_create' %}">회원가입</a>
+                {% endif %}
             </ul> 
         </div>
         <br/><br/>
-        <img src="logo.png">
+        <img src="../../../static/img/logo.png">
 
         <div id="box">
             <div id="search-box">
@@ -31,7 +37,8 @@
     </header>
 
     <section>
-        <form name="signup" action="signup.html" method="post">
+        <form name="signup" action="" method="POST">
+            {%csrf_token%}
             <br/><br/>
             <div><h3>회원가입</h3></div>
             <div id="essential1">
@@ -42,25 +49,27 @@
             
             <br/><br/>
             <div style="text-align: center;">
-            <input type="text" id="box1" style="width: 600px; height: 35px" placeholder="아이디 (3~15자 영문/숫자를 조합하여 입력)"/>
+            <input type="text" id="user_email" name="user_email" style="width: 600px; height: 35px" placeholder="아이디 (email주소를 입력)"/>
             <br/><br/>
-            <input type="text" id="box1" style="width: 600px; height: 35px" placeholder="비밀번호 (8~16자 영문/숫자를 조합하여 입력)"/>
+            <input type="text" id="password"name="password" style="width: 600px; height: 35px" placeholder="비밀번호 (8~16자 영문/숫자를 조합하여 입력)"/>
             <br/><br/>
-            <input type="text" id="box1" style="width: 600px; height: 35px" placeholder="비밀번호 확인"/>
+            <input type="text"  style="width: 600px; height: 35px" placeholder="비밀번호 확인"/>
             <br/><br/>
-            <input type="text" id="box1" style="width: 600px; height: 35px" placeholder="성명 (한글 15자, 영문 30자까지 가능합니다."/>
+            <input type="text" id="name"name="name" style="width: 600px; height: 35px" placeholder="성명 (한글 15자, 영문 30자까지 가능합니다."/>
             <br/><br/>
-            <input type="text" id="box1" style="width: 600px; height: 35px" placeholder="이메일"/>
-            <br/><br/>
-    
-    
-            <input type="text" id="box1" style="width: 600px; height: 35px" placeholder="주소"/>
+            <input type="text" id="nickname" name="nickname" style="width: 600px; height: 35px" placeholder="별칭"/>
             <br/><br/>
     
-            <input type="text" id="box1" style="width: 150px; height: 35px" placeholder="휴대폰"/>
+    
+            <input type="text" id="location" name ="location" style="width: 600px; height: 35px" placeholder="주소"/>
+            
+            <input type="text" id="cabinet" name ="cabinet" style="width: 600px; height: 35px" placeholder="캐비넷"/>
+
+            <br/><br/>
+    
+            <input type="text" id="phone_number" name="phone_number" style="width: 150px; height: 35px" placeholder="휴대폰"/>
             - <input type="text" id="box1" style="width: 150px; height: 35px" />
             - <input type="text" id="box1" style="width: 150px; height: 35px" />
-            <button>인증번호 발송</button>
             <br/><br/>
     
             <label><input type="checkbox" name="person" value="man"> 남자</label>
@@ -72,28 +81,31 @@
             <div id="bir_wrap">
                     <div id="bir_yy">
                         <span class="box">
-                            <input type="text" id="yy" class="int" maxlength="4" placeholder="YYYY">
+                            <input type="text" id="year" name = "year" class="int" maxlength="4" placeholder="YYYY">
                         </span>
                     </div>
                     <div id="bir_mm">
                         <span class="box">
-                            <input type="text" id="MM" class="int" maxlength="4" placeholder="MM">
+                            <input type="text" id="month" name="month" class="int" maxlength="4" placeholder="MM">
                         </span>
                     </div>
                     <div id="bir_dd">
                         <span class="box">
-                            <input type="text" id="dd" class="int" maxlength="2" placeholder="DD">
+                            <input type="text" id="day" name="day" class="int" maxlength="2" placeholder="DD">
                         </span>
                     </div>  
             </div>
 
-
+            <!--파일 첨부-->
+            <div>
+                <span id="photo">프로필 사진 등록  |</span><input type="file" accept="image/jpeg" id="choose-file"/>
+            </div>
 
 
             <label id="alarm"><input type="checkbox" name="alarm" value="alarm" id="alarm"/>쿠폰/혜택/이벤트 발생 시 카카오톡/문자로 알림받기(선택)</label>
             
             <br/><br/>
-            <button id="signupbtn">가입하기</button>
+            <button id="signupbtn"> 저장하기</button>
             </div>
         </form>
         

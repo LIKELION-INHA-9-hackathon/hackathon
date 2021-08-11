@@ -154,6 +154,13 @@ hr{
     font-size: 15px;
 }
 
+#photo{
+    font-size: 15px;
+    color: #707070;
+    font-weight: 550;
+    margin-right: 40px;
+}
+
 #alarm{
     text-decoration: none;
     color: black;

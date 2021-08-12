@@ -92,6 +92,7 @@ def user_create(req):
         user.location = req.POST['location']
         user.cabinet = req.POST['cabinet']
         user.image=req.FILES['images']
+        user.gender=req.POST['gender']
         user.save()
         return redirect('/user/'+str(user.id))
     return render(req,'user/user_create.html')
@@ -105,21 +106,48 @@ def user_read(req,id):
     }
     return render(req,'user/user_read.html',context)
 
+
+####### 여기 문제 ########
+'''
+마이페이지 수정  (user/update)
+1. IntegrityError at /user/update/1 NOT NULL constraint failed: user_user.name
+model에  'null = True' 를 하지 않으면 발생 
+
+2. valueerror: the 'image' attribute has no file associated with it.
+model에 'null=True'를 하면 발생 
+
+3. MultiValueDictKeyError
+view.py/user_update에서 
+user.location = req.POST.get('location')
+처럼 'get'으로 받지 않으면 생기는 오류 
+(기존 ; user.location = req.POST['location'] )
+'''
 def user_update(req,id):
     user = get_object_or_404(User, pk=id)
     if req.method == "POST":
-        user.user_email = req.POST['user_email']
-        user.name = req.POST['name']
-        user.nickname = req.POST['nickname']
-        user.password = req.POST['password']
-        user.ph_no = req.POST['phone_number']
-        user.birth = req.POST['birthday']
-        user.location = req.POST['location']
-        user.cabinet = req.POST['cabinet']
-        user.image = req.FILES['images']
+        user.user_email = req.POST.get('user_email')
+        user.name = req.POST.get('name')
+        user.nickname = req.POST.get('nickname')
+        user.password = req.POST.get('password')
+        user.ph_no = req.POST.get('ph_no')
+        user.birth = req.POST.get('birth')
+        user.location = req.POST.get('location')
+        user.cabinet = req.POST.get('cabinet')
+        user.image = req.FILES.get('images')
+        user.gender=req.get('gender')
         user.save()
         return redirect('/user/'+str(user.id))
     return render(req,'user/user_update.html',{'data' : user})
+
+        # user.user_email = req.POST['user_email']
+        # user.name = req.POST['name']
+        # user.nickname = req.POST['nickname']
+        # user.password = req.POST['password']
+        # user.ph_no = req.POST['phone_number']
+        # user.birth = req.POST['birthday']
+        # user.location = req.POST['location']
+        # user.cabinet = req.POST['cabinet']
+        # user.image = req.FILES['images']
 
 def user_delete(req,id):
     user = get_object_or_404(User,pk=id)

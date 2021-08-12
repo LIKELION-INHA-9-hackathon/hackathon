@@ -34,6 +34,9 @@ class Goods(TimeStampModel):
     due_date = models.CharField(max_length=8) # 배송예송 날짜
     thumbnail = models.ImageField(upload_to="thumbnail",null=True,blank=True)
 
+    def __str__(self):
+        return self.name
+
 
 
 class Goods_img(models.Model):

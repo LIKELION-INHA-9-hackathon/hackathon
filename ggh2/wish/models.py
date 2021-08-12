@@ -11,6 +11,19 @@ class Wish_list(TimeStampModel): #찜
     user_id = models.ForeignKey(User,on_delete=CASCADE,verbose_name="찜한사람")
     goods_id = models.ForeignKey(Goods,on_delete=CASCADE,verbose_name="찜한물품")
 
+class Wish_item(TimeStampModel) : 
+    product =models.ForeignKey(Goods, on_delete=models.CASCADE)
+    wish = models.ForeignKey(Wish_list, on_delete=models.CASCADE)
+    #quantity = models.IntegerField(default=0)
+    active = models.BooleanField(default=True)
+
+    class Meta : 
+        db_table = 'WishItem'
+    
+    def __str__(self):
+        return self.product
+
+
 class Participant(TimeStampModel): #공구 참여
     complete_or_not=(
         (1,'공구완료'),

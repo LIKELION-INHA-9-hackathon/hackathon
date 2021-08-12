@@ -20,6 +20,8 @@
               {% if user_pk %}
               <a href="{%url 'logout'%}">로그아웃</a>
               <a href="{% url 'user_read' user_pk%}">마이페이지</a>
+              {% endif %}
+
             </ul> 
         </div>
         <br/><br/>

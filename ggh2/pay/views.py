@@ -78,12 +78,12 @@ def paySuccess(request,goods_id):
     if result.get('msg'):
         return redirect('/pay/payFail')
     else:
-        barcoad = Barcoad()
-        barcoad.order_id = request.session['order_id']
-        img =qrcode.make(barcoad.order_id)
-        img.save("../barcoad/"+str(barcoad.order_id)+".png")
-        barcoad.barcoad = img
-        barcoad.save()
+        barcode = Barcode()
+        barcode.order_id = request.session['order_id']
+        img =qrcode.make(barcode.order_id)
+        img.save("../barcode/"+str(barcode.order_id)+".png")
+        barcode.barcode = img
+        barcode.save()
         return render(request, 'paySuccess.html')
 
 def payFail(request,goods_id):

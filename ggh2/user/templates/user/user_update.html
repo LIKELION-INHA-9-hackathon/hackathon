@@ -1,3 +1,4 @@
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -241,150 +242,216 @@
         .like_product>ul>li{
             position: absolute;
         }
-        .box.int{
-            border:1px solid; padding:10px; margin-bottom: 1rem;
+        .uploadImgBox{
+          position: relative;
+          left: 50%;
+          transform: translate(-50%);
+          width: 100%;
+          display: inline-block;
+        }
+        #uploadImgfirst{
+          width: 35%;
+          left: 50%;
+          transform: translate(-50%);
+          position: relative;
+        }
+        .imgBox{
+          overflow: hidden;
+            display:inline-block;
+            width: 150px;
+            height: 150px;
+            border-radius: 70%;
+            overflow: hidden;
+            position: relative;
+            border:1px solid #EFEFEF;
+        }
+        .img{
+          width:100%;
+          position: relative;
+          object-fit: cover;
+        }
+        #uploadIcon{  
+          color: #212194;
+          position: absolute;
+          top: 45%;
+          transform: translate(-50%,-50%);
+          left: 50%;
+          font-size: 200%;
+        }
+        .imgUploadBtn{
+          border-radius: 50px;
+          background-color: #efefef;
+          width: 50px;
+          height: 50px;
+          position: relative;
+          box-shadow: 7px 7px 7px lightgrey;
+        }
+        #chooseFile{
+          visibility: hidden;
+          width: 0%;
+        }
+        /*
+        #firstCircle{
+          width: 200px;
+          height: 200px;
+          border:1px solid #EFEFEF;
+          border-radius: 50%;
+          position: relative;
+          overflow: visible;
+          background-color: transparent;
+        }
+        */
+        #uploadBtnForm{
+          position:absolute;
+          width: 30%;
+          left: 60%;
+          bottom: 2.5%;
+        }
+        #uploadBlank {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          border: 1px solid #EFEFEF;
+          padding: 15%;
+        }
+       
+        .uploadImgBox img{
+          width: 200px;
+          height: 200px;
+          margin: 1%;
+    border-radius: 15%;
+    border: 5px solid #EFEFEF;
+        }
+    </style>
+    <!-- .box.int_nickname{
+            padding-right: 80%;
         }
         .box.int_passwordBefore{
             padding-right: 80%;
-        }
-</style>
+        }-->
+    
 </head>
 <body>
     <header>
 
     </header>
 
+    <form action ="" method = "POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
     <div class="mypage">
         <div class="userData">
-            <h3>마이페이지</h3>
+            <h3>정보 수정</h3>
         <div class="profileImgBox">
             {% if data.image %}
             <img src="{{ data.image.url }}" alt="profileImg" id="profileImg">
             {% else %}
             <img src="../../../static/img/default_img.jpg" alt="profileImg" id="profileImg">
             {% endif %}
-        </div>   
+        </div>  
+
+        <div class="Information">
         <div class="user_area"> 
             <div>
                 <label for="nickname">닉네임</label>
-                <div class="box int">
-                    {{data.user_email }}
-                </div>
+                <span class="box int_nickname">
+                    <input type="text" id="nickname" class="int" maxlength="20" value={{data.nickname}}>
+                    <span class="step_url">한글 15자, 영문 30자까지 가능합니다.</span>
+                </span>
             </div>
             <div>
-                <label for="name">이름</label>
-                <div class="box int">
-                    {{data.name}}
-                </div>
+                <label for="passwordBefore">변경 전 비밀번호</label>
+                <span class="box int_passwordBefore">
+                    <input type="text" id="passwordBefore" class="int" maxlength="30" value={{data.password}} >
+                    <span class="step_url">8~16자 영문/숫자를 조합하여 입력</span>
+                </span>
             </div>
             <div>
-                <label for="user_email">이메일</label>
-                <div class="box int">
-                    {{data.user_email}}
-                </div>
+                <label for="passwordAfter">비밀번호 확인</label>
+                <span class="box int_passwordAfter">
+                    <input type="text" id="passwordAfter" class="int" maxlength="30" >
+                    <span class="step_url">8~16자 영문/숫자를 조합하여 입력</span>
+                </span>
             </div>
             <div>
-                <label for="ph_no">휴대폰</label>
-                <div class="box int">
-                    {{data.ph_no}}
-                </div>
+                <label for="passwordAfter">이름</label>
+                <span class="box int_passwordAfter">
+                    <input type="text" id="passwordAfter" class="int" maxlength="30"value= {{data.name}} >
+                    <span class="step_url">8~16자 영문/숫자를 조합하여 입력</span>
+                </span>
             </div>
             <div>
-                <label for="#">성별</label>
-                <div class="box int">
-                </div>
+                <label for="email">이메일</label>
+                <span class="box int_email">
+                    <input type="text" id="password" class="int" maxlength="30" value={{data.user_email}}>
+                    <!--<span class="step_url">@</span>
+                    <select name="domain" onchange="domainCheck();">
+                    <option value="0" selected="selected">직접입력</option>
+                    <option vlaue="naver.com">naver.com</option>
+                    <option vlaue="hanmail.net">hanmail.net</option>
+                    <option vlaue="nate.com">nate.com</option>
+                    </select>-->
+                </span>
             </div>
             <div>
-                <label for="birth">생일</label>
-                <div class="box int">
-                    {{data.birth}}
-                </div>
+                <label for="passwordAfter">전화번호</label>
+                <span class="box int_passwordAfter">
+                    <input type="text" id="passwordAfter" class="int" maxlength="30" value={{data.ph_no}}>
+                    <span class="step_url">8~16자 영문/숫자를 조합하여 입력</span>
+                </span>
             </div>
             <div>
-                <label for="location">주소</label>
-                <div class="box int">
-                    {{data.location}}
-                </div>
+                <label for="passwordAfter">성별</label>
+                <span class="box int_passwordAfter">
+                    <input type="text" id="passwordAfter" class="int" maxlength="30" value={{data.gender}} >
+                    <span class="step_url">8~16자 영문/숫자를 조합하여 입력</span>
+                </span>
             </div>
             <div>
-                <label for="cabinet">사물함</label>
-                <div class="box int">
-                    {{data.cabinet}}
-                </div>
+                <label for="passwordAfter">생일</label>
+                <span class="box int_passwordAfter">
+                    <input type="text" id="passwordAfter" class="int" maxlength="30" value={{data.birth}}>
+                    <span class="step_url">8~16자 영문/숫자를 조합하여 입력</span>
+                </span>
             </div>
 
+            <div>
+                <label for="address">주소</label>
+                <span class="box int_address"> 
+                    <input type="text" id="address" class="int" maxlength="20"value={{data.location}} >
+                </span>
+            </div>
 
-        <div class="order_area">
-            <i class="fas fa-envelope-open-text"></i>
-            <label for="order">최근 주문내역<span>more</span></label>
-            <div class="order">
-                <div id="order_bar">
-                    <!--https://blogpack.tistory.com/773-->
-                    <ul>
-                        <li id="orderNum_bar">주문번호</li>
-                        <li id="orderProduct_bar">주문상품</li>
-                        <li id="orderState_bar">주문상태</li>
-                    </ul>
-                </div>
-                <div id="order_content">
-                    <ul>
-                        <li id="orderNum">13843920</li>
-                        <div class="updown"></div>
-                        <li id="orderProduct">
-                            <img src="../../../static/img/order.jpg" alt=""> 
-                            <span class=product_explain>
-                                <span id=product_name>우리 집을 환하게 감싸주는 나른 조명 인테리어 공구</span>
-                                <br>
-                                <span id=product_content>우리 집을 환하게 감싸주는 나른 조명 인테리어 공구</span>
-                            </span>
-                        </li>
-                        <div class="updown"></div>
-                        <li id="orderState">배송완료</li>
-                    </ul>
-                    
-                </div>
+            
+        </div>
 
+        
+        
+        <div class="locker_area">
+            <i class="fas fa-map-marker-alt"></i>
+            <label for="locker_setting">사물함 설정<span style="color: gray;">(최대 3개까지)</span></label>
+            <div >
+                <input type="radio" id="1" name="locker" value="인천 미추홀구 사물함" >
+                <label for="locker">인천 미추홀구 사물함</label>
+            </div>
+            <div >
+                <input type="radio" id="2" name="locker" value="부천 소사본동 사물함"checked>
+                <label for="locker">부천 소사본동 사물함</label>
+            </div>
+            <div >
+                <input type="radio" id="3" name="locker" value="시흥 은행동 사물함">
+                <label for="locker">시흥 은행동 사물함</label>
             </div>
         </div>
 
-        <div class="like_area">
-            <i class="far fa-heart"></i>
-            <label for="like">나의 찜 목록</label>
-            <div>
-                <ul>
-                    <li class="like_product">
-                       <ul >
-                           <li id="product_img"><div id="likeImgBox"><img src="like.jpg" alt="" id="likeImg"></div></li>
-                           <br>
-                           <li id="product_name">하늘하늘 봄을 기다리며 꽃무늬 스카프</li>
-                           <br>
-                           <li id="product_content">3700원</li>
-                       </ul>
-                    </li>
+        <input type = "submit" value="저장하기" id = "btnMypage"/>
 
-                </ul>
 
-            </div>
-        </div>
-
-        <div class="notice_area">
-            <i class="far fa-bell"></i>
-            <label for="notice">나의 알림</label>
-           
-        </div>
 
         <div class="btn_area">
-            <a href = "{% url 'user_update' user.id %} " > <button type="button" id="btnMyPage">
-                <span>수정하기</span>
-            </button>
-            </a>
-
-            <a href = "{% url 'user_delete' user.id %} " > 
             <button type="button" id="btnMyPage">
-                <span>탈퇴하기</span>
+                <span>확인</span>
             </button>
-            </a>
-
         </div>
     </div>
 
@@ -395,6 +462,6 @@
 
     </footer>
 
-   
+    </form>
 </body>
 </html>

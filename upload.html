@@ -209,7 +209,7 @@
       function popup(){
         var openWin;
         window.name="parentForm";
-        openWin=window.open("popup.html","childForm","width=500,heught=500, top=100,left=200, location=no" )
+        openWin=window.open("popup.html","childForm","width=500,height=500, top=100,left=200, location=no" )
       }
       var num=0;
       function loadImg(event){
@@ -316,7 +316,7 @@
           </div>
           <div>
               <div class="box int_lockerarea"> 
-                <a class="lockerBtn" href="javascript:popup()"><i class="fas fa-map-marker-alt" id="lockerBtnIcon"></i></a>
+                <a class="lockerBtn" href="#" onclick="window.open('popup.html','childForm','width=500,height=500')"><i class="fas fa-map-marker-alt" id="lockerBtnIcon"></i></a>
                 <span class="intro"style="margin-left: 0;">사물함위치</span>
                   <input type="text" id="lockerarea" class="int" maxlength="40" >
                   <span class="step_url">지도를 통해 사물함위치를 확인하세요.</span>

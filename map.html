@@ -104,6 +104,9 @@
         .header{
             background-color: white;
         }
+        #formtag{
+           /* visibility: hidden; */
+        }
     </style>
 </head>
 <body>
@@ -147,6 +150,10 @@
 
     <div id="map"></div>
 
+    <form action="get" id="formtag">
+        <input type="text" name="" value="">
+    </form>
+
     <footer>
         <br/><br/>
         <div class="footer">
@@ -185,24 +192,24 @@
         // 마커를 표시할 위치와 title 객체 배열입니다 
         var positions = [
             {
-                title: '농구장', 
+                title: '인하대 농구장', 
                 latlng: new kakao.maps.LatLng(37.45053693493819, 126.65185147692561)
             },
             {
-                title: '하이테크', 
+                title: '인하대 하이테크관', 
                 latlng: new kakao.maps.LatLng(37.45062807614082, 126.65729635660381)
             },
             {
-                title: '정석학술정보관', 
+                title: '인하대 정석학술정보관', 
                 latlng: new kakao.maps.LatLng(37.44944893969956, 126.65253303748328)
             },
             {
-                title: '60주년기념관',
+                title: '인하대 60주년기념관',
                 latlng: new kakao.maps.LatLng(37.450914908208446, 126.6542305044251)
 
             },
             {  
-                title: '인경호',
+                title: '인하대 인경호',
                 latlng: new kakao.maps.LatLng(37.44959470731173, 126.65569689554464)
             }
         ];
@@ -225,12 +232,22 @@
                 title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
                 image : markerImage // 마커 이미지 
             });
+            
 
+
+            
             kakao.maps.event.addListener(marker, 'click', function(){
-                var upload= confirm('등록하시겠습니까?'); })
+                var upload= confirm('등록하시겠습니까?'); 
+
+                var tmp=document.getElementById('formtag');
+                tmp.value=marker.getTitle();
+                console.log(tmp.value);
+
+                })
         }
+        
 
-
+       
         </script>
         
 </body>

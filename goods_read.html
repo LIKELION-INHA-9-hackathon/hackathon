@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>goods_read</title>
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="header.css">
+
+    <style>
+        .goods_read{
+            width: 80%;
+            left: 50%;
+            transform: translate(-50%);
+            position: relative;
+        }
+        .imgBox{
+            display: inline-block;
+            width: 48%;
+            margin: 1%;
+            left: 10%;
+    position: relative;
+        }
+        .mainImgBox{
+            left: 50%;
+            transform: translate(-50%);
+            position: relative;
+        }
+
+        #mainImg{
+            width: 300px;
+            height: 300px;
+        }
+        .extraImgBox img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+        }
+        .explainBox{
+            display: inline-block;
+            width: 40%;
+            margin: 1%;
+            position: relative;
+           left: -5%;
+        }
+        #title{
+            font-size: 150%;
+            font-weight: 600;
+        }
+        
+        #profile{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            
+        }
+        #nickname{
+            font-size:1%;
+            font-weight: 600;
+            bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        #state_percent{
+            color: #212194;
+            font-size: 130%;
+            font-weight: 600;
+            left: 90%;
+    position: relative;
+        }
+        #state_bar{
+            border:1px solid gray;
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+        #filling{
+            width: 40%;
+            background-color: #212194;
+            padding: 2%;
+        }
+        #state_text{
+            color: red;
+            font-size: 1%;
+            font-weight: 700;
+            left: 88%;
+    position: relative;
+        }
+        .price div{
+            display: inline;
+        }
+        .price .button{
+            display: inline-block;
+            border-radius: 5px;
+            text-align: center;
+            padding-top: 0.8%;
+            padding-bottom: 0.8%;
+            padding-left: 6%;
+            padding-right: 6%;
+            background-color: gray;
+            margin: 1%;
+            font-weight: 600;
+            font-size: 1.5vh;
+        }
+        .price .content{
+            font-weight: 800;
+            font-size: 3vh;
+        }
+        .preprice .content{
+            text-decoration-line:line-through;
+            
+        }
+        #selectoption{
+            width: 100%;
+            font-size: 2,5vh;
+            padding: 3%;
+            margin: 2%;
+        }
+       
+        #joinbtn{
+            width: 100%;
+            background-color: #212194;
+            color: white;
+            font-weight: 700;
+            padding:4%;
+            margin-top:5%;
+        }
+
+
+        #categoryul{
+            list-style: none;
+        }
+    </style>
+
+    <script>
+        function setcount(this){
+            document.getElementById('count').innerHTML=this.value;
+            document.getElementById('cash').innerHTML=this.value;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div id="header_menu">
+            <ul>
+                <li><a class="link" href="#">로그인</a>|</li>
+                <li><a class="link" href="#">회원가입</a>|</li>
+                <li><a class="link" href="#">마이페이지</a>|</li>
+                <li><a class="link" href="#">장바구니</a></li>
+            </ul> 
+        </div>
+        <br/><br/>
+        <img src="logo.png">
+
+        <div id="box">
+            <div id="search-box">
+                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
+                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
+            </div>
+            <a class="position-btn" href="#"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+        </div>
+
+    </header>
+
+    <div class="goods_read">
+        <div class="intro">
+            <div class="imgBox">
+                <div class="mainImgBox">
+                    <img src="mainImg.jpg" alt="" id="mainImg">
+                </div>
+                <div class="extraImgBox">
+                    <img src="1.jpg" alt="">
+                    <img src="2.jpg" alt="">
+                    <img src="3.jpg" alt="">
+                    <img src="4.jpg" alt="">
+                </div>
+            </div>
+            <div class="explainBox">
+                <span id="title">멀리서도 느껴지는 자연스러운 향기, 키엘 머스크 향수 공구진행</span>
+                <div class="recruitment">
+                    <div id="state_percent">40%</div>
+                    <div id="state_bar">
+                        <div id="filling"></div>
+                    </div>
+                    <div id="state_text">모집인원 2/5</div>
+                </div>
+                <div class="uploader">
+                    <img src="profile.jpg" alt="" id="profile">
+                    <div id="nickname">신기한 나라의 멋쟁이사자</div>
+                </div>
+                <div class="price">
+                    <div class="preprice">
+                        <div class="button">정상가</div>
+                        <div class="content">15000원</div>
+                    </div>
+                    <br>
+                    <div class="postprice">
+                        <div class="button">공구가</div>
+                        <div class="content">2000원</div>
+                    </div>
+                </div>
+                <div class="count">
+                    <select name="count" id="selectoption">
+                        <option value="" onchange="setcount(this)">옵션 선택하기</option>
+                        <option value="1">1세트</option>
+                        <option value="2">2세트</option>
+                        <option value="3">3세트</option>
+                        <option value="4">4세트</option>
+                    </select>
+                </div>
+
+                <div class="summary">
+                    <div id="totalamount">
+                        총수량 <span id="amount"></span>개
+                    </div>
+                    <div id="totalcash">
+                        총금액 <span id="cash"></span>원
+                    </div>
+                </div>
+
+                <div class="joinbtnbox">
+                    <button type="button" id="joinbtn">공구 참여하기</button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="description">
+            <ul id="categoryul">
+                <li><a href=".product_explain">상품 설명</a></li>
+                <li><a href=".uploader_explain">작성자의 설명</a></li>
+                <li><a href=".delivery_exchange">배송/교환 환불</a></li>
+            </ul>
+            <div class="product_explain">
+
+            </div>
+            <div class="uploader_explain">
+
+            </div>
+            <div class="delivery_exchange">
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <footer>
+        <br/><br/>
+        <div class="footer">
+          <div id="parft">
+            <div id="chift">
+              고객센터<br />
+              1633-9311<br />
+            </div>
+            <div id="chift">
+              주식회사 공구함<br />
+              497 제 2021-경기판교-01325호<br />
+              +44 345 678 903<br />
+            </div>
+            <div id="chift">
+              사업자 정보 확인<br />
+              사업자 등록번호:232-2322-52342<br />
+              주소 : 경기 판교 백현동 153, 100층<br />
+              제휴문의 : LALALA@naver.com
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>

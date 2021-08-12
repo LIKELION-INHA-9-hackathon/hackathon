@@ -1,0 +1,218 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: white;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+header {
+    min-height: 20vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+nav .link{
+    text-decoration: none;
+    color: black;
+}
+
+#header_menu{
+    margin-left: 80%;
+}
+
+#header_menu ul li{
+    list-style: none;
+    float: left;
+    color: gray;
+}
+
+#header_menu .link{
+    text-decoration: none;
+    color: gray;
+    font-size: 12px;
+    font-weight: bold;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+img{
+    width:180px;
+    height:50px;
+    margin-left: 40%;
+}
+
+
+#search-box{
+    background-color: #F6F6F6;
+    border-radius: 10px;
+    width: 195px;
+    height: 25px;
+    margin-left: 80%;
+}
+
+
+.search-btn{
+    background-color: #F6F6F6;
+    border-radius: 50%;
+}
+
+.search-txt{
+    border:none;
+    background-color: #F6F6F6;
+    border-color: #F6F6F6;
+    text-align: center;
+}
+
+.fas{
+    color:black;
+}
+
+#position-btn{
+    position: absolute;
+    left: 95%;
+    top:61%;
+    font-size: 20px;
+}
+
+/**/
+section h3{
+    text-align: center;
+}
+
+#essential2{
+    font-size: 7px;
+    color: red;
+    margin-left: 68%;
+    
+}
+
+#essential3{
+    position: relative;
+    font-size: 10px;
+    color: gray;
+    font-weight: bold;
+    margin-left: 68.7%;
+    bottom: 15px;
+}
+
+hr{
+    width: 45%;
+    margin-left: 27.5%;
+    border: thin solid;
+    background-color: black;
+}
+
+/*생년월일*/
+#bir_wrap {
+    display: table;
+    width: 100%;
+    background-position:center;
+}
+
+#bir_yy {
+    display: table-cell;
+    width: 147px;
+}
+
+#bir_mm {
+    display: table-cell;
+    width: 147px;
+    vertical-align: middle;
+}
+
+#bir_dd {
+    display: table-cell;
+    width: 147px;
+}
+
+#bir_mm, #bir_dd {
+    padding-left: 10px;
+}
+
+.box {
+    display: block;
+    width: 25%;
+    height: 30px;
+    border: solid 1px #dadada;
+    padding: 5px 14px 5px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+
+.int {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 20px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+}
+
+#photo{
+    font-size: 15px;
+    color: #707070;
+    font-weight: 550;
+    margin-right: 40px;
+}
+
+#alarm{
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    color: #707070;
+}
+
+#signupbtn{
+    color: white;
+    font-weight: bold;
+    padding: 10px 30px 10px 30px;
+    cursor: pointer;
+    font-size:13px;
+    background-color: #00047a;
+    border: none;
+    width: 270px;
+    height: 40px;
+}
+
+
+
+/**/
+footer {
+    position: relative;
+    background-color: #00047a;
+    width: auto;
+    height: 120px;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    padding: 15px 0 40px 0;
+    /* margin-top: 50px; */
+}
+
+.footer {
+    background-color: #00047a;
+}
+
+#ftdiv {
+    background-color: #00047a;
+    position: relative;
+    padding-left: 100px;
+    padding-top: 20px;
+}
+
+#parft {
+    background-color: #00047a;
+    display: flex;
+    margin-left: 100px;
+}
+
+#chift {
+    background-color: #00047a;
+    flex: 1;
+}

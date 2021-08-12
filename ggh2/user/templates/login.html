@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="../../static/css/login.css" media="(min-width:600px)" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+</head>
+<body>
+    <header>
+        <div id="header_menu">
+            <ul>
+              {% if not user_pk %}
+              <a href="{%url 'login' %}">로그인</a>
+              <span id="middle_line">|</span>
+              <a href="{% url 'user_create' %}">회원가입</a>
+              {% endif %}
+              {% if user_pk %}
+              <a href="{%url 'logout'%}">로그아웃</a>
+              <a href="{% url 'user_read' user_pk%}">마이페이지</a>
+              {% endif %}
+
+            </ul> 
+        </div>
+        <br/><br/>
+        <img src="../../static/img/logo.png">
+
+        <div id="box">
+            <div id="search-box">
+                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
+                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
+            </div>
+            <a class="position-btn" href="#"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+        </div>
+    </header>
+
+    <section><br/><br/>
+        <div><h3>로그인</h3></div>
+        <br/><br/>
+        <form method="POST" action=".">
+          {% csrf_token %}
+
+        
+          <div style="text-align: center;">
+          <input type="text" id="emial"name="user_id" style="width: 270px; height: 35px" />
+          <br/><br/>
+          <input type="text" id="password"name="user_pw" style="width: 270px; height: 35px" />
+          <br/><br/>
+          <label id="idSaved"><input type="checkbox" name="idSaved" value="아이디 저장" id="idSaved"/>아이디 저장</label>
+          <ul>
+              <li><a class="idFind" href="#">아이디 찾기</a>|</li>
+              <li><a class="pwFind" href="#">비밀번호 찾기</a></li>
+          </ul>
+          <br/>
+          <button type="submit" id="loginbtn">로그인</a></button><br/><br/>
+      </form>
+        <button id="signupbtn"><a href="{%url 'user_create' %}">회원가입</a></button>
+        </div>
+    </section>
+
+
+    <br/><br/><br/><br/>
+    <footer>
+      <br/><br/>
+      <div class="footer">
+        <div id="parft">
+          <div id="chift">
+            고객센터<br />
+            1633-9311<br />
+          </div>
+          <div id="chift">
+            주식회사 공구함<br />
+            497 제 2021-경기판교-01325호<br />
+            +44 345 678 903<br />
+          </div>
+          <div id="chift">
+            사업자 정보 확인<br />
+            사업자 등록번호:232-2322-52342<br />
+            주소 : 경기 판교 백현동 153, 100층<br />
+            제휴문의 : LALALA@naver.com
+          </div>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

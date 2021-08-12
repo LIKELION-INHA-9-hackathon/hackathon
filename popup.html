@@ -94,8 +94,9 @@
             kakao.maps.event.addListener(marker, 'click', function(){
                 var upload= confirm('등록하시겠습니까?');
             if(upload){
+               window.opener.document.getElementById("lockerarea").value="hi";
+               /*kakao.marker.getPosition();*/
                self.close();
-               window.opener.document.getElementById("lockerarea").value=kakao.marker.getPosition();
             }
             })
         }

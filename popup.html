@@ -39,6 +39,8 @@
 
 	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=222be475b2102ee4f6eada300cb969fe"></script>
 	<script>
+        document.cookie = "crossCookie=bar; SameSite=None; Secure";
+
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
             mapOption = { 
                 center: new kakao.maps.LatLng(37.450192, 126.653552), // 지도의 중심좌표
@@ -94,8 +96,7 @@
             kakao.maps.event.addListener(marker, 'click', function(){
                 var upload= confirm('등록하시겠습니까?');
             if(upload){
-               window.opener.document.getElementById("lockerarea").value="hi";
-               /*kakao.marker.getPosition();*/
+               opener.document.getElementById("lockerarea").value=kakao.marker.getTitle();
                self.close();
             }
             })

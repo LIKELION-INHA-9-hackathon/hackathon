@@ -104,6 +104,9 @@
         .header{
             background-color: white;
         }
+        #formtag{
+            visibility: hidden;
+        }
     </style>
 </head>
 <body>
@@ -180,8 +183,9 @@
             </div>
           </div>
         </div>
+        <div>아이콘 제작자 <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div>
       </footer>
-
+      
 
 	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=222be475b2102ee4f6eada300cb969fe"></script>
 	<script>
@@ -237,13 +241,18 @@
                 image : markerImage // 마커 이미지 
             });
 
-            kakao.maps.event.addListener(marker, 'click', function(){
+            kakao.maps.event.addListener(marker, 'click', clickListener(marker));
+        }
+        function clickListener(marker){
+            return function(){
+                {
                 var upload= confirm('등록하시겠습니까?');
                 
                 var tmp=document.getElementById('formtag');
                 tmp.value=marker.getTitle();
                 console.log(tmp.value);
-            })
+            }
+            }
         }
 
 

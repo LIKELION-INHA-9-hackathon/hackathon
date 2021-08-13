@@ -11,7 +11,7 @@ from cabinet.models import Cabinet_manage
 class Payment(TimeStampModel):
     goods_update_id=models.ForeignKey(Goods,on_delete=CASCADE,verbose_name="결제제품")
     user_id = models.ForeignKey(User,on_delete=CASCADE,verbose_name="주문자")
-    quantity = models.IntegerField(verbose_name="주문수량", null=True)
+    quantity = models.IntegerField(verbose_name="주문수량")
 
 class Barcode(TimeStampModel):
     order_id = models.ForeignKey(Payment,on_delete=CASCADE)

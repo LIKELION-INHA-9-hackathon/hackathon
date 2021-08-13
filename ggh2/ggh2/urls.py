@@ -35,11 +35,11 @@ urlpatterns = [
     path('user/delete/<int:id>',user.user_delete,name="user_delete"),
 
     path('goods/new',goods.goods_create,name="goods_create"),
+    path('goods/popup.html',goods.goods_popup,name="goods_popup"),
     path('goods/',goods.goods_read_all,name="goods_read_all"),
     path('goods/<int:id>',goods.goods_read_one,name="goods_read_one"),
     path('goods/update/<int:id>',goods.goods_update,name="goods_update"),
     path('goods/delete/<int:id>',goods.goods_delete,name="goods_delete"),
-    path('goods/<int:id>/plus',goods.goods_plus, name = "goods_plus"),
 
     path('cabinet/',cabinet.cabinet_read_all,name="cabinet_read_all"),
     path('cabinet/<int:id>',cabinet.cabinet_read_one,name="cabinet_read_one"),

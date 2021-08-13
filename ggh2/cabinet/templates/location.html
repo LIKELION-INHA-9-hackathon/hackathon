@@ -91,7 +91,7 @@
         }
         .box::before{
             content: "";
-            background: url('back.jpg');
+            background: url('../../static/img/back.jpg');
             background-size: cover;
             opacity: 0.5;
             position: absolute;
@@ -119,6 +119,8 @@
                 {% if user_pk %}
                 <a href="{%url 'logout'%}">로그아웃</a>
                 <a href="{% url 'user_read' user_pk%}">마이페이지</a>
+                {% endif %}
+
             </ul> 
         </div>
        
@@ -128,7 +130,8 @@
                 <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
                 <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
             </div>
-            <a class="position-btn" href="#"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+            <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+
         </div>
     </header>
     <div class="center">
@@ -150,6 +153,9 @@
 
 
     <div id="map"></div>
+
+   
+    </div>
 
     <footer>
         <br/><br/>
@@ -174,52 +180,67 @@
         </div>
       </footer>
 
-    </div>
 
 	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=222be475b2102ee4f6eada300cb969fe"></script>
 	<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		    mapOption = {
-		        center: new kakao.maps.LatLng(37.450179, 126.653498), // 지도의 중심좌표
-		        level: 3, // 지도의 확대 레벨
-		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-		    }; 
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+            mapOption = { 
+                center: new kakao.maps.LatLng(37.450192, 126.653552), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+        
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+         
+        // 마커를 표시할 위치와 title 객체 배열입니다 
+        var positions = [
+            {
+                title: '농구장', 
+                latlng: new kakao.maps.LatLng(37.45053693493819, 126.65185147692561)
+            },
+            {
+                title: '하이테크', 
+                latlng: new kakao.maps.LatLng(37.45062807614082, 126.65729635660381)
+            },
+            {
+                title: '정석학술정보관', 
+                latlng: new kakao.maps.LatLng(37.44944893969956, 126.65253303748328)
+            },
+            {
+                title: '60주년기념관',
+                latlng: new kakao.maps.LatLng(37.450914908208446, 126.6542305044251)
 
-		// 지도를 생성한다 
-		var map = new kakao.maps.Map(mapContainer, mapOption); 
+            },
+            {  
+                title: '인경호',
+                latlng: new kakao.maps.LatLng(37.44959470731173, 126.65569689554464)
+            }
+        ];
+        
+        // 마커 이미지의 이미지 주소입니다
+        var imageSrc = "../../static/img/markerIcon.png"; 
+            
+        for (var i = 0; i < positions.length; i ++) {
+            
+            // 마커 이미지의 이미지 크기 입니다
+            var imageSize = new kakao.maps.Size(24, 35); 
+            
+            // 마커 이미지를 생성합니다    
+            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+            
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: positions[i].latlng, // 마커를 표시할 위치
+                title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                image : markerImage // 마커 이미지 
+            });
 
-		// 지도에 마커를 생성하고 표시한다
-		var marker = new kakao.maps.Marker({
-		    position: new kakao.maps.LatLng(37.450179, 126.653498), // 마커의 좌표
-		    draggable : true, // 마커를 드래그 가능하도록 설정한다
-		    map: map // 마커를 표시할 지도 객체
-		});
+            kakao.maps.event.addListener(marker, 'click', function(){
+                var upload= confirm('등록하시겠습니까?'); })
+        }
 
-        var marker1 = new kakao.maps.Marker({
-		    position: new kakao.maps.LatLng(37.4511083188623, 126.65816673829944), // 마커의 좌표
-		    draggable : true, // 마커를 드래그 가능하도록 설정한다
-		    map: map // 마커를 표시할 지도 객체
-		});
 
-        var marker2 = new kakao.maps.Marker({
-		    position: new kakao.maps.LatLng(37.449480, 126.652564), // 마커의 좌표
-		    draggable : true, // 마커를 드래그 가능하도록 설정한다
-		    map: map // 마커를 표시할 지도 객체
-		});
-
-		// 마커 위에 표시할 인포윈도우를 생성한다
-		var infowindow = new kakao.maps.InfoWindow({
-		    content : '<div style="padding:5px;" id="infowindow">인하대학교용현캠퍼스</div>' // 인포윈도우에 표시할 내용
-		});
-
-		// 인포윈도우를 지도에 표시한다
-		infowindow.open(map, marker);
-
-		// 마커에 클릭 이벤트를 등록한다 (우클릭 : rightclick)
-		kakao.maps.event.addListener(marker, 'click', function() {
-		    alert('마커를 클릭했습니다!');
-		});
-
-	</script>
+        </script>
+        
 </body>
 </html>

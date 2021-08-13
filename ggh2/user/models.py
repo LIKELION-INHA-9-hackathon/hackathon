@@ -14,8 +14,13 @@ class User(models.Model):
     ph_no = models.CharField(max_length=11, default = '')
     birth = models.CharField(max_length=9, default = '')
     location = models.CharField(max_length=100, default = '')
+<<<<<<< HEAD
     cabinet = models.CharField(max_length=100, default = '', null=True)
     image = models.ImageField(upload_to = "user",null=True,blank=True, default='../static/img/default_img.jpg')
+=======
+    cabinet = models.CharField(max_length=100, default = '', null =True)
+    image = models.ImageField(upload_to = "user", blank=True, default='../static/img/default_img.jpg')
+>>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
 
     def __str__(self):
         return self.user_email

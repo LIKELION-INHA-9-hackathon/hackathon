@@ -10,7 +10,8 @@
     <!--https://www.onlinewebfonts.com/download/67680f2eb947c5cbd58b40961b4a61e9-->
     <link rel="stylesheet" href="../../../static/css/header.css">
     <link rel="stylesheet" href="../../../static/css/footer.css">
-
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
     <style>
         
         @import url(//db.onlinewebfonts.com/c/67680f2eb947c5cbd58b40961b4a61e9?family=Apple+SD+Gothic+Neo);
@@ -23,23 +24,29 @@
         url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.ttf") format("truetype"), 
         url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.svg#Apple SD Gothic Neo") format("svg"); }
         .profileImgBox{
-            overflow: hidden;
             display:block;
             width: 220px;
             height: 220px;
             border-radius: 70%;
-            overflow: hidden;
             position: relative;
             left: 50%;
             transform: translate(-50%);
         }
         #profileImg{
-            width:100%;
-            height:100%;
+            width: 220px;
+            height: 220px;
             position: relative;
             left: 50%;
             transform: translate(-50%);
-            object-fit: cover;
+            border-radius: 50%;
+        }
+      
+        #uploadBlank {
+          width: 220px;
+          height: 220px;
+          border-radius: 50%;
+          border: 1px solid #EFEFEF;
+         
         }
         input[type=radio]{
             width: 25px;
@@ -151,7 +158,7 @@
             height: 100px;
             width:100px
         }
-        i{
+        .mypage i{
             font-size: 4vh;
             margin: 1.6%;
 
@@ -250,7 +257,6 @@
           display: inline-block;
         }
         #uploadImgfirst{
-          width: 35%;
           left: 50%;
           transform: translate(-50%);
           position: relative;
@@ -297,13 +303,7 @@
           left: 60%;
           bottom: 2.5%;
         }
-        #uploadBlank {
-          width: 150px;
-          height: 150px;
-          border-radius: 50%;
-          border: 1px solid #EFEFEF;
-          padding: 15%;
-        }
+      
        
         .uploadImgBox img{
           width: 200px;
@@ -338,7 +338,13 @@
           width: 30%;
           left: 60%;
           bottom: 2.5%;
+          z-index: 1;
         }
+        /*
+        #uploadBtnForm>img{
+            border-radius: 50px;
+        }
+        */
         #uploadIcon{  
           color: #212194;
           position: absolute;
@@ -350,7 +356,7 @@
           font-size: 200%;
         }
         .imgUploadBtn{
-          border-radius: 50px;
+         
           background-color: #efefef;
           width: 50px;
           height: 50px;
@@ -359,6 +365,7 @@
           left: 60%;
             top: 10%;
         }
+        
     </style>
     
     <script>
@@ -366,10 +373,14 @@
             var reader=new FileReader();
   
             reader.onload=function(event){
-              
+                if(document.getElementById("uploadBlank")){
+              var header=document.getElementById("uploadBlank");
+              header.parentNode.removeChild(header);
+            }
               var img=document.createElement("img");
               img.setAttribute("src",event.target.result);
-              document.querySelector("div.uploadImgBox").appendChild(img);
+              img.setAttribute("id", "profileImg");
+              document.querySelector("div.profileImgBox").appendChild(img);
             };
             reader.readAsDataURL(event.target.files[0]);
         }
@@ -385,33 +396,31 @@
                 <li><a class="link" href="#">장바구니</a></li>
             </ul> 
         </div>
+        
         <br/><br/>
-        <img src="logo.png">
+        <a href = "{% url 'home'%}"><img src="../../../static/img/logo.png"></a>
 
         <div id="box">
             <div id="search-box">
                 <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
                 <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
             </div>
-            <a class="position-btn" href="#"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+            <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
         </div>
 
     </header>
 
-
+    
 
     <div class="mypage">
         <div class="userData">
             <h3>정보 수정</h3>
-<form action ="{% url 'user_update' user.id %}" method = "POST" enctype="multipart/form-data">
-            {% csrf_token %}
-        <div class="profileImgBox">
-            {% if data.image %}
-            <img src="{{ data.image.url }}" alt="profileImg" id="profileImg">
-            {% else %}
-            <img src="../../../static/img/default_img.jpg" alt="profileImg" id="profileImg">
-            {% endif %}
 
+            
+        <div class="profileImgBox">
+            
+            <div id="uploadImgfirst">
+                <img src="../../../../../static/img/uploadBlank.png" alt="" id="uploadBlank">
             <form method="post" enctype="multipart/form-data" id="uploadBtnForm">
                 <div class="button imgUploadBtn">
                   <label for="chooseFile" id="uploadIcon">
@@ -420,16 +429,17 @@
                 </div>
                 <input type="file" id="chooseFile" name="chooseFile" accept="image/*" value="" onchange="loadImg(event)">
               </form>
+              </div>
         </div>  
-        
-
-            
+       
+        <form action ="" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
         <div class="Information">
         <div class="user_area"> 
             <div>
                 <label for="nickname">닉네임</label>
                 <span class="box int_nickname">
-                    <input type="text" id="nickname" class="int" maxlength="20" value={{data.nickname}} name ="nickname">
+                    <input type="text" id="nickname" class="int" maxlength="20" value={{data.nickname}} name = "nickname">
                     <span class="step_url">한글 15자, 영문 30자까지 가능합니다.</span>
                 </span>
             </div>
@@ -450,14 +460,14 @@
             <div>
                 <label for="passwordAfter">이름</label>
                 <span class="box int_passwordAfter">
-                    <input type="text" id="passwordAfter" class="int" maxlength="30"value= {{data.name}} name="name">
+                    <input type="text" id="passwordAfter" class="int" maxlength="30"value= {{data.name}} name = "name">
                     <span class="step_url">8~16자 영문/숫자를 조합하여 입력</span>
                 </span>
             </div>
             <div>
                 <label for="email">이메일</label>
                 <span class="box int_email">
-                    <input type="text" id="password" class="int" maxlength="30" value={{data.user_email}} name="user_email">
+                    <input type="text" id="password" class="int" maxlength="30" value={{data.user_email}} name = "user_email">
                     <!--<span class="step_url">@</span>
                     <select name="domain" onchange="domainCheck();">
                     <option value="0" selected="selected">직접입력</option>
@@ -470,15 +480,14 @@
             <div>
                 <label for="passwordAfter">전화번호</label>
                 <span class="box int_passwordAfter">
-                    <input type="text" id="passwordAfter" class="int" maxlength="30" value={{data.ph_no}} name="ph_no">
+                    <input type="text" id="passwordAfter" class="int" maxlength="30" value={{data.ph_no}} name = "ph_no">
                     <span class="step_url">8~16자 영문/숫자를 조합하여 입력</span>
                 </span>
             </div>
-
             <div>
                 <label for="passwordAfter">생일</label>
                 <span class="box int_passwordAfter">
-                    <input type="text" id="passwordAfter" class="int" maxlength="30" value={{data.birth}} name ="birth">
+                    <input type="text" id="passwordAfter" class="int" maxlength="30" value={{data.birth}} name = "birth">
                     <span class="step_url">8~16자 영문/숫자를 조합하여 입력</span>
                 </span>
             </div>
@@ -486,7 +495,7 @@
             <div>
                 <label for="address">주소</label>
                 <span class="box int_address"> 
-                    <input type="text" id="address" class="int" maxlength="20"value={{data.location}} name="location">
+                    <input type="text" id="address" class="int" maxlength="20"value={{data.location}} name = "location">
                 </span>
             </div>
 
@@ -499,15 +508,15 @@
             <i class="fas fa-map-marker-alt"></i>
             <label for="locker_setting">사물함 설정<span style="color: gray;">(최대 3개까지)</span></label>
             <div >
-                <input type="radio" id="1" name="locker" value="인천 미추홀구 사물함" name="cabinet">
+                <input type="radio" id="1" name="locker" value="인천 미추홀구 사물함" >
                 <label for="locker">인천 미추홀구 사물함</label>
             </div>
             <div >
-                <input type="radio" id="2" name="locker" value="부천 소사본동 사물함"checked  name="cabinet">
+                <input type="radio" id="2" name="locker" value="부천 소사본동 사물함"checked>
                 <label for="locker">부천 소사본동 사물함</label>
             </div>
             <div >
-                <input type="radio" id="3" name="locker" value="시흥 은행동 사물함"name="cabinet">
+                <input type="radio" id="3" name="locker" value="시흥 은행동 사물함">
                 <label for="locker">시흥 은행동 사물함</label>
             </div>
         </div>
@@ -525,7 +534,6 @@
 
     </div>
 
-</form>
 
     <footer>
         <br/><br/>
@@ -550,5 +558,6 @@
         </div>
       </footer>
 
+    </form>
 </body>
 </html>

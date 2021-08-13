@@ -35,6 +35,10 @@ def goods_create(req):
     }
     return render(req,'goods_create.html',context)
 
+def goods_popup(req):
+    return render(req,'popup.html')
+    
+
 def goods_read_all(req):
     goods = Goods.objects.all()
     context = {
@@ -44,23 +48,24 @@ def goods_read_all(req):
 
 def goods_read_one(req,id):
     goods = get_object_or_404(Goods,pk=id)
-    goods_img = Goods_img.objects.filter(goods_id=id)
-    
+    goods_img = Goods_img.objects.all()
+    comments = goods.goods_comment.all()
+    context = {
+        'data' : goods,
+        'photo' : goods_img,
+        'comment' : comments,
+    }
+ 
     user_pk = req.session.get('user')
     if not user_pk : # 로그인 안함
         return redirect('/login')
     elif user_pk: # 로그인 함
-        user=User.objects.get(pk=user_pk)
         if req.method == 'POST':
             pay = Payment()
-            pay.user_id = user
+            pay.user_id = User.objects.get(pk=user_pk)
             pay.goods_update_id = goods
             pay.quantity = req.POST['quantity']
             pay.save()
-        context = {
-                    'data' : user,
-                    'goods' : goods,
-                    'photo' : goods_img, }
     return render(req,'goods_read_one.html',context)
 
 def goods_update(req,id):
@@ -96,89 +101,33 @@ def goods_delete(req,id):
     goods.delete()
     return redirect('/goods/')
 
-# def goods_plus(req,id):
-#     pre_people = get_object_or_404(Goods, pk=id)
-#     try :
-#         pre_people = pre_people.choice_set.get(pk=req.POST['pre_people'])
-#     except pre_people.DoesNotExist:
-#         return render(req, 'goods_read_html', {
-#             'pre_people': pre_people,
-#         })
+#def content_read(req,id):
+#    goods=get_object_or_404(Goods,id)
+    
 
-#     else : 
-#         pre_people += 1
-#         pre_people.save()
-#         return 
 
-def goods_plus(req,id) : 
-    if req.GET.get('plus') :
-        goods=Goods.objects.get(pk=id)
-        goods.pre_people += 1
-        goods.save()
-        return render(req, 'goods_read_one.html', {'data' : goods})
-    # return render(req, 'goods _read_one.html')
-#                 user = User.objects.get(pk=user_pk)
+# def participant(req,id):
+#     goods=Goods.objects.all()
+#     if goods.recruitmentno 
+#                                                                                 # user
 
-# return redirect('/goods/'+str(goods.id))
+### 댓글 구현 
 
-# def goods_read_all(req):
-#         if req.method == 'POST':
-#             if req.POST['category'] == 'all': #전체보기
-#                 goods=Goods.objects.all()
-#             elif req.POST['category'] == 'catndog': #캣앤독
-#                 goods=Goods.objects.filter(category='캣앤독')
-#     goods = Goods.objects.filter(goods_id=1)
-#     #all,filter(조건문ex)goods_id=1) -> list
-#     #get(ex)pk=1) -> 1개만 갖고 올 수있는 조건
-#     context = {
-#         'data' : goods
-#     }
-#     return render(req,'goods_read_all.html',context)
+# class Comments(TimeStampModel):
+#     user_id = models.ForeignKey(User, on_delete=CASCADE, verbose_name="작성자")
+#     goods_id(blog) = models.ForeignKey(Goods, on_delete=CASCADE, verbose_name = "공구 참여 물품")
+#     content(body) = models.TextField()
 
 
 
-def goods_category(req):
+def goods_comment_create(req, id): 
+    user_pk = req.session.get('user')
+    if not user_pk:
+        return redirect('/login')
+    elif user_pk:
         if req.method == 'POST':
-            if req.POST['category'] == 'all': #전체보기
-                goods=Goods.objects.all()
-            elif req.POST['category'] == 'decorate': #데코/ 조명
-                goods=Goods.objects.filter(category='데코/조명')
-
-            elif req.POST['category'] == 'fabric': #패브릭
-                goods=Goods.objects.filter(category='패브릭/생활')
-
-            elif req.POST['category'] == 'kitchen': # 키친
-                goods=Goods.objects.filter(category='키친')
-
-            elif req.POST['category'] == 'camping': # 캠핑/트래블
-                goods=Goods.objects.filter(category='캠핑/트래블')
-
-            elif req.POST['category'] == 'office': # 디자인문구
-                goods=Goods.objects.filter(category='디자인문구')
-
-            elif req.POST['category'] == 'digital': # 디지털/핸드폰
-                goods=Goods.objects.filter(category='디지털/핸드폰')
-
-            elif req.POST['category'] == 'design_furniture': # 디자인가전
-                goods=Goods.objects.filter(category='디자인가전')
-
-            elif req.POST['category'] == 'furniture_acceptance': # 가구/수납
-                goods=Goods.objects.filter(category='가구/수납')
-
-            elif req.POST['category'] == 'design_furniture': # 디자인가전
-                goods=Goods.objects.filter(category='디자인가전')
-
-            elif req.POST['category'] == 'food': # 푸드
-                goods=Goods.objects.filter(category='푸드')
-
-            elif req.POST['category'] == 'beauty': # 뷰티
-                goods=Goods.objects.filter(category='뷰티')
-
-            elif req.POST['category'] == 'catndog': # 캣앤독
-                goods=Goods.objects.filter(category='캣앤독')
-
-            elif req.POST['category'] == 'toy': # 토이
-                goods=Goods.objects.filter(category='토이')
-
-            elif req.POST['category'] == 'kids': # 베이비/키즈
-                goods=Goods.objects.filter(category='베이비/키즈')
+            goods = get_object_or_404(Goods, pk = id) 
+            user=User.objects.get(pk=user_pk)
+            goods.goods_comment.create(content=req.POST['comment'],user_id=user,goods_id=goods)
+            return redirect('/goods/'+str(goods.id))
+    return render(req,'goods_read_one.html')

@@ -20,14 +20,18 @@
             </ul> 
         </div>
         <br/><br/>
-        <img src="../../../static/img/logo.png">
+
+        <a href = "{% url 'home'%}"><img src="../../../static/img/logo.png"></a>
+
 
         <div id="box">
             <div id="search-box">
                 <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
                 <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
             </div>
-            <a class="position-btn" href="#"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+
+            <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+
         </div>
     </header>
 

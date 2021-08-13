@@ -26,7 +26,7 @@ class Goods(TimeStampModel):
     content = models.TextField()
     recruitment_no = models.IntegerField() #모집인원
     expired = models.CharField(max_length=9)
-    pre_people = models.IntegerField(default=0) #이미 공구에 참여한 사람
+    pre_people = models.IntegerField() #이미 공구에 참여한 사람
     uploader = models.ForeignKey(User,on_delete=models.CASCADE,verbose_name="작성자")
     ori_price = models.IntegerField() #원가
     description = models.TextField()
@@ -43,3 +43,7 @@ class Goods_img(models.Model):
     goods_id = models.ForeignKey(Goods,on_delete=CASCADE)
     otherimg = models.ImageField(upload_to="goods",null=True,blank=True)
 
+class Goods_comments(TimeStampModel):
+    user_id = models.ForeignKey(User, on_delete=CASCADE, verbose_name="작성자")
+    goods_id = models.ForeignKey(Goods, on_delete=models.CASCADE,verbose_name="댓글",related_name="goods_comment")
+    content = models.TextField()

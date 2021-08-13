@@ -62,7 +62,7 @@
             text-align: center;
         }
         .userData{ 
-            position:absolute;
+            position:relative;
             left:50%;
             transform: translate(-50%);
             width:70%;
@@ -150,7 +150,7 @@
             height: 100px;
             width:100px
         }
-        i{
+        .mypage i{
             font-size: 4vh;
             margin: 1.6%;
 
@@ -251,6 +251,7 @@
 </head>
 <body>
     <header>
+
         <div id="header_menu">
             <ul>
                 {% if not user_pk %}
@@ -258,18 +259,25 @@
                 <span id="middle_line">|</span>
                 <a href="{% url 'user_create' %}">회원가입</a>
                 {% endif %}
+                {% if user_pk %}
+                <a href="{%url 'logout'%}">로그아웃</a>
+                <a href="{% url 'user_read' user_pk%}">마이페이지</a>
+                {% endif %}
             </ul> 
         </div>
         <br/><br/>
-        <img src="../../../static/img/logo.png">
+        <a href = "{% url 'home'%}"><img src="../../../static/img/logo.png"></a>
 
         <div id="box">
             <div id="search-box">
                 <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
                 <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
             </div>
-            <a class="position-btn" href="#"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+            <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
         </div>
+=======
+
+>>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
     </header>
 
     <div class="mypage">
@@ -341,6 +349,25 @@
                 </div>
                 <div id="order_content">
                     <ul>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                        {%for p in pay_goods %}
+                        <li id="orderNum">12345</li>
+                        <div class="updown"></div>
+                        <li id="orderProduct">
+                            <img src="{{p.thumbnail.url}}" alt=""> 
+                            <span class=product_explain>
+                                <span id=product_name>{{p.name}}</span>
+                                <br>
+                                <span id=product_content>{{p.title}}</span>
+                            </span>
+                        </li>
+                        <div class="updown"></div>
+                        <li id="orderState">공구진행중</li>
+                        {%endfor%}
+=======
+>>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
                         <li id="orderNum">13843920</li>
                         <div class="updown"></div>
                         <li id="orderProduct">
@@ -353,6 +380,10 @@
                         </li>
                         <div class="updown"></div>
                         <li id="orderState">배송완료</li>
+<<<<<<< HEAD
+=======
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
+>>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
                     </ul>
                     
                 </div>
@@ -363,10 +394,37 @@
         <div class="like_area">
             <i class="far fa-heart"></i>
             <label for="like">나의 찜 목록</label>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            {% for wish in wish_list%}
+=======
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
+>>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
             <div>
                 <ul>
                     <li class="like_product">
                        <ul >
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                           <li id="product_img"><div id="likeImgBox"><img src="{{wish.thumbnail.url}}" alt="" id="likeImg"></div></li>
+                           <br>
+                           <li id="product_name">{{wish.name}}</li>
+                           <br>
+                           <li id="product_content">{{wish.price}}</li>
+                       </ul>
+                    </li>
+                </ul>
+
+            </div>
+            {%endfor%}
+
+        </div>
+
+        
+=======
+>>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
                            <li id="product_img"><div id="likeImgBox"><img src="like.jpg" alt="" id="likeImg"></div></li>
                            <br>
                            <li id="product_name">하늘하늘 봄을 기다리며 꽃무늬 스카프</li>
@@ -385,14 +443,25 @@
             <label for="notice">나의 알림</label>
            
         </div>
+<<<<<<< HEAD
 
         <div class="btn_area">
             <a href = "{% url 'user_update' data.id %} " > <button type="button" id="btnMyPage">
+=======
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
+
+        <div class="btn_area">
+            <a href = "{% url 'user_update' user.id %} " > <button type="button" id="btnMyPage">
+>>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
                 <span>수정하기</span>
             </button>
             </a>
 
+<<<<<<< HEAD
             <a href = "{% url 'user_delete' data.id %} " > 
+=======
+            <a href = "{% url 'user_delete' user.id %} " > 
+>>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
             <button type="button" id="btnMyPage">
                 <span>탈퇴하기</span>
             </button>
@@ -403,6 +472,7 @@
 
     </div>
 
+<<<<<<< HEAD
     <br/><br/><br/><br/>
 
     <footer>
@@ -427,6 +497,36 @@
           </div>
         </div>
     </footer>
+=======
+
+    <footer>
+<<<<<<< HEAD
+        <br/><br/>
+        <div class="footer">
+        <div id="parft">
+            <div id="chift">
+            고객센터<br />
+            1633-9311<br />
+            </div>
+            <div id="chift">
+            주식회사 공구함<br />
+            497 제 2021-경기판교-01325호<br />
+            +44 345 678 903<br />
+            </div>
+            <div id="chift">
+            사업자 정보 확인<br />
+            사업자 등록번호:232-2322-52342<br />
+            주소 : 경기 판교 백현동 153, 100층<br />
+            제휴문의 : LALALA@naver.com
+            </div>
+        </div>
+        </div>
+=======
+
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
+    </footer>
+
+>>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
    
 </body>
 </html>

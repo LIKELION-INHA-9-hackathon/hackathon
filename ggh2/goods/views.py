@@ -121,3 +121,64 @@ def goods_plus(req,id) :
 
 # return redirect('/goods/'+str(goods.id))
 
+# def goods_read_all(req):
+#         if req.method == 'POST':
+#             if req.POST['category'] == 'all': #전체보기
+#                 goods=Goods.objects.all()
+#             elif req.POST['category'] == 'catndog': #캣앤독
+#                 goods=Goods.objects.filter(category='캣앤독')
+#     goods = Goods.objects.filter(goods_id=1)
+#     #all,filter(조건문ex)goods_id=1) -> list
+#     #get(ex)pk=1) -> 1개만 갖고 올 수있는 조건
+#     context = {
+#         'data' : goods
+#     }
+#     return render(req,'goods_read_all.html',context)
+
+
+
+def goods_category(req):
+        if req.method == 'POST':
+            if req.POST['category'] == 'all': #전체보기
+                goods=Goods.objects.all()
+            elif req.POST['category'] == 'decorate': #데코/ 조명
+                goods=Goods.objects.filter(category='데코/조명')
+
+            elif req.POST['category'] == 'fabric': #패브릭
+                goods=Goods.objects.filter(category='패브릭/생활')
+
+            elif req.POST['category'] == 'kitchen': # 키친
+                goods=Goods.objects.filter(category='키친')
+
+            elif req.POST['category'] == 'camping': # 캠핑/트래블
+                goods=Goods.objects.filter(category='캠핑/트래블')
+
+            elif req.POST['category'] == 'office': # 디자인문구
+                goods=Goods.objects.filter(category='디자인문구')
+
+            elif req.POST['category'] == 'digital': # 디지털/핸드폰
+                goods=Goods.objects.filter(category='디지털/핸드폰')
+
+            elif req.POST['category'] == 'design_furniture': # 디자인가전
+                goods=Goods.objects.filter(category='디자인가전')
+
+            elif req.POST['category'] == 'furniture_acceptance': # 가구/수납
+                goods=Goods.objects.filter(category='가구/수납')
+
+            elif req.POST['category'] == 'design_furniture': # 디자인가전
+                goods=Goods.objects.filter(category='디자인가전')
+
+            elif req.POST['category'] == 'food': # 푸드
+                goods=Goods.objects.filter(category='푸드')
+
+            elif req.POST['category'] == 'beauty': # 뷰티
+                goods=Goods.objects.filter(category='뷰티')
+
+            elif req.POST['category'] == 'catndog': # 캣앤독
+                goods=Goods.objects.filter(category='캣앤독')
+
+            elif req.POST['category'] == 'toy': # 토이
+                goods=Goods.objects.filter(category='토이')
+
+            elif req.POST['category'] == 'kids': # 베이비/키즈
+                goods=Goods.objects.filter(category='베이비/키즈')

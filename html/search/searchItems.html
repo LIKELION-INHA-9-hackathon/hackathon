@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>패브릭/생활</title>
+    <link rel="stylesheet" href="../../css/searchItems.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+
+    <link rel="stylesheet" href="../../css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="../../css/owl.theme.default.css" />
+
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="../../js/subPage/paging.js"></script>
+    <script type="text/javascript" src="../../js/categoryPage/category.js"></script>
+    <script>
+    $(document).on('mouseover', '.topMenu span', function () {
+    $('.sub').slideDown(700);
+    });
+    $(document).on('mouseover', 'div', function () {
+    if (!$(this).hasClass('topMenu')) {
+    $('.sub').slideUp(500);
+    }
+    }); 
+
+    </script>
+
+    <script src="./lib/jquery-3.4.1.js"></script>
+    <script src="../../js/owl.carousel.min.js"></script>
+    <script src="../../js/app.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="header_menu">
+            <ul>
+                <li><a class="link" href="#">로그인</a>|</li>
+                <li><a class="link" href="#">회원가입</a>|</li>
+                <li><a class="link" href="#">마이페이지</a>|</li>
+                <li><a class="link" href="#">장바구니</a></li>
+            </ul> 
+        </div>
+        <br/><br/>
+        <a href="../../html/main.html"><img src="../../img/logo.png"></a>
+
+        <div id="box">
+            <div id="search-box">
+                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
+                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
+            </div>
+            <a class="position-btn" href="#"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+        </div>
+    </header>
+
+    <nav>
+        <div class="topMenu">
+            <span class="more">
+                <span class="blind"><i class="fas fa-bars"><a class="link">전체 카테고리</a></i></span>
+            </span>
+            <div class="board">
+                <ul class="list">
+                    <li><i class="fas fa-fire"><a class="link" href="../category/deco.html">데코/조명</a></i></li>
+                    <li><i class="fas fa-tshirt"><a class="link" href="../category/fabric.html">패브릭/생활</a></i></li>
+                    <li><i class="fas fa-drum-steelpan"><a class="link" href="../category/kitchen.html">키친</a></i></li>
+                    <li><i class="fas fa-campground"><a class="link" href="../category/camping.html">캠핑/트래블</a></i></li>
+                    <li><i class="fas fa-pencil-alt"><a class="link" href="../category/stationery.html">디자인문구</a></i></li>
+                    <li><i class="fas fa-mobile-alt"><a class="link" href="../category/digital.html">디지털/핸드폰</a></i></li>
+                    <li><i class="fas fa-blender"><a class="link" href="../category/appliances.html">디자인가전</a></i></li>
+                    <li><i class="fas fa-couch"><a class="link" href="../category/furniture.html">가구/수납</a></i></li>
+                    <li><i class="fas fa-cookie"><a class="link" href="../category/food.html">푸드</a></i></li>
+                    <li><i class="fas fa-eye-dropper"><a class="link" href="../category/beauty.html">뷰티</a></i></li>
+                    <li><i class="fas fa-paw"><a class="link" href="../category/catAndDog.html">캣앤독</a></i></li>
+                    <li><i class="fas fa-democrat"><a class="link" href="../category/toy.html">토이</a></i></li>
+                    <li><i class="fas fa-baby"><a class="link" href="../category/baby.html">베이비/키즈</a></i></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br/>
+    <hr>
+    <div id="hrBox">
+      <span>카테고리 > </span> <span><i class="fas fa-search" style="color: darkgray;"></i>  검색페이지</span>
+    </div>
+    <hr id="hr2">
+    <br/><br/><br/>
+
+    <!---->
+    <section id="section1">
+      <h3 id="s1">상품검색<i class="fas fa-search"></i></h3><br/>
+      <div id="search-box1">
+        <input type="text" placeholder="검색어를 입력하세요" class="s2" />
+        <button type="button" id="recBtn">검색</button>
+      </div><br/><br/><br/><br/>
+      <hr id="hrf1">
+      <span id="s3">총 <span name="totalItem">28</span>건의 매물이 검색되었습니다.</span><br/>
+      <hr id="hrf2">
+      <br/><br/>
+    </section>
+
+
+    <section id="section2">
+      <div>
+        <span id="se1">작성자 게시글</span><span id="se2">20건</span>
+        <!--필터-->
+        <div id="filter">
+        <form method="GET" action="" class="form">
+          <select>
+            <option value="latest">최신매물순</option>
+            <option value="fast">마감빠른순</option>
+            <option value="slow">마감느린순</option>
+            <option value="low">낮은가격</option>
+            <option value="high">높은가격</option>
+          </select>
+        </form>
+        </div>
+        <hr id="hrf2"><br/>
+      </div>
+      
+      <!--Item cards 부분-->
+      <div id="cards1">
+        <div id="card1">
+          <img src="../../img/item1.png">
+          <div id="discount">
+            24%
+          </div>
+          <div  id="card">
+            <div id="card_title">멀리서도 느껴지는 자연스러운 향기, 키멜 머스크 향수 공구진행</div>
+            <div id="amount">
+              <span id="amount1">정상가</span> <span id="amount1_2">15,000원</span><br/>
+              <span id="amount2">공구가</span> <span id="amount2_2">2000원</span>
+            </div>
+            <div id="card_bottom">
+              <span id="time">남은시간: 28일 23시간 30분</span>
+              <span id="total_person">모집인원 2/5</span>
+            </div>
+          </div>
+        </div>
+  
+        <div id="card2">
+          <img src="../../img/item2.png">
+          <div id="discount">
+            68%
+          </div>
+          <div  id="card">
+            <div id="card_title">세상 이 가격 어디서도 구하지 못하는 미국 직구 맥 립스틱 공구</div>
+            <div id="amount">
+              <span id="amount1">정상가</span> <span id="amount1_2">33,000원</span><br/>
+              <span id="amount2">공구가</span> <span id="amount2_2">7000원</span>
+            </div>
+            <div id="card_bottom">
+              <span id="time">남은시간: 20일 21시간 30분</span>
+              <span id="total_person">모집인원 1/3</span>
+            </div>
+          </div>
+        </div>
+  
+        <div id="card3">
+          <img src="../../img/item3.png">
+          <div id="discount">
+            23%
+          </div>
+          <div  id="card">
+            <div id="card_title">집에 향기로운 꽃냄새로 가득 방향제 30개 급공구!!!!!</div>
+            <div id="amount">
+              <span id="amount1">정상가</span> <span id="amount1_2">55,000원</span><br/>
+              <span id="amount2">공구가</span> <span id="amount2_2">5000원</span>
+            </div>
+            <div id="card_bottom">
+              <span id="time">남은시간: 7일 3시간 20분</span>
+              <span id="total_person">모집인원 5/8</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br/><br/>
+      <button type="button" id="recBtnn">더보기</button>
+    </section><br/><br/><br/>
+
+
+    
+    <section id="section2">
+      <div>
+        <span id="se1">주변 지역 매물</span><span id="se2">3건</span><br/>
+        <hr id="hrf2"><br/>
+
+        <!--Item cards 부분-->
+      <div id="cards1">
+        <div id="card1">
+          <img src="../../img/item1.png">
+          <div id="discount">
+            24%
+          </div>
+          <br/><br/>
+          <div  id="card">
+            <div id="card_title">멀리서도 느껴지는 자연스러운 향기, 키멜 머스크 향수 공구진행</div>
+            <div id="amount">
+              <span id="amount1">정상가</span> <span id="amount1_2">15,000원</span><br/>
+              <span id="amount2">공구가</span> <span id="amount2_2">2000원</span>
+            </div>
+            <div id="card_bottom">
+              <span id="time">남은시간: 28일 23시간 30분</span>
+              <span id="total_person">모집인원 2/5</span>
+            </div>
+          </div>
+        </div>
+  
+        <div id="card2">
+          <img src="../../img/item2.png">
+          <div id="discount">
+            68%
+          </div>
+          <br/><br/>
+          <div  id="card">
+            <div id="card_title">세상 이 가격 어디서도 구하지 못하는 미국 직구 맥 립스틱 공구</div>
+            <div id="amount">
+              <span id="amount1">정상가</span> <span id="amount1_2">33,000원</span><br/>
+              <span id="amount2">공구가</span> <span id="amount2_2">7000원</span>
+            </div>
+            <div id="card_bottom">
+              <span id="time">남은시간: 20일 21시간 30분</span>
+              <span id="total_person">모집인원 1/3</span>
+            </div>
+          </div>
+        </div>
+  
+        <div id="card3">
+          <img src="../../img/item3.png">
+          <div id="discount">
+            23%
+          </div>
+          <br/><br/>
+          <div  id="card">
+            <div id="card_title">집에 향기로운 꽃냄새로 가득 방향제 30개 급공구!!!!!</div>
+            <div id="amount">
+              <span id="amount1">정상가</span> <span id="amount1_2">55,000원</span><br/>
+              <span id="amount2">공구가</span> <span id="amount2_2">5000원</span>
+            </div>
+            <div id="card_bottom">
+              <span id="time">남은시간: 7일 3시간 20분</span>
+              <span id="total_person">모집인원 5/8</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section><br/><br/><br/><br/><br/><br/>
+
+
+    
+
+
+    <!--광고배너-->
+    <div id="fAd">
+      <img src="../../img/advertisement3.png" id="advertisement3">
+      <img src="../../img/advertisement4.png" id="advertisement4">
+    </div id="fAd">
+
+    <br/><br/>
+    <footer>
+      <br/><br/>
+      <div class="footer">
+        <div id="parft">
+          <div id="chift">
+            고객센터<br />
+            1633-9311<br />
+          </div>
+          <div id="chift">
+            주식회사 공구함<br />
+            497 제 2021-경기판교-01325호<br />
+            +44 345 678 903<br />
+          </div>
+          <div id="chift">
+            사업자 정보 확인<br />
+            사업자 등록번호:232-2322-52342<br />
+            주소 : 경기 판교 백현동 153, 100층<br />
+            제휴문의 : LALALA@naver.com
+          </div>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

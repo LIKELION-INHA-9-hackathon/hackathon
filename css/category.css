@@ -22,7 +22,7 @@ nav .link{
 
 #header_menu{
     margin-left: 80%;
-}
+} 
 
 #header_menu ul li{
     list-style: none;
@@ -106,15 +106,14 @@ li{
 
 
 /*첫번째 section*/
+/*
 .main_banner {
 	position: relative;
     height: 400px;
     width: 100%;
 }
 
-.main_banner{
-	background: no-repeat url("../img/subPage/banner.png") 0/cover;
-}
+
 
 .main_banner .title {
 	display: inline-block;
@@ -146,6 +145,8 @@ li{
     font-weight: 600;
     margin-left: 12%;
 }
+*/
+
 
 .period{
     position: relative;
@@ -233,7 +234,7 @@ li{
     position: absolute;
     background-color: white;
     left: 33%;
-    top: 150%;
+    top: 162%;
 }
 
 #cards1 img, #cards2 img{
@@ -497,3 +498,563 @@ footer {
     margin-left: 10px;
   }
 
+
+/*카테고리별 배너 사진*/
+/*디자인가전*/
+.main_banner_appliances{
+	background: no-repeat url("../img/categoryPage/appliances1.png") 0/cover;
+}
+
+.main_banner_appliances {
+	position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+
+
+.main_banner_appliances .title {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 60px;
+	font-size: 22px;
+	letter-spacing: -2.5px;
+	font-weight: normal;
+	position: relative;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
+}
+
+.main_banner_appliances .title .em {
+    font-size: 27px;
+	display: block;
+    margin-top: -20px;
+}
+
+.main_banner_appliances .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}
+
+/*베이비*/
+.main_banner_baby{
+	background: no-repeat url("../img/categoryPage/baby1.png") 0/cover;
+}
+
+.main_banner_baby {
+	position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.main_banner_baby .title {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 60px;
+	font-size: 22px;
+	letter-spacing: -2.5px;
+	font-weight: normal;
+	position: relative;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
+}
+
+.main_banner_baby .title .em {
+    font-size: 27px;
+	display: block;
+    margin-top: -20px;
+}
+
+.main_banner_baby .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}
+
+
+
+/*뷰티*/
+.main_banner_beauty{
+	background: no-repeat url("../img/categoryPage/beauty1.png") 0/cover;
+}
+
+.main_banner_beauty {
+	position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.main_banner_beauty .title {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 60px;
+	font-size: 22px;
+	letter-spacing: -2.5px;
+	font-weight: normal;
+	position: relative;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
+}
+
+.main_banner_beauty .title .em {
+    font-size: 27px;
+	display: block;
+    margin-top: -20px;
+}
+
+.main_banner_beauty .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}
+
+/*캠핑*/
+.main_banner_camping{
+	background: no-repeat url("../img/categoryPage/camping1.png") 0/cover;
+}
+
+.main_banner_camping {
+	position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.main_banner_camping .title {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 60px;
+	font-size: 22px;
+	letter-spacing: -2.5px;
+	font-weight: normal;
+	position: relative;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
+}
+
+.main_banner_camping .title .em {
+    font-size: 27px;
+	display: block;
+    margin-top: -20px;
+}
+
+.main_banner_camping .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}
+
+/*캔앤독*/
+.main_banner_cat{
+	background: no-repeat url("../img/categoryPage/catAndDog1.png") 0/cover;
+}
+
+.main_banner_cat {
+	position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.main_banner_cat .title {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 60px;
+	font-size: 22px;
+	letter-spacing: -2.5px;
+	font-weight: normal;
+	position: relative;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
+}
+
+.main_banner_cat .title .em {
+    font-size: 27px;
+	display: block;
+    margin-top: -20px;
+}
+
+.main_banner_cat .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}
+
+
+/*데코*/
+.main_banner_deco{
+	background: no-repeat url("../img/categoryPage/deco1.png") 0/cover;
+}
+
+.main_banner_deco {
+	position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.main_banner_deco .title {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 60px;
+	font-size: 22px;
+	letter-spacing: -2.5px;
+	font-weight: normal;
+	position: relative;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
+}
+
+.main_banner_deco .title .em {
+    font-size: 27px;
+	display: block;
+    margin-top: -20px;
+}
+
+.main_banner_deco .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}
+
+
+/*디지털*/
+.main_banner_digital{
+	background: no-repeat url("../img/categoryPage/digital1.png") 0/cover;
+}
+
+.main_banner_digital {
+	position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.main_banner_digital .title {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 60px;
+	font-size: 22px;
+	letter-spacing: -2.5px;
+	font-weight: normal;
+	position: relative;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
+}
+
+.main_banner_digital .title .em {
+    font-size: 27px;
+	display: block;
+    margin-top: -20px;
+}
+
+.main_banner_digital .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}
+
+
+/*패브릭*/
+.main_banner_fabric{
+	background: no-repeat url("../img/categoryPage/fabric1.png") 0/cover;
+}
+
+.main_banner_fabric {
+	position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.main_banner_fabric .title {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 60px;
+	font-size: 22px;
+	letter-spacing: -2.5px;
+	font-weight: normal;
+	position: relative;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
+}
+
+.main_banner_fabric .title .em {
+    font-size: 27px;
+	display: block;
+    margin-top: -20px;
+}
+
+.main_banner_fabric .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}
+
+
+/*푸드*/
+.main_banner_food{
+	background: no-repeat url("../img/categoryPage/food1.png") 0/cover;
+}
+
+.main_banner_food {
+	position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.main_banner_food .title {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 60px;
+	font-size: 22px;
+	letter-spacing: -2.5px;
+	font-weight: normal;
+	position: relative;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
+}
+
+.main_banner_food .title .em {
+    font-size: 27px;
+	display: block;
+    margin-top: -20px;
+}
+
+.main_banner_food .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}
+
+
+/*가구*/
+.main_banner_furniture{
+	background: no-repeat url("../img/categoryPage/furniture1.png") 0/cover;
+}
+
+.main_banner_furniture {
+	position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.main_banner_furniture .title {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 60px;
+	font-size: 22px;
+	letter-spacing: -2.5px;
+	font-weight: normal;
+	position: relative;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
+}
+
+.main_banner_furniture .title .em {
+    font-size: 27px;
+	display: block;
+    margin-top: -20px;
+}
+
+.main_banner_furniture .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}
+
+
+/*키친*/
+.main_banner_kitchen{
+	background: no-repeat url("../img/categoryPage/kitchen1.png") 0/cover;
+}
+
+.main_banner_kitchen {
+	position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.main_banner_kitchen .title {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 60px;
+	font-size: 22px;
+	letter-spacing: -2.5px;
+	font-weight: normal;
+	position: relative;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
+}
+
+.main_banner_kitchen .title .em {
+    font-size: 27px;
+	display: block;
+    margin-top: -20px;
+}
+
+.main_banner_kitchen .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}
+
+
+/*문구*/
+.main_banner_stationery{
+	background: no-repeat url("../img/categoryPage/stationery1.png") 0/cover;
+}
+
+.main_banner_stationery {
+	position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.main_banner_stationery .title {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 60px;
+	font-size: 22px;
+	letter-spacing: -2.5px;
+	font-weight: normal;
+	position: relative;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
+}
+
+.main_banner_stationery .title .em {
+    font-size: 27px;
+	display: block;
+    margin-top: -20px;
+}
+
+.main_banner_stationery .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}
+
+
+
+/*토이*/
+.main_banner_toy{
+	background: no-repeat url("../img/categoryPage/toy1.png") 0/cover;
+}
+
+.main_banner_toy {
+	position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.main_banner_toy .title {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 60px;
+	font-size: 22px;
+	letter-spacing: -2.5px;
+	font-weight: normal;
+	position: relative;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
+}
+
+.main_banner_toy .title .em {
+    font-size: 27px;
+	display: block;
+    margin-top: -20px;
+}
+
+.main_banner_toy .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}

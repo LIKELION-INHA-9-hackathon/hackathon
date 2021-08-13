@@ -78,16 +78,85 @@ img{
     font-size: 20px;
 }
 
-#li_left{
-    float: left;
-    list-style:none;
-    margin-left: 70px;
-    font-weight: bold;
-}
 
 li{
     list-style:none;
 }
+
+
+
+
+/*카테고리*/
+.more {
+    display:block;
+    width: 55px;
+    height: 16px;
+    background-position: 0 -78px;
+}
+  
+.blind {
+    position: absolute;
+    overflow: hidden;
+    margin-left: 7%;
+  } 
+  
+.blind a{
+    margin-left: 10px;
+}
+
+
+  .more:hover, .close:hover {
+    cursor:pointer;
+  }
+  
+  .close {
+    display:block;
+    /*background-image:url('https://s.pstatic.net/static/www/img/2017/sp_nav_v170523.png');*/
+    width: 42px;
+    height: 16px;
+    background-position: -166px -78px;
+  }
+  
+  .board {
+    font-size:13px;
+    font-weight: 500;
+    position:absolute;
+    /*top:30px;*/
+    width:110px;
+    height:300px;
+    background:white;
+    visibility:hidden;
+    z-index: 1;
+    margin-top: 10px;
+    margin-left: 7%;
+}
+  
+  .list {
+    float:left;
+  }
+  
+  .list li {
+    list-style:none;
+    margin-top:5px;
+  }
+  
+  .list li:hover {
+    text-decoration:underline;
+    cursor:pointer;
+  }
+
+  .list a{
+    margin-left: 10px;
+  }
+
+.list li{
+    margin-left: 5px;
+}
+
+.more a{
+    margin-left: 10px;
+  }
+
 
 
 /*배너부분*/
@@ -103,7 +172,9 @@ li{
 	/*height: 100%;*/
 	width: 100px;
 	outline: none;
+    opacity: 0;
 }
+
 
 .main_banner .owl-prev::before {
 	position: absolute;
@@ -126,6 +197,7 @@ li{
 	bottom: 0;
 	outline: none;
 	width: 100px;
+    opacity: 0;
 }
 
 .main_banner .owl-next::before {
@@ -144,9 +216,8 @@ li{
 
 .main_banner .item {
 	height: 400px;
-	box-sizing: border-box;
-	color: #fff;
-	text-align: center;
+	color: #ffff;
+	
 }
 
 .main_banner .item.first {
@@ -165,16 +236,33 @@ li{
 	display: inline-block;
 	vertical-align: top;
 	line-height: 60px;
-	font-size: 30px;
+	font-size: 22px;
 	letter-spacing: -2.5px;
 	font-weight: normal;
 	position: relative;
-    margin-top: 40px;
+    margin-top: 9%;
+    color: black;
+    margin-left: 12%;
 }
 
 .main_banner .item .title .em {
+    font-size: 27px;
 	display: block;
+    margin-top: -20px;
 }
+
+.main_banner .item .subtitle {
+	display: inline-block;
+	vertical-align: top;
+	display: block;
+	color: gray;
+	font-size: 17px;
+	line-height: normal;
+	letter-spacing: -1.2px;
+    font-weight: 600;
+    margin-left: 12%;
+}
+
 /*
 .main_banner .item .title::before {
 	position: absolute;
@@ -195,16 +283,6 @@ li{
 	content: "]";
 }
 */
-
-.main_banner .item .subtitle {
-	display: inline-block;
-	vertical-align: top;
-	display: block;
-	
-	font-size: 20px;
-	line-height: normal;
-	letter-spacing: -1.2px;
-}
 /*
 @media screen and (max-width: 998px) {
 	.main_banner {
@@ -270,6 +348,12 @@ li{
 	}
 }
 */
+.owl-stage-outer{
+    height: 400px;
+}
+
+
+/**/
 
 .container p{
     margin:20px 0px;
@@ -278,24 +362,32 @@ li{
 #advertisement1{
     position: absolute;  
     width: 130px;  
-    height: 410px;  
+    height: 370px;  
     left: -520px;   
-    margin-top: 100px;
+    margin-top: 40px;
 }
 
+
+
+/*Item Card*/
 #discount{
     font-size: 12px;
     font-weight: 600;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 50%; 
     text-align: center;
     line-height: 39px;
     border: 1px solid gray;
-    position: absolute;
+    position: relative;
     background-color: white;
-    left: 33%;
-    top: 150%;
+    left: 74%;
+    top: -30px;
+    z-index: 1;
+}
+
+#card{
+    margin-top: -15px;
 }
 
 #cards1 img, #cards2 img{
@@ -392,6 +484,7 @@ li{
     color: red;
 }
 
+/*필터*/
 #filter{
     margin-left: 75.8%;
 }
@@ -407,7 +500,9 @@ li{
     text-align: center;
     font-weight: bold;
     margin-left: 25%;
+    cursor: pointer;
 }
+
 
 
 /*키워드*/
@@ -542,6 +637,16 @@ li{
     left: 350px;
 }
 
+/*추천부분 2분할*/
+#bottom{
+    display: flex;
+}
+
+#recommend1, #recommend2{
+    flex: 1;
+}
+
+
 #recBtn{
     color: white;
     font-weight: bold;
@@ -558,16 +663,6 @@ li{
     top: -115px;
     left: 480px;
 }
-
-/*추천부분 2분할*/
-#bottom{
-    display: flex;
-}
-
-#recommend1, #recommend2{
-    flex: 1;
-}
-
 
 /*광고배너*/
 #fAd{

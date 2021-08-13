@@ -25,23 +25,29 @@
         url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.ttf") format("truetype"), 
         url("//db.onlinewebfonts.com/t/67680f2eb947c5cbd58b40961b4a61e9.svg#Apple SD Gothic Neo") format("svg"); }
         .profileImgBox{
-            overflow: hidden;
             display:block;
             width: 220px;
             height: 220px;
             border-radius: 70%;
-            overflow: hidden;
             position: relative;
             left: 50%;
             transform: translate(-50%);
         }
         #profileImg{
-            width:100%;
-            height:100%;
+            width: 220px;
+            height: 220px;
             position: relative;
             left: 50%;
             transform: translate(-50%);
-            object-fit: cover;
+            border-radius: 50%;
+        }
+      
+        #uploadBlank {
+          width: 220px;
+          height: 220px;
+          border-radius: 50%;
+          border: 1px solid #EFEFEF;
+         
         }
         input[type=radio]{
             width: 25px;
@@ -252,7 +258,6 @@
           display: inline-block;
         }
         #uploadImgfirst{
-          width: 35%;
           left: 50%;
           transform: translate(-50%);
           position: relative;
@@ -299,13 +304,7 @@
           left: 60%;
           bottom: 2.5%;
         }
-        #uploadBlank {
-          width: 150px;
-          height: 150px;
-          border-radius: 50%;
-          border: 1px solid #EFEFEF;
-          padding: 15%;
-        }
+      
        
         .uploadImgBox img{
           width: 200px;
@@ -340,7 +339,13 @@
           width: 30%;
           left: 60%;
           bottom: 2.5%;
+          z-index: 1;
         }
+        /*
+        #uploadBtnForm>img{
+            border-radius: 50px;
+        }
+        */
         #uploadIcon{  
           color: #212194;
           position: absolute;
@@ -352,7 +357,7 @@
           font-size: 200%;
         }
         .imgUploadBtn{
-          border-radius: 50px;
+         
           background-color: #efefef;
           width: 50px;
           height: 50px;
@@ -361,6 +366,7 @@
           left: 60%;
             top: 10%;
         }
+        
     </style>
     
     <script>
@@ -368,10 +374,14 @@
             var reader=new FileReader();
   
             reader.onload=function(event){
-              
+                if(document.getElementById("uploadBlank")){
+              var header=document.getElementById("uploadBlank");
+              header.parentNode.removeChild(header);
+            }
               var img=document.createElement("img");
               img.setAttribute("src",event.target.result);
-              document.querySelector("div.uploadImgBox").appendChild(img);
+              img.setAttribute("id", "profileImg");
+              document.querySelector("div.profileImgBox").appendChild(img);
             };
             reader.readAsDataURL(event.target.files[0]);
         }
@@ -400,8 +410,7 @@
 
     </header>
 
-    <form action ="" method = "POST" enctype="multipart/form-data">
-        {% csrf_token %}
+    
 
     <div class="mypage">
         <div class="userData">
@@ -409,12 +418,9 @@
 
             
         <div class="profileImgBox">
-            {% if data.image %}
-            <img src="{{ data.image.url }}" alt="profileImg" id="profileImg">
-            {% else %}
-            <img src="../../../static/img/default_img.jpg" alt="profileImg" id="profileImg">
-            {% endif %}
-
+            
+            <div id="uploadImgfirst">
+                <img src="uploadBlank.png" alt="" id="uploadBlank">
             <form method="post" enctype="multipart/form-data" id="uploadBtnForm">
                 <div class="button imgUploadBtn">
                   <label for="chooseFile" id="uploadIcon">
@@ -423,8 +429,11 @@
                 </div>
                 <input type="file" id="chooseFile" name="chooseFile" accept="image/*" value="" onchange="loadImg(event)">
               </form>
+              </div>
         </div>  
-
+       
+        <form action ="" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
         <div class="Information">
         <div class="user_area"> 
             <div>

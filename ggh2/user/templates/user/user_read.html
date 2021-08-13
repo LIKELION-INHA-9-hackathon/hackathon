@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>user_read</title>
     <link href="//db.onlinewebfonts.com/c/67680f2eb947c5cbd58b40961b4a61e9?family=Apple+SD+Gothic+Neo" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
     <!--https://www.onlinewebfonts.com/download/67680f2eb947c5cbd58b40961b4a61e9-->
     <link rel="stylesheet" href="../../../static/css/header.css">
     <link rel="stylesheet" href="../../../static/css/footer.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
     <style>
         
         @import url(//db.onlinewebfonts.com/c/67680f2eb947c5cbd58b40961b4a61e9?family=Apple+SD+Gothic+Neo);
@@ -50,7 +52,10 @@
             border-radius: 50px;
             border: 8px solid #212194;
         }
-        
+        .user_area>div{
+            margin-top: 10%;
+            margin-bottom: 10%;
+        }
         body{
             height:1000px
         }
@@ -67,13 +72,16 @@
             transform: translate(-50%);
             width:70%;
         }
-        .userData label{
-            margin: 19px 0 8px;
+        
+        .user_area label{
             font-size: 2.7vh;
+            margin: 19px 0 8px;
             font-weight:bold ;
         }
-        .user_area label{
-            font-size: 15px;
+        #input_area label{
+            font-weight: lighter;
+            color: gray;
+            font-size: 1.8vh;
         }
         .box{
             height: 51px;
@@ -118,38 +126,101 @@
         div{
             margin: 10px;
         }
-        #order_bar{
-            background-color: #f6f6f6;
-            padding: 0.5%;
-        }
+       
         .button_area .btnMyPage{
             width:300px;
             margin:0 auto;
         }
-        .order{
-            width: 95%;
-            position: relative;
-            left: 6%;
+        #order_bar{
+            background-color: #f6f6f6;
+            padding: 2%;
+            border-radius: 5px;
+            margin-bottom: 0;
         }
-        ul{
+        #order_bar>div{
+            display: inline-block;
             text-align: center;
-            padding: inherit;
+            margin-left: 1%;
+            margin-right: 1%;
+            margin-top: 0;
+            margin-bottom: 0;
         }
-        li{
-            display:inline-block;
-            
+        #orderNum_bar{
+            width: 25%;
+        }
+        #orderProduct_bar{
+            width: 40%;
+        }
+        #orderState_bar{
+            width: 25%;
+        }
+        #orderNum{
+            width: 25%;
+            bottom: 80px;
+            position: relative;
+            color: #212194;
+        }
+        #orderState{
+            width: 25%;
+            bottom: 80px;
+            position: relative;
+            color: #212194;
+            font-weight: 800;
+        }
+        #orderProduct{
+            width: 42%;
+            position: relative;
+            bottom: 35px;
+            margin: 1%;
+        }
+        .product_explain{
+            width: 42%;
+            margin: 3%;
+        }
+        .product_explain #product_name{
+            font-size: 1.9vh;
+            font-weight: 900;
+        }
+        .product_explain #order_productdate{
+            font-size: 1vh;
+            margin: 0;
+        }
+        .product_explain #order_productprice{
+            font-size: 1vh;
+            margin: 0;
+        }
+        .order{
+            width: 100%;
+            position: relative;
         }
         .order img{
             width: 50%;
             float:left;
         }
-        .order .product_explain{
-            font-size: 10%;
+        #order_content{
+            padding: 3%;
+            margin-top: 0;
         }
-        .like_area img{ 
-            height: 100px;
-            width:100px
+        #order_content *{
+            display: inline-block;
+            margin: 0;
+            text-align: center;
         }
+       
+       
+        
+        .updown{
+            border: 1px solid gray;
+            width: 0.01%;
+            height: 20vh;
+            display: inline-block;
+        }
+        
+        .order_content>*{
+            display: inline-block;
+        }
+        
+       
         .mypage i{
             font-size: 4vh;
             margin: 1.6%;
@@ -158,91 +229,45 @@
         .Information>div{
             margin-bottom: 10%;
         }
-        #order_bar ul{
-            padding:1.5%;
-            font-size: 2%;
-        }
-        #orderProduct_bar{
-            width: 65%;
-        }
+       
+       
         .locker_area div label{
             font-size: 2vh;
             position:relative;
             bottom: 1.1vh;
         }
-        #orderNum{          
-            font-size: 2vh;
-        }
-        #orderState{           
-            font-size: 2.5vh;
-        }
-        .updown{
-            border: 1px solid gray;
-            width: 0.01%;
-            height: 20vh;
-            display: inline-block;
-        }
-        #orderNum, #orderState{
-            color:#212194;
-            bottom: 11vh;
-            position: relative;
-            width: 15%;
-            font-weight: bold;
-        }
-        #orderProduct{
-            bottom: 10vh;
-            width:45%;
-            position: relative;
-        }
-        .order_content #product_name{
-            font-weight: bold;
-            font-size: 2vh;
-        }
-
-        #likeImgBox{
-            overflow: hidden;
-            display:block;
-            width: 150px;
-            height: 150px;
-            border-radius: 70%;
-            overflow: hidden;
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%);
-            border:5px solid lightgray;
-            box-shadow: 15px 15px 15px lightgrey;
-        }
-        #likeImg{
-            width:100%;
-            height:100%;
-            position: relative;
-            left: 50%;
-            transform: translate(-50%);
-            object-fit: cover;
-        }
-        .like_product{
-            position: relative;
-        }
-        .like_area ul{
-            text-decoration: none;
-            height: 40vh;
-        }
-        .like_area #product_name{
-            font-size: 2vh;
-        }
-        .like_area #product_content{
-            font-size: 2vh;
-            font-weight: bold;
-        }
         
-        .like_product>ul{
+        
+       
+        .likeproduct{
+          width: 30%;
+          display: inline-block;
+        }
+        .likeproduct img{
+            border-radius: 50%;
+            border:8px solid #EFEFEF;
+            box-shadow: 15px 15px 15px #c7c7c7;
+            height: 130px;
+            width:130px;
+            margin: 3%;
+        }
+        .likeproduct>*{
             position: relative;
+            left: 50%;
+            transform: translate(-50%);
+            text-align: center;
+            font-size: 1.4vh;
+            margin: 0;
         }
-        .like_product>ul>li{
-            position: absolute;
+        .likeproduct #product_price{
+            font-weight: 700;
         }
+        .likeproduct #product_name{
+            width: 50%;
+        }
+       
         .box.int{
-            border:1px solid; padding:10px; margin-bottom: 1rem;
+            border:1px solid; padding:10px; margin: 0;
         }
         .box.int_passwordBefore{
             padding-right: 80%;
@@ -251,17 +276,16 @@
 </head>
 <body>
     <header>
-
         <div id="header_menu">
             <ul>
                 {% if not user_pk %}
-                <a href="{%url 'login' %}">로그인</a>
+                <li><a href="{%url 'login' %}" class="link">로그인</a></li>
                 <span id="middle_line">|</span>
-                <a href="{% url 'user_create' %}">회원가입</a>
+                <li><a href="{% url 'user_create' %}" class="link">회원가입</a></li>
                 {% endif %}
                 {% if user_pk %}
-                <a href="{%url 'logout'%}">로그아웃</a>
-                <a href="{% url 'user_read' user_pk%}">마이페이지</a>
+                <li><a href="{%url 'logout'%}"class="link">로그아웃</a></li>
+                <li><a href="{% url 'user_read' user_pk%}"class="link">마이페이지</a></li>
                 {% endif %}
             </ul> 
         </div>
@@ -270,68 +294,72 @@
 
         <div id="box">
             <div id="search-box">
-                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
-                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
-            </div>
+                <form action="{% url 'search'%}" method='GET'>
+                 <input type="text" name = "searchtext" placeholder="검색어를 입력하세요" class="search-txt" />
+                 <!--<a href = "{%url 'search'%}">-->
+                 <input type="submit" value="검색">
+                 <!--</a> -->
+                </form>
+              
+           </div>
             <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
         </div>
-=======
-
->>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
     </header>
 
     <div class="mypage">
         <div class="userData">
             <h3>마이페이지</h3>
         <div class="profileImgBox">
-            {% if data.image %}
-            <img src="{{ data.image.url }}" alt="profileImg" id="profileImg">
+            {% if user.image %}
+            <img src="{{ user.image.url }}" alt="profileImg" id="profileImg">
             {% else %}
             <img src="../../../static/img/default_img.jpg" alt="profileImg" id="profileImg">
             {% endif %}
         </div>   
         <div class="user_area"> 
+            <div id="input_area">
             <div>
                 <label for="nickname">닉네임</label>
                 <div class="box int">
-                    {{data.nickname }}
+                    {{user.nickname }}
                 </div>
             </div>
             <div>
                 <label for="name">이름</label>
                 <div class="box int">
-                    {{data.name}}
+                    {{user.name}}
                 </div>
             </div>
             <div>
                 <label for="user_email">이메일</label>
                 <div class="box int">
-                    {{data.user_email}}
+                    {{user.user_email}}
                 </div>
             </div>
             <div>
                 <label for="ph_no">휴대폰</label>
                 <div class="box int">
-                    {{data.ph_no}}
+                    {{user.ph_no}}
                 </div>
             </div>
             <div>
                 <label for="birth">생일</label>
                 <div class="box int">
-                    {{data.birth}}
+                    {{user.birth}}
                 </div>
             </div>
             <div>
                 <label for="location">주소</label>
                 <div class="box int">
-                    {{data.location}}
+                    {{user.location}}
                 </div>
             </div>
             <div>
                 <label for="cabinet">사물함</label>
                 <div class="box int">
-                    {{data.cabinet}}
+                    {{user.cabinet}}
                 </div>
+            </div>
             </div>
 
 
@@ -341,99 +369,58 @@
             <div class="order">
                 <div id="order_bar">
                     <!--https://blogpack.tistory.com/773-->
-                    <ul>
-                        <li id="orderNum_bar">주문번호</li>
-                        <li id="orderProduct_bar">주문상품</li>
-                        <li id="orderState_bar">주문상태</li>
-                    </ul>
+                        <div id="orderNum_bar">주문번호</div>
+                        <div id="orderProduct_bar">주문상품</div>
+                        <div id="orderState_bar">주문상태</div>
                 </div>
                 <div id="order_content">
-                    <ul>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-                        {%for p in pay_goods %}
-                        <li id="orderNum">12345</li>
-                        <div class="updown"></div>
-                        <li id="orderProduct">
-                            <img src="{{p.thumbnail.url}}" alt=""> 
-                            <span class=product_explain>
-                                <span id=product_name>{{p.name}}</span>
-                                <br>
-                                <span id=product_content>{{p.title}}</span>
-                            </span>
-                        </li>
-                        <div class="updown"></div>
-                        <li id="orderState">공구진행중</li>
-                        {%endfor%}
-=======
->>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
-                        <li id="orderNum">13843920</li>
-                        <div class="updown"></div>
-                        <li id="orderProduct">
-                            <img src="../../../static/img/order.jpg" alt=""> 
-                            <span class=product_explain>
-                                <span id=product_name>우리 집을 환하게 감싸주는 나른 조명 인테리어 공구</span>
-                                <br>
-                                <span id=product_content>우리 집을 환하게 감싸주는 나른 조명 인테리어 공구</span>
-                            </span>
-                        </li>
-                        <div class="updown"></div>
-                        <li id="orderState">배송완료</li>
-<<<<<<< HEAD
-=======
->>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
->>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
-                    </ul>
-                    
-                </div>
+                    {%for p in pay_goods %}
+                    <div id="orderNum">12345</div>
+                    <div class="updown"></div>
+                    <div id="orderProduct">
+                        <img src="{{p.thumbnail.url}}" alt=""> 
+                        <div class=product_explain>
+                            <div id=product_name>{{p.name}}</div>
+                            <br>
+                            <div id=product_content>{{p.title}}</div>
+                        </div>
+                    </div>
+                    <div class="updown"></div>
+                    <div id="orderState">공구진행중</div>
+                    {%endfor%}
 
+                    <!--
+                          <div id="orderNum">13843920</div>
+                        <div class="updown"></div>
+                        <div id="orderProduct">
+                            <img src="order.jpg" alt=""> 
+                            <div class=product_explain>
+                                <div id=product_name>우리 집을 환하게 감싸주는 나른 조명 인테리어 공구</div>
+                                <div id=product_content>
+                                    <div id="order_productdate">주문일자 : 2021/03/27</div>
+                                    <div id="order_productprice">결제 금액 :48000원</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="updown"></div>
+                        <div id="orderState">배송완료</div>
+                    -->
+                       
+                </div>
             </div>
         </div>
 
         <div class="like_area">
             <i class="far fa-heart"></i>
             <label for="like">나의 찜 목록</label>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-            {% for wish in wish_list%}
-=======
->>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
->>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
-            <div>
-                <ul>
-                    <li class="like_product">
-                       <ul >
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-                           <li id="product_img"><div id="likeImgBox"><img src="{{wish.thumbnail.url}}" alt="" id="likeImg"></div></li>
-                           <br>
-                           <li id="product_name">{{wish.name}}</li>
-                           <br>
-                           <li id="product_content">{{wish.price}}</li>
-                       </ul>
-                    </li>
-                </ul>
-
-            </div>
-            {%endfor%}
-
-        </div>
-
-        
-=======
->>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
-                           <li id="product_img"><div id="likeImgBox"><img src="like.jpg" alt="" id="likeImg"></div></li>
-                           <br>
-                           <li id="product_name">하늘하늘 봄을 기다리며 꽃무늬 스카프</li>
-                           <br>
-                           <li id="product_content">3700원</li>
-                       </ul>
-                    </li>
-
-                </ul>
+            <div id="likeproductbox">
+                {% for wish in wish_list%}
+                <div class="likeproduct">
+                    <img src="{{wish.thumbnail.url}}" alt="" id="likeImg">
+                    <div id="product_name">{{wish.name}}</div>
+                    <div id="product_price">{{wish.price}}</div>
+                </div>
+                {%endfor%}
 
             </div>
         </div>
@@ -441,39 +428,23 @@
         <div class="notice_area">
             <i class="far fa-bell"></i>
             <label for="notice">나의 알림</label>
-           
         </div>
-<<<<<<< HEAD
-
-        <div class="btn_area">
-            <a href = "{% url 'user_update' data.id %} " > <button type="button" id="btnMyPage">
-=======
->>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
 
         <div class="btn_area">
             <a href = "{% url 'user_update' user.id %} " > <button type="button" id="btnMyPage">
->>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
                 <span>수정하기</span>
             </button>
             </a>
-
-<<<<<<< HEAD
-            <a href = "{% url 'user_delete' data.id %} " > 
-=======
             <a href = "{% url 'user_delete' user.id %} " > 
->>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
             <button type="button" id="btnMyPage">
                 <span>탈퇴하기</span>
             </button>
             </a>
-
         </div>
-    </div>
 
     </div>
+    </div>
 
-<<<<<<< HEAD
-    <br/><br/><br/><br/>
 
     <footer>
         <br/><br/>
@@ -496,37 +467,9 @@
             </div>
           </div>
         </div>
-    </footer>
-=======
-
-    <footer>
-<<<<<<< HEAD
-        <br/><br/>
-        <div class="footer">
-        <div id="parft">
-            <div id="chift">
-            고객센터<br />
-            1633-9311<br />
-            </div>
-            <div id="chift">
-            주식회사 공구함<br />
-            497 제 2021-경기판교-01325호<br />
-            +44 345 678 903<br />
-            </div>
-            <div id="chift">
-            사업자 정보 확인<br />
-            사업자 등록번호:232-2322-52342<br />
-            주소 : 경기 판교 백현동 153, 100층<br />
-            제휴문의 : LALALA@naver.com
-            </div>
-        </div>
-        </div>
-=======
-
->>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
+  
     </footer>
 
->>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
    
 </body>
 </html>

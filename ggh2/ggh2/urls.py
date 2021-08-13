@@ -20,7 +20,6 @@ from django.urls import path
 from user import views as user
 from goods import views as goods
 from cabinet import views as cabinet
-from chat import views as chat
 from pay import views as pay
 
 urlpatterns = [
@@ -28,6 +27,7 @@ urlpatterns = [
     path('',user.home,name="home"),
     path('login/',user.login,name="login"),
     path('logout/', user.logout, name='logout'),
+    path('search/',user.search,name='search'),
 
     path('user/new',user.user_create,name="user_create"),
     path('user/<int:id>',user.user_read,name="user_read"),
@@ -37,7 +37,10 @@ urlpatterns = [
     path('goods/new',goods.goods_create,name="goods_create"),
     path('goods/popup.html',goods.goods_popup,name="goods_popup"),
     path('goods/',goods.goods_read_all,name="goods_read_all"),
+    path('goods/beauty',goods.goods_read_beauty,name="goods_read_beauty"),
+    path('goods/food',goods.goods_read_food,name="goods_read_food"),
     path('goods/<int:id>',goods.goods_read_one,name="goods_read_one"),
+    path('goods/<int:id>/comment',goods.goods_comment_create,name="goods_comment_create"),
     path('goods/update/<int:id>',goods.goods_update,name="goods_update"),
     path('goods/delete/<int:id>',goods.goods_delete,name="goods_delete"),
 
@@ -46,8 +49,6 @@ urlpatterns = [
     path('cabinet/update/<int:id>',cabinet.cabinet_update,name="cabinet_update"),
     path('cabinet/delete/<int:id>',cabinet.cabinet_delete,name="cabinet_delete"),
 
-    path('chat/<int:id>', chat.index, name='index'),
-    path('chat/<int:id>/<str:room_name>/', chat.room, name='room'),
 
     path('goods/<int:goods_id>/pay', pay.kakaoPay, name = "kakaoPay"),
     path('pay/kakaoPayLogic', pay.kakaoPayLogic, name = "kakaoPayLogic"),

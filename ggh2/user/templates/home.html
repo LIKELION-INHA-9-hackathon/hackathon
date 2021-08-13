@@ -33,33 +33,34 @@
 
 <body>
     <header>
-        <div id="header_menu">
-            <ul>
-                {% if not user_pk %}
-                <a href="{%url 'login' %}">로그인</a>
-                <span id="middle_line">|</span>
-                <a href="{% url 'user_create' %}">회원가입</a>
-                {% endif %}
-                {% if user_pk %}
-                <a href="{%url 'logout'%}">로그아웃</a>
-                <a href="{% url 'user_read' user_pk%}">마이페이지</a>
-                {% endif %}
-            </ul> 
-        </div>
+      <div id="header_menu">
+        <ul>
+            {% if not user_pk %}
+            <li><a href="{%url 'login' %}" class="link">로그인</a></li>
+            <span id="middle_line">|</span>
+            <li><a href="{% url 'user_create' %}" class="link">회원가입</a></li>
+            {% endif %}
+            {% if user_pk %}
+            <li><a href="{%url 'logout'%}"class="link">로그아웃</a></li>
+            <li><a href="{% url 'user_read' user_pk%}"class="link">마이페이지</a></li>
+            {% endif %}
+        </ul> 
+    </div>
         <br/><br/>
-
-        <a href = "{% url 'home'%}"><img src="../../../static/img/logo.png"></a>
+        <img src="../../static/img/logo.png" id="logo">
 
         <div id="box">
             <div id="search-box">
-                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
-                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
+                 <form action="{% url 'search'%}" method='GET'>
+                  <input type="text" name = "searchtext" placeholder="검색어를 입력하세요" class="search-txt" />
+                  <!--<a href = "{%url 'search'%}">-->
+                  <input type="submit" value="검색">
+                  <!--</a> -->
+                 </form>
+               
             </div>
-
-            <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>        </div>
-
+            <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
         </div>
-
     </header>
 
     <nav>
@@ -68,23 +69,17 @@
                 <li class="main" id="li_left">
                   <span><i class="fas fa-bars"><a class="link" href="#">전체 카테고리</a></i></span>
                   <ul class="sub" style="display:none">
-                    <li><i class="fas fa-fire"><a class="link" href="#">데코/조명</a></i></li>
-                    <li><i class="fas fa-tshirt"><a class="link" href="#">패브릭/생활</a></i></li>
-                    <li><i class="fas fa-drum-steelpan"><a class="link" href="#">키친</a></i></li>
-                    <li><i class="fas fa-campground"><a class="link" href="#">캠핑/트래블</a></i></li>
-                    <li><i class="fas fa-pencil-alt"><a class="link" href="#">디자인문구</a></i></li>
-                    <li><i class="fas fa-mobile-alt"><a class="link" href="#">디지털/핸드폰</a></i></li>
-                    <li><i class="fas fa-blender"><a class="link" href="#">디자인가전</a></i></li>
-                    <li><i class="fas fa-couch"><a class="link" href="#">가구/수납</a></i></li>
-                    <li><i class="fas fa-cookie"><a class="link" href="#">푸드</a></i></li>
-                    <li><i class="fas fa-eye-dropper"><a class="link" href="#">뷰티</a></i></li>
-                    <li><i class="fas fa-paw"><a class="link" href="#">캣앤독</a></i></li>
-                    <li><i class="fas fa-democrat"><a class="link" href="#">토이</a></i></li>
-                    <li><i class="fas fa-baby"><a class="link" href="#">베이비/키즈</a></i></li>
+                    
+                    <li>
+                      <i class="fas fa-cookie"><a class="link" href="{% url 'goods_read_food' %}"><input type="submit" value="food" name="food"></a></i>
+                  </li>
+                  <li>
+                      <i class="fas fa-eye-dropper"><a class="link" href="{% url 'goods_read_beauty' %}"><input type="submit" name="beauty" value="beauty"></a></i>
+                  </li>
+                    
                   </ul>
+                  <a href = "{%url 'goods_create' %}">매물 등록하기</a>
                 </li>
-                <li id="li_left"><a class="link" href="#">인기 매물</a></li>
-                <li id="li_left"><a class="link" href="#">최신 매물</a></li>
             </ul>
         </div>
     </nav>
@@ -136,17 +131,15 @@
     </div>
     <br/>
     <div id="cards1">
+      {% for g in goods1 %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
       <div id="card1"> 
-
-        {%for g in goods %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
-
-        <img src={{g.thumbnail.url}}>
+        <div id="imgDv"><img src={{g.thumbnail.url}}></div>
         <div id="discount">
           24%
         </div>
         <br/><br/>
         <div>
-          <div id="card_title">{{g.title}}</div>
+          <a href = "{%url 'goods_read_one' g.id%}"><div id="card_title">{{g.title}}</div></a>
           <div id="amount">
             <span id="amount1">정상가</span> <span id="amount1_2">{{g.ori_price}}</span><br/>
             <span id="amount2">공구가</span> <span id="amount2_2">{{g.price}}</span>
@@ -158,94 +151,35 @@
         </div>
       </div>
       {%endfor%}
-      <div id="card2">
-        <img src="../img/item2.png">
-        <br/><br/>
-        <div>
-          <div id="card_title">세상 이 가격 어디서도 구하지 못하는 미국 직구 맥 립스틱 공구</div>
-          <div id="amount">
-            <span id="amount1">정상가</span> <span id="amount1_2">33,000원</span><br/>
-            <span id="amount2">공구가</span> <span id="amount2_2">7000원</span>
-          </div>
-          <div id="card_bottom">
-            <span id="time">남은시간: 20일 21시간 30분</span>
-            <span id="total_person">모집인원 1/3</span>
-          </div>
-        </div>
-      </div>
-
-      <div id="card3">
-        <img src="../img/item3.png">
-        <br/><br/>
-        <div>
-          <div id="card_title">집에 향기로운 꽃냄새로 가득 방향제 30개 급공구!!!!!</div>
-          <div id="amount">
-            <span id="amount1">정상가</span> <span id="amount1_2">55,000원</span><br/>
-            <span id="amount2">공구가</span> <span id="amount2_2">5000원</span>
-          </div>
-          <div id="card_bottom">
-            <span id="time">남은시간: 7일 3시간 20분</span>
-            <span id="total_person">모집인원 5/8</span>
-          </div>
-        </div>
-      </div>
     </div>
     <br/><br/>
     
   
-    
     <div id="cards2">
-      <div id="card1">
-        <img src="../img/item4.png">
+      {% for g in goods2 %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
+      <div id="card1"> 
+        <div id="imgDv"><img src={{g.thumbnail.url}}></div>
+        <div id="discount">
+          24%
+        </div>
         <br/><br/>
         <div>
-          <div id="card_title">모든 빨아들이는 강한 흡입력! LG 로봇 청소기 공구진행</div>
+          <a href = "{%url 'goods_read_one' g.id%}"><div id="card_title">{{g.title}}</div></a>
           <div id="amount">
-            <span id="amount1">정상가</span> <span id="amount1_2">750,000원</span><br/>
-            <span id="amount2">공구가</span> <span id="amount2_2">150,000원</span>
+            <span id="amount1">정상가</span> <span id="amount1_2">{{g.ori_price}}</span><br/>
+            <span id="amount2">공구가</span> <span id="amount2_2">{{g.price}}</span>
           </div>
           <div id="card_bottom">
-            <span id="time">남은시간: 4일 23시간 30분</span>
-            <span id="total_person">모집인원 4/20</span>
+            <span id="time">{{g.expired}}</span>
+            <span id="total_person">{{g.pre_people}} / {{g.recruitment_no}}</span>
           </div>
         </div>
       </div>
-
-      <div id="card2">
-        <img src="../img/item5.png">
-        <br/><br/>
-        <div>
-          <div id="card_title">제주도에서 올라오는 신선한 귤 10박스 공구 진행</div>
-          <div id="amount">
-            <span id="amount1">정상가</span> <span id="amount1_2">45,000원</span><br/>
-            <span id="amount2">공구가</span> <span id="amount2_2">6000원</span>
-          </div>
-          <div id="card_bottom">
-            <span id="time">남은시간: 1일 1시간 10분</span>
-            <span id="total_person">모집인원 9/10</span>
-          </div>
-        </div>
-      </div>
-
-      <div id="card3">
-        <img src="../img/item6.png">
-        <br/><br/>
-        <div>
-          <div id="card_title">공구로 쉽게 효도하자. 정관장 한정 50팩 공구 인원 급구!!</div>
-          <div id="amount">
-            <span id="amount1">정상가</span> <span id="amount1_2">65,000원</span><br/>
-            <span id="amount2">공구가</span> <span id="amount2_2">30,000원</span>
-          </div>
-          <div id="card_bottom">
-            <span id="time">남은시간: 28일 23시간 30분</span>
-            <span id="total_person">모집인원 2/5</span>
-          </div>
-        </div>
-      </div>
+      {%endfor%}
     </div>
     <br/><br/>
 
-    <div id="add">더보기</div>
+    <a href = "{%url 'goods_read_all' %}"><div id="add">더보기</div></a>
     <br/><br/><br/>
 
     <!--추천 상품-->

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰티</title>
+    <link rel="stylesheet" href="../../static/css/sub.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+
+    <link rel="stylesheet" href="../../static/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="../../static/css/owl.theme.default.css" />
+
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+   <script type="text/javascript" src="../../static/js/paging.js"></script>
+    <script type="text/javascript" src="../../static/js/category.js"></script>
+    <script>
+    $(document).on('mouseover', '.topMenu span', function () {
+    $('.sub').slideDown(700);
+    });
+    $(document).on('mouseover', 'div', function () {
+    if (!$(this).hasClass('topMenu')) {
+    $('.sub').slideUp(500);
+    }
+    }); 
+
+    </script>
+
+<script src="./lib/jquery-3.4.1.js"></script>
+<script src="../../static/js/owl.carousel.min.js"></script>
+<script src="../../static/js/app.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="header_menu">
+            <ul>
+                {% if not user_pk %}
+                <li><a href="{%url 'login' %}" class="link">로그인</a></li>
+                <span id="middle_line">|</span>
+                <li><a href="{% url 'user_create' %}" class="link">회원가입</a></li>
+                {% endif %}
+                {% if user_pk %}
+                <li><a href="{%url 'logout'%}"class="link">로그아웃</a></li>
+                <li><a href="{% url 'user_read' user_pk%}"class="link">마이페이지</a></li>
+                {% endif %}
+            </ul> 
+        </div>
+        <br/><br/>
+        <a href="{% url 'home'%}"><img src="../../static/img/logo.png"></a>
+
+        <div id="box">
+            <div id="search-box">
+                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
+                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
+            </div>
+            <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+        </div>
+    </header>
+
+    <nav>
+        <div class="topMenu">
+            <span class="more">
+                <span class="blind"><i class="fas fa-bars"><a class="link">전체 카테고리</a></i></span>
+            </span>
+            <div class="board">
+                <form method="GET">
+                    <ul class="list">
+                        <li>
+                            <i class="fas fa-cookie"><a class="link" href="{% url 'goods_read_food'%}"><input type="submit" name="food" value="food"></a></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-eye-dropper"><a class="link" href="{% url 'goods_read_beauty'%}"><input type="submit" name="beauty" value="beauty"></a></i>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <br/>
+    <hr>
+    <div id="hrBox">
+      <span>카테고리 > </span> <span> 뷰티</span>
+    </div>
+    <hr id="hr2">
+    <br/>
+
+
+    
+    <br/><br/><br/>
+
+
+    <!--필터-->
+    <div id="filter">
+        <form method="GET" action="" class="form">
+            <select id = "sort" name ="sort">
+              <option value="recently" id="recently">최신매물순</option>
+              <option value="fast" id="fast">마감빠른순</option>
+              <option value="slow" id="slow">마감느린순</option>
+              <option value="low" id="low">낮은가격</option>
+              <option value="high" id="high">높은가격</option>
+            </select>
+            </form>
+            <script>
+            $(document).ready(function() {
+                $( "select[name=sort]" ).val( "{{ sort_text }}" );
+                $('select[name=sort]').change(function () {
+                console.log($('select[name=sort]').val());
+                month = $('select[name=sort]').val();
+                $('.form').submit();
+            });
+        });
+        </script>
+    </div><br/><br/>
+
+    <!--좌측 광고배너-->
+    <article>
+        <img src="../../static/img/advertisement1.png" id="advertisement1"> 
+    </article>
+
+<!--아이템 카드->수정필요-->
+<section>
+    <div id="cards1">
+    {%for g in goods1%}
+          <div id="card1">
+            <img src="{{g.thumbnail.url}}">
+            <div id="discount">
+              24%
+            </div>
+            <div  id="card">
+                <a href = "{%url 'goods_read_one' g.id%}"><div id="card_title">{{g.title}}</div></a>
+              <div id="amount">
+                <span id="amount1">정상가</span> <span id="amount1_2">{{g.ori_price}}원</span><br/>
+                <span id="amount2">공구가</span> <span id="amount2_2">{{g.price}}원</span>
+              </div>
+              <div id="card_bottom">
+                <span id="time">마감 날짜 : {{g.expired}}</span>
+                <span id="total_person">모집인원 {{g.fre_people}} / {{g.recruitment_no}}</span>
+              </div>
+            </div>
+          </div>
+        {%endfor%}
+        </div>
+          <br/><br/>
+
+          <div id="cards2">
+            {% for g in goods2 %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
+            <div id="card1"> 
+              <div id="imgDv"><img src={{g.thumbnail.url}}></div>
+              <div id="discount">
+                24%
+              </div>
+              <br/><br/>
+              <div>
+                <a href = "{%url 'goods_read_one' g.id%}"><div id="card_title">{{g.title}}</div></a>
+                <div id="amount">
+                  <span id="amount1">정상가</span> <span id="amount1_2">{{g.ori_price}}</span><br/>
+                  <span id="amount2">공구가</span> <span id="amount2_2">{{g.price}}</span>
+                </div>
+                <div id="card_bottom">
+                  <span id="time">{{g.expired}}</span>
+                  <span id="total_person">{{g.pre_people}} / {{g.recruitment_no}}</span>
+                </div>
+              </div>
+            </div>
+            {%endfor%}
+          </div>
+          <br/><br/>
+  <br/><br/><br/>
+  <!--페이징-->
+  <div id="paging"></div>
+  <br/><br/><br/><br/><br/>
+
+
+    <!--광고배너-->
+    <div id="fAd">
+      <img src="../../static/img/advertisement3.png" id="advertisement3">
+      <img src="../../static/img/advertisement4.png" id="advertisement4">
+    </div id="fAd">
+
+    <br/><br/>
+    <footer>
+      <br/><br/>
+      <div class="footer">
+        <div id="parft">
+          <div id="chift">
+            고객센터<br />
+            1633-9311<br />
+          </div>
+          <div id="chift">
+            주식회사 공구함<br />
+            497 제 2021-경기판교-01325호<br />
+            +44 345 678 903<br />
+          </div>
+          <div id="chift">
+            사업자 정보 확인<br />
+            사업자 등록번호:232-2322-52342<br />
+            주소 : 경기 판교 백현동 153, 100층<br />
+            제휴문의 : LALALA@naver.com
+          </div>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

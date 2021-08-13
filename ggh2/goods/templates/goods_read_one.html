@@ -267,13 +267,13 @@
         <div id="header_menu">
             <ul>
                 {% if not user_pk %}
-                <a href="{%url 'login' %}">로그인</a>
+                <li><a href="{%url 'login' %}" class="link">로그인</a></li>
                 <span id="middle_line">|</span>
-                <a href="{% url 'user_create' %}">회원가입</a>
+                <li><a href="{% url 'user_create' %}" class="link">회원가입</a></li>
                 {% endif %}
                 {% if user_pk %}
-                <a href="{%url 'logout'%}">로그아웃</a>
-                <a href="{% url 'user_read' user_pk%}">마이페이지</a>
+                <li><a href="{%url 'logout'%}"class="link">로그아웃</a></li>
+                <li><a href="{% url 'user_read' user_pk%}"class="link">마이페이지</a></li>
                 {% endif %}
             </ul> 
         </div>
@@ -282,9 +282,14 @@
 
         <div id="box">
             <div id="search-box">
-                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
-                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
-            </div>
+                <form action="{% url 'search'%}" method='GET'>
+                 <input type="text" name = "searchtext" placeholder="검색어를 입력하세요" class="search-txt" />
+                 <!--<a href = "{%url 'search'%}">-->
+                 <input type="submit" value="검색">
+                 <!--</a> -->
+                </form>
+              
+           </div>
             <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>        </div>
 
     </header>
@@ -344,7 +349,7 @@
                 <div class="joinbtnbox">
                     <form method ="POST">
                         {%csrf_to}
-                    <a href="{%url 'kakaoPay' goods.id%}" ><button type="button"  id="joinbtn">공구 참여하기</button></a>
+                    <a href="{%url 'kakaoPay' data.id%}" ><button type="button"  id="joinbtn">공구 참여하기</button></a>
                     </form>
                 </div>
             </div>
@@ -416,13 +421,25 @@
             </div>
 
             <div id="QnA">
+                <h3 id="4">Q&A</h3>
                 <div id="comment-head" class="comment-row">
                     <span id="comments-count">0</span>건
                 </div>
-                <div class="comment-row">
-                    <textarea name="new_comment" id="new-comment"  rows="1" cols="100" placeholder="댓글을 입력하세요"></textarea>
+                <form class="comment-row">
+                    <textarea name="comment" id="new-comment"  rows="1" cols="100" placeholder="댓글을 입력하세요"></textarea>
                     <button type="submit" onclick="submitComment()">등록</button>
+                </div><hr>
+                {%for c in comment%}
+                 <div class="comment-row">
+                    <div class="comment-nickname">{{c.user_id.nickname}}</div>
+                    <div class="comment-content">{{c.content}}</div>
+                    <div class="comment-date">{{c.created}}</div>
+                    <hr>
                 </div>
+                {%endfor%}
+                
+
+            </div>
                <!--
                  <div class="comment-row">
                     <div class="comment-date">2020-05-25 03:05:23</div>

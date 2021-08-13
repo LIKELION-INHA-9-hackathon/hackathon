@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-6nqp_=oluz=8%-46m)_@2^pcm4rvw-$4b^u%*&id-d(5ym5%s!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 ASGI_APPLICATION = 'ggh2.asgi.application'
 #표준 Django 개발 서버를 채널 개발 서버로 교체합니다.
@@ -44,8 +44,6 @@ INSTALLED_APPS = [
     'pay',
     'wish',
     'cabinet',
-    'chat',
-    'channels',
 ]
 
 MIDDLEWARE = [
@@ -141,14 +139,7 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ASGI_APPLICATION = 'ggh2.asgi.application'
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
-    },
-}
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

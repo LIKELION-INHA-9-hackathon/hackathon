@@ -10,45 +10,35 @@
 </head>
 <body>
     <header>
-        <div id="header_menu">
-            <ul>
-              {% if not user_pk %}
-              <a href="{%url 'login' %}">로그인</a>
-              <span id="middle_line">|</span>
-              <a href="{% url 'user_create' %}">회원가입</a>
-              {% endif %}
-              {% if user_pk %}
-              <a href="{%url 'logout'%}">로그아웃</a>
-              <a href="{% url 'user_read' user_pk%}">마이페이지</a>
-              {% endif %}
-
-            </ul> 
-        </div>
+      <div id="header_menu">
+        <ul>
+            {% if not user_pk %}
+            <li><a href="{%url 'login' %}" class="link">로그인</a></li>
+            <span id="middle_line">|</span>
+            <li><a href="{% url 'user_create' %}" class="link">회원가입</a></li>
+            {% endif %}
+            {% if user_pk %}
+            <li><a href="{%url 'logout'%}"class="link">로그아웃</a></li>
+            <li><a href="{% url 'user_read' user_pk%}"class="link">마이페이지</a></li>
+            {% endif %}
+        </ul> 
+    </div>
         <br/><br/>
-<<<<<<< HEAD
-        <img src="../../static/img/logo.png">
-=======
-<<<<<<< HEAD
-        <a href = "{% url 'home'%}"><img src="../../../static/img/logo.png"></a>
-=======
-        <img src="../../static/img/logo.png">
->>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
->>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
 
+        <a href = "{% url 'home'%}"><img src="../../../static/img/logo.png"></a>
         <div id="box">
-            <div id="search-box">
-                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
-                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
-            </div>
-<<<<<<< HEAD
+          <div id="search-box">
+            <form action="{% url 'search'%}" method='GET'>
+             <input type="text" name = "searchtext" placeholder="검색어를 입력하세요" class="search-txt" />
+             <!--<a href = "{%url 'search'%}">-->
+             <input type="submit" value="검색">
+             <!--</a> -->
+            </form>
+          
+       </div>
+
             <a class="position-btn" href="#"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
-=======
-<<<<<<< HEAD
             <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
-=======
-            <a class="position-btn" href="#"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
->>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
->>>>>>> 419c901871454dcf2b07b482e3eb3574838afba1
         </div>
     </header>
 

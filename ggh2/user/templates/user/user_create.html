@@ -13,9 +13,13 @@
         <div id="header_menu">
             <ul>
                 {% if not user_pk %}
-                <a href="{%url 'login' %}">로그인</a>
+                <li><a href="{%url 'login' %}" class="link">로그인</a></li>
                 <span id="middle_line">|</span>
-                <a href="{% url 'user_create' %}">회원가입</a>
+                <li><a href="{% url 'user_create' %}" class="link">회원가입</a></li>
+                {% endif %}
+                {% if user_pk %}
+                <li><a href="{%url 'logout'%}"class="link">로그아웃</a></li>
+                <li><a href="{% url 'user_read' user_pk%}"class="link">마이페이지</a></li>
                 {% endif %}
             </ul> 
         </div>
@@ -26,9 +30,14 @@
 
         <div id="box">
             <div id="search-box">
-                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
-                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
-            </div>
+                <form action="{% url 'search'%}" method='GET'>
+                 <input type="text" name = "searchtext" placeholder="검색어를 입력하세요" class="search-txt" />
+                 <!--<a href = "{%url 'search'%}">-->
+                 <input type="submit" value="검색">
+                 <!--</a> -->
+                </form>
+              
+           </div>
 
             <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
 

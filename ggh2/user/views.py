@@ -6,13 +6,54 @@ from goods.models import *
 from pay.models import *
 from wish.models import *
 
+def search(req):
+    if req.method=="GET":
+        searchtext = req.GET['searchtext']
+        user= User.objects.filter(nickname__contains=searchtext)
+        goods = Goods.objects.filter(title__contains=searchtext).order_by('-created')
+        result_goods1=[]
+        result_goods2=[]
+        result_user1=[]
+        result_user2=[]
+        count_user=0
+        count_goods=0
+        if user:
+            i = 0
+            for u in user:
+                if i < 3:
+                    result_user1.append(u)
+                elif i < 6:
+                    result_user2.append(u)
+                else:
+                    break
+                i+=1
+                count_user+=1
+        if goods:
+            i = 0
+            for g in goods:
+                if i < 3:
+                    result_goods1.append(g)
+                elif i < 6:
+                    result_goods2.append(g)
+                else:
+                    break
+                count_goods+=1
+                i+=1
+        context={
+            'seartext' : searchtext,
+            'result_user1' : result_user1,
+            'result_user2' : result_user2,
+            'result_goods1' : result_goods1,
+            'result_goods2' : result_goods2,
+            'count_user' : count_user,
+            'count_goods' : count_goods,
+        }
+        return render(req,'search.html',context)
+
+            
 
 
 def home(req):
-    # if req.method=="POST":
-    #     searchtext = req.POST['searchtext']
-    #     location = req.POST['location']
-    #     cabinet = req.POST['cabinet']
     sort_text = req.GET.get('sort')
     if sort_text == 'fast':
         goods = Goods.objects.order_by('expired')
@@ -25,10 +66,22 @@ def home(req):
     else :
         goods = Goods.objects.order_by('-created')
     user_pk = req.session.get('user')
+    goods1=[] 
+    goods2=[]
+    i=0
+    for g in goods:
+        if i < 3:
+            goods1.append(g)
+        elif i < 6 :
+            goods2.append(g)
+        else :
+            break
+        i+=1
+
     context = {
         'user_pk' : user_pk,
-        'goods' : goods,
-
+        'goods1' : goods1,
+        'goods2' : goods2,
     }
     return render(req, 'home.html',context)
 

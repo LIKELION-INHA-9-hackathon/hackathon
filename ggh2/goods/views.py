@@ -40,11 +40,100 @@ def goods_popup(req):
     
 
 def goods_read_all(req):
-    goods = Goods.objects.all()
+    sort_text = req.GET.get('sort')
+    if sort_text == 'fast':
+        goods = Goods.objects.order_by('expired')
+    elif sort_text == 'slow':
+        goods = Goods.objects.order_by('-expired')
+    elif sort_text == 'low':
+        goods = Goods.objects.order_by('price')
+    elif sort_text == 'high':
+        goods = Goods.objects.order_by('-price')
+    else :
+        goods = Goods.objects.order_by('-created')
+    user_pk = req.session.get('user')
+    goods1=[] 
+    goods2=[]
+    i=0
+    for g in goods:
+        if i < 3:
+            goods1.append(g)
+        elif i < 6 :
+            goods2.append(g)
+        else :
+            break
+        i+=1
+
     context = {
-        'data' : goods
+        'user_pk' : user_pk,
+        'goods1' : goods1,
+        'goods2' : goods2,
     }
     return render(req,'goods_read_all.html',context)
+
+def goods_read_beauty(req):
+    sort_text = req.GET.get('sort')
+    if sort_text == 'fast':
+        goods = Goods.objects.filter(category=10).order_by('expired')
+    elif sort_text == 'slow':
+        goods = Goods.objects.filter(category=10).order_by('-expired')
+    elif sort_text == 'low':
+        goods = Goods.objects.filter(category=10).order_by('price')
+    elif sort_text == 'high':
+        goods = Goods.objects.filter(category=10).order_by('-price')
+    else :
+        goods = Goods.objects.filter(category=10).order_by('-created')
+    user_pk = req.session.get('user')
+    goods1=[] 
+    goods2=[]
+    i=0
+    for g in goods:
+        if i < 3:
+            goods1.append(g)
+        elif i < 6 :
+            goods2.append(g)
+        else :
+            break
+        i+=1
+
+    context = {
+        'user_pk' : user_pk,
+        'goods1' : goods1,
+        'goods2' : goods2,
+    }
+    return render(req,'goods_read_beauty.html',context)
+
+def goods_read_food(req):
+    sort_text = req.GET.get('sort')
+    if sort_text == 'fast':
+        goods = Goods.objects.filter(category=9).order_by('expired')
+    elif sort_text == 'slow':
+        goods = Goods.objects.filter(category=9).order_by('-expired')
+    elif sort_text == 'low':
+        goods = Goods.objects.filter(category=9).order_by('price')
+    elif sort_text == 'high':
+        goods = Goods.objects.filter(category=9).order_by('-price')
+    else :
+        goods = Goods.objects.filter(category=9).order_by('-created')
+    user_pk = req.session.get('user')
+    goods1=[] 
+    goods2=[]
+    i=0
+    for g in goods:
+        if i < 3:
+            goods1.append(g)
+        elif i < 6 :
+            goods2.append(g)
+        else :
+            break
+        i+=1
+
+    context = {
+        'user_pk' : user_pk,
+        'goods1' : goods1,
+        'goods2' : goods2,
+    }
+    return render(req,'goods_read_food.html',context)
 
 def goods_read_one(req,id):
     goods = get_object_or_404(Goods,pk=id)
@@ -100,24 +189,6 @@ def goods_delete(req,id):
     goods = get_object_or_404(Goods,pk=id)
     goods.delete()
     return redirect('/goods/')
-
-#def content_read(req,id):
-#    goods=get_object_or_404(Goods,id)
-    
-
-
-# def participant(req,id):
-#     goods=Goods.objects.all()
-#     if goods.recruitmentno 
-#                                                                                 # user
-
-### 댓글 구현 
-
-# class Comments(TimeStampModel):
-#     user_id = models.ForeignKey(User, on_delete=CASCADE, verbose_name="작성자")
-#     goods_id(blog) = models.ForeignKey(Goods, on_delete=CASCADE, verbose_name = "공구 참여 물품")
-#     content(body) = models.TextField()
-
 
 
 def goods_comment_create(req, id): 

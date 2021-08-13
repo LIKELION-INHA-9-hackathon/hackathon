@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>goods_read</title>
+    <link rel="stylesheet" href="../../static/css/footer.css">
+    <link rel="stylesheet" href="../../static/css/header.css">
+
+    <style>
+        .imgBox>div{
+            margin: 3%;
+        }
+        .explainBox>div{
+            margin: 2%;
+        }
+        .goods_read{
+            width: 80%;
+            left: 50%;
+            transform: translate(-50%);
+            position: relative;
+        }
+        .imgBox{
+            display: inline-block;
+            width: 48%;
+            margin: 1%;
+            left: 10%;
+            position: relative;
+            bottom: 10px;
+        }
+        .mainImgBox{
+            left: 50%;
+            transform: translate(-50%);
+            position: relative;
+        }
+
+        #mainImg{
+            width: 300px;
+            height: 300px;
+        }
+        .extraImgBox img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+        }
+        .explainBox{
+            display: inline-block;
+            width: 40%;
+            margin: 1%;
+            position: relative;
+          
+        }
+        #title{
+            font-size: 150%;
+            font-weight: 600;
+        }
+        
+        #profile{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            
+        }
+        #nickname{
+            font-size:1%;
+            font-weight: 600;
+            bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        #state_percent{
+            color: #212194;
+            font-size: 130%;
+            font-weight: 600;
+            left: 90%;
+    position: relative;
+        }
+        #state_bar{
+            border:1px solid gray;
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+        #filling{
+            width: 40%;
+            background-color: #212194;
+            padding: 2%;
+        }
+        #state_text{
+            color: red;
+            font-size: 1%;
+            font-weight: 700;
+            left: 88%;
+    position: relative;
+        }
+        .price div{
+            display: inline;
+        }
+        .price .button{
+            display: inline-block;
+            border-radius: 5px;
+            text-align: center;
+            padding-top: 0.8%;
+            padding-bottom: 0.8%;
+            padding-left: 7%;
+            padding-right: 7%;
+            background-color: gray;
+            margin: 1%;
+            font-weight: 700;
+            font-size: 1.8vh;
+        }
+        .preprice .button{
+            background-color: #EFEFEF;
+        }
+        .preprice .content{
+            color: #C7C7C7;
+        }
+        .postprice .button{
+            background-color: #D5EDFF ;
+        }
+        .price .content{
+            font-weight: 800;
+            font-size: 3vh;
+        }
+        .preprice .content{
+            text-decoration-line:line-through;
+            
+        }
+        #selectoption{
+            width: 100%;
+            font-size: 2,5vh;
+            padding: 3%;
+            margin: 2%;
+        }
+       
+        #joinbtn{
+            width: 100%;
+            background-color: #212194;
+            color: white;
+            font-weight: 700;
+            padding:4%;
+            margin-top:5%;
+        }
+
+        .description{
+            position: relative;
+            width: 90%;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        .description>div{
+            margin: 5%;
+        }
+        #categoryul{
+            display: block;
+        }
+        #categoryul li{
+            list-style-type: none;
+            float: left;
+            outline: 1px solid #212194;
+            font-size: 1.6vh;
+            padding-left: 4%;
+            padding-right: 4%;
+            padding-top: 1.5%;
+            padding-bottom: 1.5%;
+        }
+        #categoryul a{
+            text-decoration: none;
+            color: #212194;
+            font-weight: 900;
+        }
+        #blueline{
+            color: #212194;
+        }
+        #product_explain{
+            width: 100%;
+            position: relative;
+        }
+        #productImg{
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+            margin: 2%;
+            width: 550px;
+            height: 550px;
+        }
+        #productDescript{
+            
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        #descriptBox{
+            background-color: #EFEFEF;
+            border-radius: 10px;
+            padding: 2%;
+        }
+        #descript{
+            font-size:1% ;
+            margin-left: 4%;
+        }
+        .deliveryNexchange #name{
+            display: inline-block;
+           
+            margin-right: 5%;
+            width: 10%;
+        }
+        #new-comment{
+            border-radius: 50px;
+            padding:1.5%
+        }
+    </style>
+
+    <script>
+        function setcount(){
+            var s=document.getElementById("selectoption");
+            var count=s.opstions[s.selectedIndex].value;
+            document.getElementById("amount").innerText=count;
+        }   
+
+        function dateToString(date){
+            const dateString  = date.toISOString();
+            const dateToString=dateString.substring(0,10)+" "+dateString.substring(11,19);
+            return dateToString;
+        }
+
+        function submitComment(){
+            //textarea 값 갖고오기
+            const newcommentEL=document.getElementById("new-comment"); 
+            const newcomment=newcommentEL.value.trim();
+
+            if(newcomment){ 
+                //댓글 시간
+                const dateEL=document.createElement("div");
+                dateEL.classList.add("comment-date");
+                const dateString=dateToString(new Date());
+                dateEL.innerText=dateString;
+
+                //댓글 내용
+                const contentEL = document.createElement("div");
+                contentEL.classList.add("comment-content");
+                contentEL.innerText=newcomment;
+
+                //댓글 div에 시간 내용 합치기
+                const commentEL= document.createElement("div");
+                commentEL.classList.add("comment-row");
+                commentEL.appendChild(dateEL);
+                commentEL.appendChild(contentEL);
+
+                //QnA div에 새 댓글 추가하기
+                document.getElementById('QnA').appendChild(commentEL);
+                newcommentEL.value=""; //초기화
+
+                const countEL=document.getElementById("comments-count");
+                const count = countEL.innerText;
+                countEL.innerText=parseInt(count)+1;
+            }
+            else {
+                alert("댓글을 입력하세요");
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div id="header_menu">
+            <ul>
+                {% if not user_pk %}
+                <a href="{%url 'login' %}">로그인</a>
+                <span id="middle_line">|</span>
+                <a href="{% url 'user_create' %}">회원가입</a>
+                {% endif %}
+                {% if user_pk %}
+                <a href="{%url 'logout'%}">로그아웃</a>
+                <a href="{% url 'user_read' user_pk%}">마이페이지</a>
+                {% endif %}
+            </ul> 
+        </div>
+        <br/><br/>
+        <a href = "{% url 'home'%}"><img src="../../static/img/logo.png"></a>
+
+        <div id="box">
+            <div id="search-box">
+                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
+                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
+            </div>
+            <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>        </div>
+
+    </header>
+
+    <div class="goods_read">
+        <div class="intro">
+            <div class="imgBox">
+                <div class="mainImgBox">
+                    <img src="{{goods.thumbnail.url}}" alt="" id="mainImg">
+                </div>
+                <div class="extraImgBox">
+                    {%for po in photo%}
+                    <img src="{{po.otherimg.url}}" alt="">
+                    {%endfor%}
+                </div>
+            </div>
+            <div class="explainBox">
+                <span id="title">{{goods.title}}</span>
+                <div class="recruitment">
+                    <div id="state_percent">40%</div>
+                    <div id="state_bar">
+                        <div id="filling"></div>
+                    </div>
+                    <div id="state_text">{{goods.pre_people}} / {{goods.recruitment_no}}</div>
+                </div>
+                <div class="uploader">
+                    <img src="{{data.image.url}}" alt="" id="profile">
+                    <div id="nickname">{{user.nickname}}</div>
+                </div>
+                <div class="price">
+                    <div class="preprice">
+                        <div class="button">정상가</div>
+                        <div class="content">{{goods.ori_price}}원</div>
+                    </div>
+                    <br>
+                    <div class="postprice">
+                        <div class="button">공구가</div>
+                        <div class="content">{{goods.price}}원</div>
+                    </div>
+                </div>
+                <div class="count">
+                    <select name="count" id="selectoption">
+                        <option value="" onchange="setcount()">옵션 선택하기</option>
+                        <option value="1">1세트</option>
+                    </select>
+                </div>
+
+                <div class="summary">
+                    <div id="totalamount">
+                        총수량 <span id="amount"></span>개
+                    </div>
+                    <div id="totalcash">
+                        총금액 <span id="cash"></span>원
+                    </div>
+                </div>
+
+                <div class="joinbtnbox">
+                    <form method ="POST">
+                        {%csrf_to}
+                    <a href="{%url 'kakaoPay' goods.id%}" ><button type="button"  id="joinbtn">공구 참여하기</button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="description">
+            <ul id="categoryul">
+                <li><a href="#1">상품 설명</a></li>
+                <li><a href="#2">작성자의 설명</a></li>
+                <li><a href="#3">배송/교환 환불</a></li>
+            </ul>
+            <br>
+            <hr id="blueline">
+            <br>
+            <div class="product_explain">
+                <h3 id="1">상품 설명</h3>
+                <img src="{{goods.thumbnail.url}}" alt="" id=productImg>
+                {%for po in photo%}
+                <img src="{{po.otherimg.url}}" alt="">
+                {%endfor%}
+                <div id="productDescript">
+                    {{goods.content}}
+                </div>
+            </div>
+            <div class="uploader_explain">
+                <h3 id="2">작성자의 설명</h3>
+                <hr>
+                <br>
+                <div id="descriptBox">
+                    <div class="uploader">
+                        <img src="profile.jpg" alt="" id="profile">
+                        <div id="nickname">{{user.nickname}}</div>
+                    </div>
+                    <div id="descript">
+                        {{goods.description}}
+                    </div>
+                </div>
+            </div>
+            <div class="deliveryNexchange">
+                <h3 id="3">배송/교환 환불</h3>
+                <hr><br>
+
+                <div class="delivery">
+                    <div id="name">배송</div>
+                    <ul>
+                        <li>배송 기간은 주문일(무통장입금은 결제완료일)로부터 1일(24시간) ~ 5일정도 걸립니다.</li>
+                        <li>단, 제작기간이 별도로 소요되는 상품의 경우에는 상품 설명에 잇는 제작기간과 배송시기를 숙지해주시기 바랍니다.</br>
+                            공구의 인원에 따라 금액이 변경될 수 있습니다.
+                        </li>
+                    </ul>
+                </div>
+                <hr><br>
+                <div class="exchange">
+                    <div id="name">교환/환불</div>
+                    <ul>
+                        <li>교환/반품 신청은 배송완료 후 7일 이내 가능합니다.</li>
+                        <li>변심 반품의 경우 왕복배송비를 차감한 금액이 환불되며, 제품 및 포장 상태가 재판매 가능하여야 합니다.</li>
+                        <li>상품 불량인 경우는 배송비를 포함한 전액이 환불됩니다.</li>
+                        <li>출고 이후 환불요청 시 상품 회수 후 처리됩니다. </li>
+                        <li>쥬얼리를 포함한 주문제작 상품/카메라/밀봉포장상품/플라워 등은 변심으로 인한 반품/환불이 불가합니다.</li>
+                        <li>완제품으로 수입된 상품의 경우 A/S가 불가합니다.</li>
+                        <li>상품페이지에 교환/환불/AS에 대한 브랜드 개별기준이 있는 경우에는 해당 내용이 우선 적용 됩니다..</li>
+                    </ul>
+                </div>
+                <hr><br>
+
+            </div>
+
+            <div id="QnA">
+                <div id="comment-head" class="comment-row">
+                    <span id="comments-count">0</span>건
+                </div>
+                <div class="comment-row">
+                    <textarea name="new_comment" id="new-comment"  rows="1" cols="100" placeholder="댓글을 입력하세요"></textarea>
+                    <button type="submit" onclick="submitComment()">등록</button>
+                </div>
+               <!--
+                 <div class="comment-row">
+                    <div class="comment-date">2020-05-25 03:05:23</div>
+                    <div class="comment-content">Smaple comment1</div>
+                </div>
+                <div class="comment-row">
+                    <div class="comment-date">2020-05-26 14:52:06</div>
+                    <div class="comment-content">Smaple comment2</div>
+                </div>
+               -->
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <footer>
+        <br/><br/>
+        <div class="footer">
+          <div id="parft">
+            <div id="chift">
+              고객센터<br />
+              1633-9311<br />
+            </div>
+            <div id="chift">
+              주식회사 공구함<br />
+              497 제 2021-경기판교-01325호<br />
+              +44 345 678 903<br />
+            </div>
+            <div id="chift">
+              사업자 정보 확인<br />
+              사업자 등록번호:232-2322-52342<br />
+              주소 : 경기 판교 백현동 153, 100층<br />
+              제휴문의 : LALALA@naver.com
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>

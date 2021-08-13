@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kakaoPay</title>
+</head>
+<body>
+    <h2>카카오 페이</h2>
+        <div>
+            <p>고객명 : {{user.nickname}}</p>
+            <p>price : {{goods.price}} 원 </p>
+            <p>name : {{goods.name}}</p>
+            <p> 수량 : {{goods.quantity}}</p>
+            <p>payment:{{payment.goods_update_id.goods}}</p>
+        
+        </div>
+        <form action="/pay/kakaoPayLogic" method="POST">
+            <a href = "{%url 'kakaoPayLogic' %}">결제</a>
+        </form>
+</body>
+</html>

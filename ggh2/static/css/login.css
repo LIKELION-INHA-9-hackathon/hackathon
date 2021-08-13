@@ -1,0 +1,163 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: white;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+header {
+    min-height: 20vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+nav .link{
+    text-decoration: none;
+    color: black;
+}
+
+#header_menu{
+    margin-left: 80%;
+}
+
+#header_menu ul li{
+    list-style: none;
+    float: left;
+    color: gray;
+}
+
+#header_menu .link{
+    text-decoration: none;
+    color: gray;
+    font-size: 12px;
+    font-weight: bold;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+img{
+    width:180px;
+    height:50px;
+    margin-left: 40%;
+}
+
+
+#search-box{
+    background-color: #F6F6F6;
+    border-radius: 10px;
+    width: 195px;
+    height: 25px;
+    margin-left: 80%;
+}
+
+
+.search-btn{
+    background-color: #F6F6F6;
+    border-radius: 50%;
+}
+
+.search-txt{
+    border:none;
+    background-color: #F6F6F6;
+    border-color: #F6F6F6;
+    text-align: center;
+}
+
+.fas{
+    color:black;
+}
+
+#position-btn{
+    position: absolute;
+    left: 95%;
+    top:61%;
+    font-size: 20px;
+}
+
+section h3{
+    text-align: center;
+}
+
+.idFind{
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    color: #707070;
+}
+
+.pwFind{
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    color: #707070;
+}
+
+
+#loginbtn{
+    color: white;
+    font-weight: bold;
+    padding: 10px 30px 10px 30px;
+    cursor: pointer;
+    font-size:13px;
+    background-color: #00047a;
+    border: none;
+    width: 270px;
+    height: 40px;
+}
+
+#signupbtn{
+    color: #00047a;
+    font-weight: bold;
+    padding: 10px 30px 10px 30px;
+    cursor: pointer;
+    font-size:13px;
+    border-color: #00047a;
+    background-color: white;
+    width: 270px;
+    height: 40px;
+}
+
+#idSaved{
+    font-size: 13px;
+}
+
+
+
+
+footer {
+    position: relative;
+    background-color: #00047a;
+    width: auto;
+    height: 120px;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    padding: 15px 0 40px 0;
+    /* margin-top: 50px; */
+}
+
+.footer {
+    background-color: #00047a;
+}
+
+#ftdiv {
+    background-color: #00047a;
+    position: relative;
+    padding-left: 100px;
+    padding-top: 20px;
+}
+
+#parft {
+    background-color: #00047a;
+    display: flex;
+    margin-left: 100px;
+}
+
+#chift {
+    background-color: #00047a;
+    flex: 1;
+}

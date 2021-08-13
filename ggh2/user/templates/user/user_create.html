@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="../../../static/css/signup.css" media="(min-width:600px)" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+</head>
+<body>
+    <header>
+        <div id="header_menu">
+            <ul>
+                {% if not user_pk %}
+                <a href="{%url 'login' %}">로그인</a>
+                <span id="middle_line">|</span>
+                <a href="{% url 'user_create' %}">회원가입</a>
+                {% endif %}
+            </ul> 
+        </div>
+        <br/><br/>
+        <a href = "{% url 'home'%}"><img src="../../../static/img/logo.png"></a>
+
+        <div id="box">
+            <div id="search-box">
+                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
+                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
+            </div>
+            <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+        </div>
+    </header>
+
+    <section>
+        <form name="signup" action="" method="POST" enctype="multipart/form-data">
+            {%csrf_token%}
+            <br/><br/>
+            <div><h3>회원가입</h3></div>
+            <div id="essential1">
+                <p id="essential2">*</p>
+                <p id="essential3">필수 입력사항</p>
+                <hr>
+            </div>
+            
+            <br/><br/>
+            <div style="text-align: center;">
+            <input type="text" id="user_email" name="user_email" style="width: 600px; height: 35px" placeholder="아이디 (email주소를 입력)"/>
+            <br/><br/>
+            <input type="text" id="password"name="password" style="width: 600px; height: 35px" placeholder="비밀번호 (8~16자 영문/숫자를 조합하여 입력)"/>
+            <br/><br/>
+            <input type="text"  style="width: 600px; height: 35px" placeholder="비밀번호 확인"/>
+            <br/><br/>
+            <input type="text" id="name"name="name" style="width: 600px; height: 35px" placeholder="성명 (한글 15자, 영문 30자까지 가능합니다."/>
+            <br/><br/>
+            <input type="text" id="nickname" name="nickname" style="width: 600px; height: 35px" placeholder="별칭"/>
+            <br/><br/>
+    
+    
+            <input type="text" id="location" name ="location" style="width: 600px; height: 35px" placeholder="주소"/>
+            
+            <input type="text" id="cabinet" name ="cabinet" style="width: 600px; height: 35px" placeholder="캐비넷"/>
+
+            <br/><br/>
+    
+            <input type="text" id="phone_number" name="phone_number" style="width: 150px; height: 35px" placeholder="휴대폰"/>
+            - <input type="text" id="box1" style="width: 150px; height: 35px" />
+            - <input type="text" id="box1" style="width: 150px; height: 35px" />
+            <br/><br/>
+    
+            <label><input type="checkbox" name="person" value="man"> 남자</label>
+            <label><input type="checkbox" name="person" value="woman"> 여자</label>
+            <label><input type="checkbox" name="person" value="noChecked"> 선택안함</label>
+            <br/><br/>
+            
+            <!-- 생년월일 -->
+            <div id="bir_wrap">
+                    <div id="bir_yy">
+                        <span class="box">
+                            <input type="text" id="year" name = "year" class="int" maxlength="4" placeholder="YYYY">
+                        </span>
+                    </div>
+                    <div id="bir_mm">
+                        <span class="box">
+                            <input type="text" id="month" name="month" class="int" maxlength="4" placeholder="MM">
+                        </span>
+                    </div>
+                    <div id="bir_dd">
+                        <span class="box">
+                            <input type="text" id="day" name="day" class="int" maxlength="2" placeholder="DD">
+                        </span>
+                    </div>  
+            </div>
+
+            <div>
+                <span id="photo">프로필 사진 등록  | </span><input type="file" name="images" id = "choose-file" accept="image/jpeg">
+            </div>
+
+
+            <label id="alarm"><input type="checkbox" name="alarm" value="alarm" id="alarm"/>쿠폰/혜택/이벤트 발생 시 카카오톡/문자로 알림받기(선택)</label>
+            
+            <br/><br/>
+            <button id="signupbtn"> 저장하기</button>
+            </div>
+        </form>
+        
+    </section>
+
+
+
+<br/><br/><br/><br/>
+    <footer>
+        <br/><br/>
+        <div class="footer">
+        <div id="parft">
+            <div id="chift">
+            고객센터<br />
+            1633-9311<br />
+            </div>
+            <div id="chift">
+            주식회사 공구함<br />
+            497 제 2021-경기판교-01325호<br />
+            +44 345 678 903<br />
+            </div>
+            <div id="chift">
+            사업자 정보 확인<br />
+            사업자 등록번호:232-2322-52342<br />
+            주소 : 경기 판교 백현동 153, 100층<br />
+            제휴문의 : LALALA@naver.com
+            </div>
+        </div>
+        </div>
+    </footer>
+
+</body>
+</html>

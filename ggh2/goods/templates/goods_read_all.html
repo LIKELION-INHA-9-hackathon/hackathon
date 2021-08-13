@@ -1,0 +1,22 @@
+<!-- 메물 전체 읽기 -->
+<h1>goods/read_all.html</h1>
+
+
+{% for data in data %}
+{% for photo in photo %}
+<p> <a href="{% url 'goods_read_one' data.id %}">name : {{data.name}}</p> </a>
+<p> price : {{data.price}}</p>
+<p> type : {{data.type}}</p>
+<p> category : {{data.category}}</p>
+<p> title : {{data.title}}</p>
+<p> content : {{data.content}}</p>
+<p> recruitement_no : {{data.recruitement_no}}</p>
+<p> expired : {{data.expired}}</p>
+<p> pre_people : {{data.pre_people}}</p>
+<p> image : {{photo.thumbnail.url}}</p>
+<img src ="{{photo.thumbnail.url}}">
+
+----------------------------------
+
+{% endfor %}
+{% endfor %}

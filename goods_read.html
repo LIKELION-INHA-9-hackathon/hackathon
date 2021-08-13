@@ -230,7 +230,7 @@
     <script>
         function setcount(){
             var s=document.getElementById("selectoption");
-            var count=s.opstions[s.selectedIndex].value;
+            var count=s.options[s.selectedIndex].value;
             document.getElementById("amount").innerText=count;
         }   
 
@@ -353,9 +353,7 @@
                     <select name="count" id="selectoption">
                         <option value="" onchange="setcount()">옵션 선택하기</option>
                         <option value="1">1세트</option>
-                        <option value="2">2세트</option>
-                        <option value="3">3세트</option>
-                        <option value="4">4세트</option>
+
                     </select>
                 </div>
 

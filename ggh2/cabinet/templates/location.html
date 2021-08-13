@@ -120,6 +120,7 @@
                 <a href="{%url 'logout'%}">로그아웃</a>
                 <a href="{% url 'user_read' user_pk%}">마이페이지</a>
                 {% endif %}
+
             </ul> 
         </div>
        
@@ -130,6 +131,7 @@
                 <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
             </div>
             <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+
         </div>
     </header>
     <div class="center">
@@ -154,6 +156,7 @@
 
    
     </div>
+
     <footer>
         <br/><br/>
         <div class="footer">

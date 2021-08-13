@@ -6,7 +6,6 @@ from django.db.models.fields import CharField
 #-*-coding:utf-8-*-
 
 class User(models.Model):
-
     # pk : django 자동으로 제공하는 id 값으로 할거임
     user_email = models.CharField(max_length=200, default='dydrkfsla0821@gmail.com')
     name = models.CharField(max_length=10, default = '')

@@ -47,15 +47,24 @@
             </ul> 
         </div>
         <br/><br/>
+<<<<<<< HEAD
         <a href = "{% url 'home'%}"><img src="../../../static/img/logo.png"></a>
 
+=======
+        <img src="../../static/img/logo.png">
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
 
         <div id="box">
             <div id="search-box">
                 <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
                 <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
             </div>
+<<<<<<< HEAD
             <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>        </div>
+=======
+            <a class="position-btn" href="#"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+        </div>
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
     </header>
 
     <nav>
@@ -133,7 +142,11 @@
     <br/>
     <div id="cards1">
       <div id="card1"> 
+<<<<<<< HEAD
         {%for g in goods %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
+=======
+        {% for g in goods %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
         <img src={{g.thumbnail.url}}>
         <div id="discount">
           24%
@@ -151,11 +164,15 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       <br>
       {%a=0%}
       {%else%}
       {% a+=1%}
       {% endfor%}
+=======
+      {%endfor%}
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
       <div id="card2">
         <img src="../img/item2.png">
         <br/><br/>

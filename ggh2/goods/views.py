@@ -35,6 +35,7 @@ def goods_create(req):
 def goods_popup(req):
     return render(req,'popup.html')
     
+
 def goods_read_all(req):
     goods = Goods.objects.all()
     context = {
@@ -51,6 +52,7 @@ def goods_read_one(req,id):
         'photo' : goods_img,
         'comment' : comments,
     }
+ 
     user_pk = req.session.get('user')
     if not user_pk : # 로그인 안함
         return redirect('/login')
@@ -59,9 +61,7 @@ def goods_read_one(req,id):
             pay = Payment()
             pay.user_id = User.objects.get(pk=user_pk)
             pay.goods_update_id = goods
-            pay.quantity = req.POST.ge('quantity')
-
-            #pay.quantity = req.POST['quantity']
+            pay.quantity = req.POST['quantity']
             pay.save()
     return render(req,'goods_read_one.html',context)
 

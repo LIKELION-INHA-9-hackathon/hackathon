@@ -251,6 +251,7 @@
 </head>
 <body>
     <header>
+<<<<<<< HEAD
         <div id="header_menu">
             <ul>
                 {% if not user_pk %}
@@ -274,6 +275,9 @@
             </div>
             <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
         </div>
+=======
+
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
     </header>
 
     <div class="mypage">
@@ -345,6 +349,7 @@
                 </div>
                 <div id="order_content">
                     <ul>
+<<<<<<< HEAD
                         {%for p in pay_goods %}
                         <li id="orderNum">12345</li>
                         <div class="updown"></div>
@@ -359,6 +364,20 @@
                         <div class="updown"></div>
                         <li id="orderState">공구진행중</li>
                         {%endfor%}
+=======
+                        <li id="orderNum">13843920</li>
+                        <div class="updown"></div>
+                        <li id="orderProduct">
+                            <img src="../../../static/img/order.jpg" alt=""> 
+                            <span class=product_explain>
+                                <span id=product_name>우리 집을 환하게 감싸주는 나른 조명 인테리어 공구</span>
+                                <br>
+                                <span id=product_content>우리 집을 환하게 감싸주는 나른 조명 인테리어 공구</span>
+                            </span>
+                        </li>
+                        <div class="updown"></div>
+                        <li id="orderState">배송완료</li>
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
                     </ul>
                     
                 </div>
@@ -369,11 +388,15 @@
         <div class="like_area">
             <i class="far fa-heart"></i>
             <label for="like">나의 찜 목록</label>
+<<<<<<< HEAD
             {% for wish in wish_list%}
+=======
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
             <div>
                 <ul>
                     <li class="like_product">
                        <ul >
+<<<<<<< HEAD
                            <li id="product_img"><div id="likeImgBox"><img src="{{wish.thumbnail.url}}" alt="" id="likeImg"></div></li>
                            <br>
                            <li id="product_name">{{wish.name}}</li>
@@ -389,6 +412,26 @@
         </div>
 
         
+=======
+                           <li id="product_img"><div id="likeImgBox"><img src="like.jpg" alt="" id="likeImg"></div></li>
+                           <br>
+                           <li id="product_name">하늘하늘 봄을 기다리며 꽃무늬 스카프</li>
+                           <br>
+                           <li id="product_content">3700원</li>
+                       </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="notice_area">
+            <i class="far fa-bell"></i>
+            <label for="notice">나의 알림</label>
+           
+        </div>
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
 
         <div class="btn_area">
             <a href = "{% url 'user_update' user.id %} " > <button type="button" id="btnMyPage">
@@ -409,6 +452,7 @@
 
 
     <footer>
+<<<<<<< HEAD
         <br/><br/>
         <div class="footer">
         <div id="parft">
@@ -429,6 +473,9 @@
             </div>
         </div>
         </div>
+=======
+
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422
     </footer>
 
    

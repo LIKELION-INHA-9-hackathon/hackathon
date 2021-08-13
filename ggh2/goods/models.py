@@ -8,7 +8,6 @@ from cabinet.models import *
 
 class Category(models.Model):
     name=models.CharField(max_length=200)
-
 class TimeStampModel(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)

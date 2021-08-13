@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -464,3 +465,49 @@
       </footer>
 </body>
 </html>
+=======
+<!-- 메물 상세 페이지 -->
+<h1>read.html</h1>
+Detail page
+
+<!--Goods는 payment의 대상이다.(결제하기)-->
+<a href="{% url 'kakao' context_pk %}">결제하기</button></a>
+
+
+
+<!-- goods는 wish_list의 대상이다. (하트 찜누르기)-->
+
+
+
+<!-- goods는 participant의 대상이다. (참여여부)-->
+<p>recruitment_no : {{data.recruitment_no}}</p>
+<p>pre_people : goods.pre_people + 1</p>
+<p>description:{{data.description}}</p>
+
+<!-- goods의 정보를 불러온다.-->
+<p>price : {{data.price}} 원 </p>
+<p>title : {{data.title}}</p>
+<p>name : {{data.name}}</p>
+<p>content : {{data.content}}</p>
+<p>name : {{data.name}}</p>
+<p>price : {{data.price}}</p>
+<p>type : {{data.type}}</p>
+<p>category : {{data.category}}</p>
+<p>title : {{data.title}}</p>
+<p>expired : {{data.expired}}</p>
+<p>ori_price : {{data.ori_price}}</p>
+<p>cabinet:{{data.cabinet}}</p>
+<p>due_date : {{data.due_date}}</p>
+
+<!--한줄씩-->
+<p>content : {{data.content}}</p>
+
+
+
+<!--  goods_img를 goods에 불러온다. -->
+{% for photo in photo %}
+    <img src ="{{photo.thumbnail.url}}">
+    <img src = "{{photo.otherimg.url}}">
+{% endfor %}
+
+>>>>>>> 8d084b2e2330b4b2b0140413631566fb5d824422

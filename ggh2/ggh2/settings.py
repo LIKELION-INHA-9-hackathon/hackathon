@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'wish',
     'cabinet',
     'chat',
-    'channels',
+    # 'channels',
 ]
 
 MIDDLEWARE = [

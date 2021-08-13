@@ -39,12 +39,6 @@ def goods_popup(req):
     return render(req,'popup.html')
     
 
-def goods_read_all(req):
-    goods = Goods.objects.all()
-    context = {
-        'data' : goods
-    }
-    return render(req,'goods_read_all.html',context)
 
 def goods_read_one(req,id):
     goods = get_object_or_404(Goods,pk=id)
@@ -55,7 +49,7 @@ def goods_read_one(req,id):
         'photo' : goods_img,
         'comment' : comments,
     }
- 
+
     user_pk = req.session.get('user')
     if not user_pk : # 로그인 안함
         return redirect('/login')
@@ -131,3 +125,45 @@ def goods_comment_create(req, id):
             goods.goods_comment.create(content=req.POST['comment'],user_id=user,goods_id=goods)
             return redirect('/goods/'+str(goods.id))
     return render(req,'goods_read_one.html')
+
+
+def goods_read_all(req) :
+    if req.POST['category'] == 'all' : 
+        goods =Goods.objects.all()
+    
+    elif req.POST['category'] =='decoration' :  # 데코/조명
+        goods = Goods.objects.filter(category ='decoration')
+    
+    elif req.POST['category'] =='catndog' : # 패브릭/ 생활
+        goods = Goods.objects.filter(category ='catndog')
+
+    elif req.POST['category'] =='catndog' : # 키친
+        goods = Goods.objects.filter(category ='catndog')
+    
+    elif req.POST['category'] =='catndog' : # 캠핑/트래블
+        goods = Goods.objects.filter(category ='catndog')
+
+    elif req.POST['category'] =='fabric' : # 디자인가전
+        goods = Goods.objects.filter(category ='fabric')
+    
+    elif req.POST['category'] =='furniture_acceptance' :  # 가구/수납
+        goods = Goods.objects.filter(category ='furniture_acceptance')
+
+    elif req.POST['category'] =='food' :  # 푸드 
+        goods = Goods.objects.filter(category ='food')
+    
+    elif req.POST['category'] =='beauty' :  # 뷰티
+        goods = Goods.objects.filter(category ='beauty')
+
+    elif req.POST['category'] =='catndog' : # 캣앤독
+        goods = Goods.objects.filter(category ='catndog')
+    
+    elif req.POST['category'] =='toy' :  # 토이
+        goods = Goods.objects.filter(category ='toy')
+
+    elif req.POST['category'] =='baby' :  # 베이비/키즈
+        goods = Goods.objects.filter(category ='baby')
+    context ={
+        'goods' : goods,
+    }
+    return render(req,'goods_read_all.html',context)

@@ -17,6 +17,3 @@ class CategoryAdmin (admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 
-
-# class CategoryAdmin(admin.ModelAdmin):
-    

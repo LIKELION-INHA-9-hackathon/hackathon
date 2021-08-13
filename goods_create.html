@@ -268,6 +268,16 @@
               alert("썸네일은 한 장만 설정할 수 있습니다.");
           }
       }
+      function deleteThumbnail(event){
+        if(thumbnail){
+          var tmp=confirm("삭제하시겠습니까?");
+          if(tmp){
+          var img_container=document.querySelector("div#image_container");
+          var img=img_container.getElementsByTagName("img")[0];
+          thumbnail=false;
+          img.parentNode.removeChild(img);}
+        }
+      }
 
      
     </script>
@@ -306,10 +316,8 @@
       <div class="userData">
           <h3>매물등록</h3>
       <div class="uploadImgBox">
-       <!--   <div id="firstCircle"> -->
            <div id="uploadImgfirst">
             <img src="../../static/img/uploadBlank.png" alt="" id="uploadBlank">
-            <!--</div>-->
             <form method="post" enctype="multipart/form-data" id="uploadBtnForm">
               <div class="button imgUploadBtn">
                 <label for="chooseFile" id="uploadIcon">
@@ -434,7 +442,7 @@
         <span class="box int_thumbnail"> 
           <span class="intro">썸네일</span>
             <input type="file" id="thumbnail" class="int" accept="image/*" onchange="setThumbnail(event);"/>
-            <div id="image_container" ></div>
+            <div id="image_container" onclick="deleteThumbnail(event);" ></div>
         </span>
     </div>
 

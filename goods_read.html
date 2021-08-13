@@ -132,7 +132,17 @@
             padding: 3%;
             margin: 2%;
         }
-       
+        .totalamount{
+            color:lightgray;
+        }
+        .totalcash{
+            color: gray;
+            font-weight: 600;
+
+        }
+        .totalcash #cash{
+            color: #212194;
+        }
         #joinbtn{
             width: 100%;
             background-color: #212194;
@@ -228,10 +238,10 @@
     </style>
 
     <script>
-        function setcount(){
-            var s=document.getElementById("selectoption");
-            var count=s.options[s.selectedIndex].value;
-            document.getElementById("amount").innerText=count;
+        function setcount(frm){
+            
+            document.getElementById("amount").innerText=frm.selectBox.options[1].value+"개";
+            document.getElementById("cash").innerText=parseInt(frm.selectBox.options[1].value)*2000+"원";
         }   
 
         function dateToString(date){
@@ -349,20 +359,21 @@
                         <div class="content">2000원</div>
                     </div>
                 </div>
-                <div class="count">
-                    <select name="count" id="selectoption">
-                        <option value="" onchange="setcount()">옵션 선택하기</option>
+                <div id="count">
+                    <form name="form">
+                    <select name="selectBox" id="selectoption" onChange="setcount(this.form)">
+                        <option value="0">옵션 선택하기</option>
                         <option value="1">1세트</option>
-
                     </select>
+                </form>
                 </div>
 
                 <div class="summary">
-                    <div id="totalamount">
-                        총수량 <span id="amount"></span>개
+                    <div class="totalamount">
+                        총수량 <span id="amount"></span>
                     </div>
-                    <div id="totalcash">
-                        총금액 <span id="cash"></span>원
+                    <div class="totalcash">
+                        총금액 <span id="cash"></span>
                     </div>
                 </div>
 

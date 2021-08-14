@@ -13,21 +13,27 @@ def goods_create(req):
         if req.method == 'POST':
             goods = Goods()
             goods_img=Goods_img()
-            goods.name = req.POST['name']
-            goods.price = int(req.POST['price'])
-            goods.type = req.POST['type']
-            goods.category = req.POST['category']
-            goods.title = req.POST['title']
-            goods.content = req.POST['content']
-            goods.recruitment_no = int(req.POST['recruitment_no'])
-            goods.expired = req.POST['expired']
-            goods.pre_people = int(req.POST['pre_people'])
+            goods.name = req.POST.get('name')#
+            goods.price = int(req.POST.get('price'))#
+            goods.type = req.POST.get('type')#
+            category = req.POST.get('category')
+            goods.category = Category.objects.get(pk=category)
+            goods.title = req.POST.get('title')#
+            goods.content = req.POST.get('content')#
+            goods.recruitment_no = int(req.POST.get('recruitment_no'))#
+            goods.expired = req.POST.get('expired')#
+            goods.pre_people = 1
+            goods.ori_price = int(req.POST.get('ori_price')) #
+            goods.due_date = req.POST.get('due_date')#
+            cabinet = req.POST.get('cabinet')
+            goods.cabinet = Cabinet_manage.objects.get(location=cabinet)
+            goods.description = req.POST.get('description')#
+            goods.thumbnail = req.FILES.get('thumbnail')#
             user = User.objects.get(pk=user_pk)
-            goods.uploader = user
+            goods.uploader = user#
             goods.save()
             goods_img.goods_id = goods
-            goods_img.thumbnail = req.FILES['thumbnail']
-            goods_img.otherimg = goods.thumbnail = req.FILES['image']
+            goods_img.otherimg = req.FILES.get('image')
             goods_img.save()
             return redirect('/goods/'+str(goods.id))
     context={
@@ -136,13 +142,16 @@ def goods_read_food(req):
     return render(req,'goods_read_food.html',context)
 
 def goods_read_one(req,id):
+    
     goods = get_object_or_404(Goods,pk=id)
-    goods_img = Goods_img.objects.all()
+    goods_img = Goods_img.objects.filter(goods_id=goods)
     comments = goods.goods_comment.all()
+    user=User.objects.get(pk=goods.uploader.id)
     context = {
-        'data' : goods,
+        'goods' : goods,
         'photo' : goods_img,
         'comment' : comments,
+        'user' : user,
     }
  
     user_pk = req.session.get('user')
@@ -153,7 +162,7 @@ def goods_read_one(req,id):
             pay = Payment()
             pay.user_id = User.objects.get(pk=user_pk)
             pay.goods_update_id = goods
-            pay.quantity = req.POST['quantity']
+            pay.quantity = 1
             pay.save()
     return render(req,'goods_read_one.html',context)
 

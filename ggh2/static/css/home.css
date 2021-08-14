@@ -295,8 +295,8 @@ li{
 }
 
 #cards1 img, #cards2 img{
-    width: 200px;
-    height: 130px;
+    width: 400px;
+    height: 150px;
     margin-left: 0px;
     margin-right: 0px;
     position: relative;
@@ -603,6 +603,6 @@ footer {
 
 
 #imgDv{
-    width: 200px;
-    height: 130px;
+    width: 450px;
+    height: 150px;
 }

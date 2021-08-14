@@ -4,19 +4,199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>kakaoPay</title>
+    <link rel="stylesheet" href="../../static/css/footer.css">
+    <link rel="stylesheet" href="../../static/css/header.css">
+
+    <style>
+        .payment_area{
+            width: 75%;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        h2{
+            text-align: center;
+        }
+        .payment_product img{
+            margin-left: 5%;
+            
+            width: 250px;
+            height: 200px;
+            display: inline-block;
+        }
+        .explainBox{
+            display: inline-block;
+            width: 30%;
+            margin:5%;
+        }
+        .product_title{ 
+            font-weight: 900;
+            font-size: 2.5vh;
+        }
+        .product_deliver{
+            font-size: 1.5vh;
+        }
+        .product_deliver #date{
+            font-size: 2.2vh;
+            font-weight: 700;
+        }
+        #kakaoPayBtn{
+            width: 10%;
+            background-color: white;
+            color: #212194;
+            border-radius: 20px;
+            border:1px solid #212194;
+            padding:1%;
+            margin: 1%;
+            font-weight: bolder;
+        }
+        .changeNrefund #intro{
+            width: 15%;
+            display: inline-block;
+            font-weight: 800;
+            height: 50%;
+            bottom: 40px;
+            position: relative;
+            left: 5%;
+        }
+        .changeNrefund ul{
+            display: inline-block;
+            list-style-type:  none;
+        }
+
+        .btn{
+            display: inline-block;
+            position: relative;
+            width: 35%;
+            text-align: center;
+            margin-bottom: 10%;
+    margin-top: 10%;
+        }
+        .btnBox{
+            width: 30%;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        .btnBox form{
+           
+        }
+        .btnBox a{
+            text-decoration: none;
+        }
+        .btnBox a#Btnbefore{
+            text-decoration: none;
+            color: #212194;
+            border: 1px solid #212194;
+            padding: 7%;
+        }
+        .btnBox a#BtnATag{
+            text-decoration: none;
+            color: white;
+            background-color: #212194;
+            padding: 7%;
+        }
+       
+    </style>
 </head>
 <body>
-    <h2>카카오 페이</h2>
-        <div>
-            <p>고객명 : {{user.nickname}}</p>
-            <p>price : {{goods.price}} 원 </p>
-            <p>name : {{goods.name}}</p>
-            <p> 수량 : {{goods.quantity}}</p>
-            <p>payment:{{payment.goods_update_id.goods}}</p>
-        
+    <header>
+        <div id="header_menu">
+            <ul>
+            {% if not user_pk %}
+            <li><a href="{%url 'login' %}" class="link">로그인 </a></li>
+            <li><a href="{% url 'user_create' %}" class="link">회원가입</a></li>
+            {% endif %}
+            {% if user_pk %}
+            <li><a href="{%url 'logout'%}"class="link">로그아웃 </a></li>
+            <li><a href="{% url 'user_read' user_pk%}"class="link">마이페이지</a></li>
+            {% endif %}
+            </ul> 
         </div>
-        <form action="/pay/kakaoPayLogic" method="POST">
-            <a href = "{%url 'kakaoPayLogic' %}">결제</a>
+        <br/><br/>
+        <img src="../../static/img/logo.png" id="logo">
+
+        <div id="box">
+            <div id="search-box">
+                 <form action="{% url 'search'%}" method='GET'>
+                  <input type="text" name = "searchtext" placeholder="검색어를 입력하세요" class="search-txt" />
+                  <!--<a href = "{%url 'search'%}">-->
+                  <input type="submit" value="검색">
+                  <!--</a> -->
+                 </form>
+               
+            </div>
+            <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
+        </div>
+    </header>
+    
+    <div class="payment_area">
+        <h2>결제창</h2>
+
+        <div class="payment_product">
+            <hr>
+            <img src="{{goods.thumbnail.url}}" alt="">
+            <div class="explainBox">
+                <div class="product_title">{{goods.title}}</div>
+                <br>
+                <div class="product_info">
+                    <div id="price">결제 금액:  {{goods.price}}</div>
+                </div>
+                <br>
+                <div class="product_deliver"><span id="date">{{goods.due_date}}</span> 도착예정{{goods.cabinet.location}}</div>
+            </div>
+           
+        </div>
+
+
+        <div class="kakaoPay">
+            <h3>결제 수단</h3>
+            <hr>
+            <button type="button" id="kakaoPayBtn">카카오페이</button>
+        </div>
+        <br>
+
+        <div class="changeNrefund">
+            <div id="intro">교환/환불</div>
+            <ul>
+                <li>> dddddddddddddddddddddddddddddddddd</li>
+                <li>> dddddddddddddddddddddddddddddddddd</li>
+                <li>> dddddddddddddddddddddddddddddddddd</li>
+                <li>> dddddddddddddddddddddddddddddddddd</li>
+            </ul>
+        </div>
+
+      <div class="btnBox">
+          
+        <form action="/pay/kakaoPayLogic" method="POST"  class="btn" id="payment">
+            <a href = "{%url 'kakaoPayLogic' %}"id="BtnATag">결제하기</a>
         </form>
+      </div>
+
+    </div>
+
+    <footer>
+            <br/><br/>
+            <div class="footer">
+              <div id="parft">
+                <div id="chift">
+                  고객센터<br />
+                  1633-9311<br />
+                </div>
+                <div id="chift">
+                  주식회사 공구함<br />
+                  497 제 2021-경기판교-01325호<br />
+                  +44 345 678 903<br />
+                </div>
+                <div id="chift">
+                  사업자 정보 확인<br />
+                  사업자 등록번호:232-2322-52342<br />
+                  주소 : 경기 판교 백현동 153, 100층<br />
+                  제휴문의 : LALALA@naver.com
+                </div>
+              </div>
+            </div>
+          </footer>
+    
 </body>
 </html>

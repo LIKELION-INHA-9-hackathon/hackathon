@@ -39,12 +39,11 @@
       <div id="header_menu">
         <ul>
             {% if not user_pk %}
-            <li><a href="{%url 'login' %}" class="link">로그인</a></li>
-            <span id="middle_line">|</span>
+            <li><a href="{%url 'login' %}" class="link">로그인 </a></li>
             <li><a href="{% url 'user_create' %}" class="link">회원가입</a></li>
             {% endif %}
             {% if user_pk %}
-            <li><a href="{%url 'logout'%}"class="link">로그아웃</a></li>
+            <li><a href="{%url 'logout'%}"class="link">로그아웃 </a></li>
             <li><a href="{% url 'user_read' user_pk%}"class="link">마이페이지</a></li>
             {% endif %}
         </ul> 
@@ -68,23 +67,25 @@
 
     <nav>
       <div class="topMenu">
-        <span class="more">
-            <span class="blind"><i class="fas fa-bars"><a class="link">전체 카테고리</a></i></span>
-        </span>
-        <div class="board">
-            <form method="GET">
-                <ul class="list">
-                    <li>
-                        <i class="fas fa-cookie"><a class="link" href="{% url 'goods_read_food' %}"><input type="submit" name="푸드" value="푸드"></a></i>
-                    </li>
-                    <li>
-                        <i class="fas fa-eye-dropper"><a class="link" href="{% url 'goods_read_beauty' %}"><input type="submit" name="뷰티" value="뷰티"></a></i>
-                    </li>
+          <ul>
+              <li class="main" id="li_left">
+                <span><i class="fas fa-bars"><a class="link" href="#"> 전체 카테고리 </a></i></span>
+                <ul class="sub" style="display:none">
+                  
+                  <li>
+                    <i class="fas fa-cookie"><a class="link" href="{% url 'goods_read_food' %}"><input type="submit" value="food" name="food"></a></i>
+                </li>
+                <li>
+                    <i class="fas fa-eye-dropper"><a class="link" href="{% url 'goods_read_beauty' %}"><input type="submit" name="beauty" value="beauty"></a></i>
+                </li>
+                  
                 </ul>
-            </form>
-        </div>
+              </li>
+          </ul>
       </div>
-    </nav>
+      &nbsp;
+      <strong><a class="link" href="{%url 'goods_create'%}"> 매물등록하기 </a></strong>
+  </nav>
     <br/><br/>
 
     

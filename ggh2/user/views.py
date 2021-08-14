@@ -9,7 +9,8 @@ from wish.models import *
 def search(req):
     if req.method=="GET":
         searchtext = req.GET['searchtext']
-        user= User.objects.filter(nickname__contains=searchtext)
+        user= User.objects.get(nickname=searchtext)
+        u_goods=Goods.objects.filter(uploader=user).order_by('-created')
         goods = Goods.objects.filter(title__contains=searchtext).order_by('-created')
         result_goods1=[]
         result_goods2=[]
@@ -17,9 +18,9 @@ def search(req):
         result_user2=[]
         count_user=0
         count_goods=0
-        if user:
+        if u_goods:
             i = 0
-            for u in user:
+            for u in u_goods:
                 if i < 3:
                     result_user1.append(u)
                 elif i < 6:
@@ -39,6 +40,7 @@ def search(req):
                     break
                 count_goods+=1
                 i+=1
+        total_count = count_user+count_goods
         context={
             'seartext' : searchtext,
             'result_user1' : result_user1,
@@ -47,6 +49,7 @@ def search(req):
             'result_goods2' : result_goods2,
             'count_user' : count_user,
             'count_goods' : count_goods,
+            'total_count' : total_count,
         }
         return render(req,'search.html',context)
 

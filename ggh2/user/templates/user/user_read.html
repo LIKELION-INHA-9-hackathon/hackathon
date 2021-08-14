@@ -382,7 +382,7 @@
                         <div class=product_explain>
                             <div id=product_name>{{p.name}}</div>
                             <br>
-                            <div id=product_content>{{p.title}}</div>
+                            <a href ="{% url 'goods_read_one' p.id %}" ><div id=product_content>{{p.title}}</div></a>
                         </div>
                     </div>
                     <div class="updown"></div>

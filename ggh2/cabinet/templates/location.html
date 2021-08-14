@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Map</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
     <link rel="stylesheet" href="../../static/css/header.css">
@@ -112,12 +112,11 @@
         <div id="header_menu">
             <ul>
                 {% if not user_pk %}
-                <li><a href="{%url 'login' %}" class="link">로그인</a></li>
-                <span id="middle_line">|</span>
+                <li><a href="{%url 'login' %}" class="link">로그인 </a></li>
                 <li><a href="{% url 'user_create' %}" class="link">회원가입</a></li>
                 {% endif %}
                 {% if user_pk %}
-                <li><a href="{%url 'logout'%}"class="link">로그아웃</a></li>
+                <li><a href="{%url 'logout'%}"class="link">로그아웃 </a></li>
                 <li><a href="{% url 'user_read' user_pk%}"class="link">마이페이지</a></li>
                 {% endif %}
             </ul> 

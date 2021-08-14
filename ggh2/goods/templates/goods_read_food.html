@@ -39,12 +39,11 @@
         <div id="header_menu">
             <ul>
                 {% if not user_pk %}
-                <li><a href="{%url 'login' %}" class="link">로그인</a></li>
-                <span id="middle_line">|</span>
+                <li><a href="{%url 'login' %}" class="link">로그인 </a></li>
                 <li><a href="{% url 'user_create' %}" class="link">회원가입</a></li>
                 {% endif %}
                 {% if user_pk %}
-                <li><a href="{%url 'logout'%}"class="link">로그아웃</a></li>
+                <li><a href="{%url 'logout'%}"class="link">로그아웃 </a></li>
                 <li><a href="{% url 'user_read' user_pk%}"class="link">마이페이지</a></li>
                 {% endif %}
             </ul> 
@@ -54,35 +53,38 @@
         <a href="{% url 'home' % }"><img src="../../static/img/logo.png"></a>
 
         <div id="box">
-            <div id="search-box">
-                <input type="text" placeholder="검색어를 입력하세요" class="search-txt" />
-                <a class="search-btn" href="#"><i class="fas fa-search"></i></a>
-            </div>
-            <a class="position-btn" href="{% url 'cabinet_read_all' %}"><i class="fas fa-map-marker-alt" id="position-btn"></i></a>
-        </div>
+          <div id="search-box">
+            <form action="{% url 'search'%}" method='GET'>
+             <input type="text" name = "searchtext" placeholder="검색어를 입력하세요" class="search-txt" />
+             <!--<a href = "{%url 'search'%}">-->
+             <input type="submit" value="검색">
+             <!--</a> -->
+            </form>
+          
+       </div>
     </header>
 
     <nav>
-        <div class="topMenu">
-            <span class="more">
-                <span class="blind"><i class="fas fa-bars"><a class="link">전체 카테고리</a></i></span>
-            </span>
-            <div class="board">
-                <ul class="list">
-                    <form method="GET">
-                        <ul class="list">
-                            <li>
-                                <i class="fas fa-cookie"><a class="link" href="{% url 'goods_read_food'%}"><input type="submit" name="food" value="1"></a></i>
-                            </li>
-                            <li>
-                                <i class="fas fa-eye-dropper"><a class="link" href="{% url 'goods_read_beauty'%}"><input type="submit" name="beauty" value="2"></a></i>
-                            </li>
-                        </ul>
-                    </form>
+      <div class="topMenu">
+          <ul>
+              <li class="main" id="li_left">
+                <span><i class="fas fa-bars"><a class="link" href="#"> 전체 카테고리 </a></i></span>
+                <ul class="sub" style="display:none">
+                  
+                  <li>
+                    <i class="fas fa-cookie"><a class="link" href="{% url 'goods_read_food' %}"><input type="submit" value="food" name="food"></a></i>
+                </li>
+                <li>
+                    <i class="fas fa-eye-dropper"><a class="link" href="{% url 'goods_read_beauty' %}"><input type="submit" name="beauty" value="beauty"></a></i>
+                </li>
+                  
                 </ul>
-            </div>
-        </div>
-    </nav>
+              </li>
+          </ul>
+      </div>
+      &nbsp;
+      <strong><a class="link" href="{%url 'goods_create'%}"> 매물등록하기 </a></strong>
+  </nav>
     <br/>
     <hr>
     <div id="hrBox">

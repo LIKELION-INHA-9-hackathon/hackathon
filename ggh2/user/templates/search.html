@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>패브릭/생활</title>
+    <title>검색</title>
     <link rel="stylesheet" href="../../static/css/search.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,12 +40,11 @@
       <div id="header_menu">
         <ul>
             {% if not user_pk %}
-            <li><a href="{%url 'login' %}" class="link">로그인</a></li>
-            <span id="middle_line">|</span>
+            <li><a href="{%url 'login' %}" class="link">로그인 </a></li>
             <li><a href="{% url 'user_create' %}" class="link">회원가입</a></li>
             {% endif %}
             {% if user_pk %}
-            <li><a href="{%url 'logout'%}"class="link">로그아웃</a></li>
+            <li><a href="{%url 'logout'%}"class="link">로그아웃 </a></li>
             <li><a href="{% url 'user_read' user_pk%}"class="link">마이페이지</a></li>
             {% endif %}
         </ul> 
@@ -68,24 +67,26 @@
     </header>
 
     <nav>
-        <div class="topMenu">
-            <span class="more">
-                <span class="blind"><i class="fas fa-bars"><a class="link">전체 카테고리</a></i></span>
-            </span>
-            <div class="board">
-                <ul class="list">
-
+      <div class="topMenu">
+          <ul>
+              <li class="main" id="li_left">
+                <span><i class="fas fa-bars"><a class="link" href="#"> 전체 카테고리 </a></i></span>
+                <ul class="sub" style="display:none">
+                  
                   <li>
                     <i class="fas fa-cookie"><a class="link" href="{% url 'goods_read_food' %}"><input type="submit" value="food" name="food"></a></i>
                 </li>
                 <li>
                     <i class="fas fa-eye-dropper"><a class="link" href="{% url 'goods_read_beauty' %}"><input type="submit" name="beauty" value="beauty"></a></i>
                 </li>
-
+                  
                 </ul>
-            </div>
-        </div>
-    </nav>
+              </li>
+          </ul>
+      </div>
+      &nbsp;
+      <strong><a class="link" href="{%url 'goods_create'%}"> 매물등록하기 </a></strong>
+  </nav>
     <br/>
     <hr>
     <div id="hrBox">
@@ -94,20 +95,18 @@
     <hr id="hr2">
     <br/><br/><br/>
 
-    <!---->
+    
     <section id="section1">
-      <h3 id="s1">상품검색</h3><br/>
-      <div id="search-box1">
-        <input type="text" placeholder="검색어를 입력하세요" class="s2" />
-        <button type="button" id="recBtn">검색</button>
-      </div><br/><br/><br/><br/>
-    {%if not count_user %}
-
-      <hr id="hrf1">
-      <span id="s3">총 0건의 매물이 검색되었습니다.</span><br/>
-      <hr id="hrf2">
-      <br/><br/>
+        <h3 id="s1">상품검색</h3><br/>
+        <div id="search-box1">
+            <form action="{% url 'search'%}" method='GET'>
+            <input type="text" name = "searchtext" placeholder="검색어를 입력하세요" class="s2" />
+            <button type="button" id ="recBtn">검색</button>
+            <br/><br/><br/><br/>
+          </form>
+        </div>
     </section>
+    {%if not count_user %}
 
     <section id="section2">
       <div>
@@ -115,57 +114,66 @@
         <hr id="hrf2"><br/><br/><br/>
         <i class="fas fa-layer-group" style="color: #dcdcdc;"></i><br/>
         <span id="se3">아직 등록된 게시글이 없어요.</span><br/><br/>
-        <button type="text" id="se2Btn"> 등록하러가기</button>
+        <a href="{%url 'goods_create' %}"><button type="text" id="se2Btn"> 등록하러가기</button></a>
       </div>
     </section><br/><br/><br/><br/>
     {%endif%}
+
    {%if count_user %}
-   <div id="cards1">
-    {% for g in result_user1 %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
-    <div id="card1"> 
-      <div id="imgDv"><img src={{g.thumbnail.url}}></div>
-      <div id="discount">
-        24%
-      </div>
-      <br/><br/>
-      <div>
-        <a href = "{%url 'goods_read_one' g.id%}"><div id="card_title">{{g.title}}</div></a>
-        <div id="amount">
-          <span id="amount1">정상가</span> <span id="amount1_2">{{g.ori_price}}</span><br/>
-          <span id="amount2">공구가</span> <span id="amount2_2">{{g.price}}</span>
+   <section id="section2">
+    <div>
+      <span id="se1">작성자 게시글</span><span id="se2">   {{count_user}}건</span><br/>
+      <hr id="hrf2"><br/><br/><br/>
+      <div id="cards1">
+        {% for g in result_user1 %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
+        <div id="card1"> 
+          <div id="imgDv"><img src={{g.thumbnail.url}}></div>
+          <div id="discount">
+            24%
+          </div>
+          <br/><br/>
+          <div>
+            <a href = "{%url 'goods_read_one' g.id%}"><div id="card_title">{{g.title}}</div></a>
+            <div id="amount">
+              <span id="amount1">정상가</span> <span id="amount1_2">{{g.ori_price}}</span><br/>
+              <span id="amount2">공구가</span> <span id="amount2_2">{{g.price}}</span>
+            </div>
+            <div id="card_bottom">
+              <span id="time">{{g.expired}}</span>
+              <span id="total_person">{{g.pre_people}} / {{g.recruitment_no}}</span>
+            </div>
+          </div>
         </div>
-        <div id="card_bottom">
-          <span id="time">{{g.expired}}</span>
-          <span id="total_person">{{g.pre_people}} / {{g.recruitment_no}}</span>
-        </div>
-      </div>
     </div>
+  </section>
     {%endfor%}
   </div>
   <br/><br/>
   
 
-  <div id="cards2">
-    {% for g in result_user2 %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
-    <div id="card1"> 
-      <div id="imgDv"><img src={{g.thumbnail.url}}></div>
-      <div id="discount">
-        24%
+        <div id="cards1">
+          {% for g in result_user2 %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
+          <div id="card1"> 
+            <div id="imgDv"><img src={{g.thumbnail.url}}></div>
+            <div id="discount">
+              24%
+            </div>
+            <br/><br/>
+            <div>
+              <a href = "{%url 'goods_read_one' g.id%}"><div id="card_title">{{g.title}}</div></a>
+              <div id="amount">
+                <span id="amount1">정상가</span> <span id="amount1_2">{{g.ori_price}}</span><br/>
+                <span id="amount2">공구가</span> <span id="amount2_2">{{g.price}}</span>
+              </div>
+              <div id="card_bottom">
+                <span id="time">{{g.expired}}</span>
+                <span id="total_person">{{g.pre_people}} / {{g.recruitment_no}}</span>
+              </div>
+            </div>
+          </div>
       </div>
-      <br/><br/>
-      <div>
-        <a href = "{%url 'goods_read_one' g.id%}"><div id="card_title">{{g.title}}</div></a>
-        <div id="amount">
-          <span id="amount1">정상가</span> <span id="amount1_2">{{g.ori_price}}</span><br/>
-          <span id="amount2">공구가</span> <span id="amount2_2">{{g.price}}</span>
-        </div>
-        <div id="card_bottom">
-          <span id="time">{{g.expired}}</span>
-          <span id="total_person">{{g.pre_people}} / {{g.recruitment_no}}</span>
-        </div>
-      </div>
-    </div>
-    {%endfor%}
+      </section>
+      {%endfor%}
   </div>
   <br/><br/>
   {%endif%}
@@ -177,61 +185,70 @@
         <hr id="hrf2"><br/><br/><br/>
         <i class="fas fa-layer-group" style="color: #dcdcdc;"></i><br/>
         <span id="se3">주변 지역 매물이 없습니다.</span><br/><br/>
-        <button type="text" id="se2Btn"> 등록하러가기</button>
+        <a href="{%url 'goods_create'%}"><button type="text" id="se2Btn"> 등록하러가기</button></a>
       </div>
     </section><br/><br/><br/><br/><br/><br/>
     {%endif%}
+
+
     {%if count_goods %}
-   <div id="cards1">
-    {% for g in result_goods1 %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
-    <div id="card1"> 
-      <div id="imgDv"><img src={{g.thumbnail.url}}></div>
-      <div id="discount">
-        24%
-      </div>
-      <br/><br/>
-      <div>
-        <a href = "{%url 'goods_read_one' g.id%}"><div id="card_title">{{g.title}}</div></a>
-        <div id="amount">
-          <span id="amount1">정상가</span> <span id="amount1_2">{{g.ori_price}}</span><br/>
-          <span id="amount2">공구가</span> <span id="amount2_2">{{g.price}}</span>
+   <section id="section2">
+    <div>
+      <span id="se1">작성자 게시글</span><span id="se2">   {{count_goods}}건</span><br/>
+      <hr id="hrf2"><br/><br/><br/>
+      <div id="cards1">
+        {% for g in result_goods1 %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
+        <div id="card1"> 
+          <div id="imgDv"><img src={{g.thumbnail.url}}></div>
+          <div id="discount">
+            24%
+          </div>
+          <br/><br/>
+          <div>
+            <a href = "{%url 'goods_read_one' g.id%}"><div id="card_title">{{g.title}}</div></a>
+            <div id="amount">
+              <span id="amount1">정상가</span> <span id="amount1_2">{{g.ori_price}}</span><br/>
+              <span id="amount2">공구가</span> <span id="amount2_2">{{g.price}}</span>
+            </div>
+            <div id="card_bottom">
+              <span id="time">{{g.expired}}</span>
+              <span id="total_person">{{g.pre_people}} / {{g.recruitment_no}}</span>
+            </div>
+          </div>
         </div>
-        <div id="card_bottom">
-          <span id="time">{{g.expired}}</span>
-          <span id="total_person">{{g.pre_people}} / {{g.recruitment_no}}</span>
-        </div>
-      </div>
     </div>
+  </section>
     {%endfor%}
   </div>
   <br/><br/>
   
 
-  <div id="cards2">
-    {% for g in result_goods2 %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
-    <div id="card1"> 
-      <div id="imgDv"><img src={{g.thumbnail.url}}></div>
-      <div id="discount">
-        24%
+        <div id="cards1">
+          {% for g in result_goods2 %}<!--여기 for문으로 card1 2 3... 얘네들이 정보에 들어와야함-->
+          <div id="card1"> 
+            <div id="imgDv"><img src={{g.thumbnail.url}}></div>
+            <div id="discount">
+              24%
+            </div>
+            <br/><br/>
+            <div>
+              <a href = "{%url 'goods_read_one' g.id%}"><div id="card_title">{{g.title}}</div></a>
+              <div id="amount">
+                <span id="amount1">정상가</span> <span id="amount1_2">{{g.ori_price}}</span><br/>
+                <span id="amount2">공구가</span> <span id="amount2_2">{{g.price}}</span>
+              </div>
+              <div id="card_bottom">
+                <span id="time">{{g.expired}}</span>
+                <span id="total_person">{{g.pre_people}} / {{g.recruitment_no}}</span>
+              </div>
+            </div>
+          </div>
       </div>
-      <br/><br/>
-      <div>
-        <a href = "{%url 'goods_read_one' g.id%}"><div id="card_title">{{g.title}}</div></a>
-        <div id="amount">
-          <span id="amount1">정상가</span> <span id="amount1_2">{{g.ori_price}}</span><br/>
-          <span id="amount2">공구가</span> <span id="amount2_2">{{g.price}}</span>
-        </div>
-        <div id="card_bottom">
-          <span id="time">{{g.expired}}</span>
-          <span id="total_person">{{g.pre_people}} / {{g.recruitment_no}}</span>
-        </div>
-      </div>
-    </div>
-    {%endfor%}
+      </section>
+      {%endfor%}
   </div>
   <br/><br/>
   {%endif%}
-
 
     
 

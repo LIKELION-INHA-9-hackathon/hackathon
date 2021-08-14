@@ -267,12 +267,11 @@
         <div id="header_menu">
             <ul>
                 {% if not user_pk %}
-                <li><a href="{%url 'login' %}" class="link">로그인</a></li>
-                <span id="middle_line">|</span>
+                <li><a href="{%url 'login' %}" class="link">로그인 </a></li>
                 <li><a href="{% url 'user_create' %}" class="link">회원가입</a></li>
                 {% endif %}
                 {% if user_pk %}
-                <li><a href="{%url 'logout'%}"class="link">로그아웃</a></li>
+                <li><a href="{%url 'logout'%}"class="link">로그아웃 </a></li>
                 <li><a href="{% url 'user_read' user_pk%}"class="link">마이페이지</a></li>
                 {% endif %}
             </ul> 
@@ -301,9 +300,11 @@
                     <img src="{{goods.thumbnail.url}}" alt="" id="mainImg">
                 </div>
                 <div class="extraImgBox">
-                    {%for po in photo%}
-                    <img src="{{po.otherimg.url}}" alt="">
-                    {%endfor%}
+                
+                {%for po in photo%}
+                <img src="{{po.otherimg.url}}" alt="">
+                {%endfor%}
+               
                 </div>
             </div>
             <div class="explainBox">
@@ -316,7 +317,7 @@
                     <div id="state_text">{{goods.pre_people}} / {{goods.recruitment_no}}</div>
                 </div>
                 <div class="uploader">
-                    <img src="{{data.image.url}}" alt="" id="profile">
+                    <img src="{{user.image.url}}" alt="" id="profile">
                     <div id="nickname">{{user.nickname}}</div>
                 </div>
                 <div class="price">
@@ -348,8 +349,7 @@
 
                 <div class="joinbtnbox">
                     <form method ="POST">
-                        {%csrf_to}
-                    <a href="{%url 'kakaoPay' data.id%}" ><button type="button"  id="joinbtn">공구 참여하기</button></a>
+                    <a href="{%url 'kakaoPay' goods.id%}" ><button type="button"  id="joinbtn">공구 참여하기</button></a>
                     </form>
                 </div>
             </div>
@@ -369,9 +369,11 @@
             <div class="product_explain">
                 <h3 id="1">상품 설명</h3>
                 <img src="{{goods.thumbnail.url}}" alt="" id=productImg>
+                
                 {%for po in photo%}
                 <img src="{{po.otherimg.url}}" alt="">
                 {%endfor%}
+                
                 <div id="productDescript">
                     {{goods.content}}
                 </div>
@@ -382,7 +384,7 @@
                 <br>
                 <div id="descriptBox">
                     <div class="uploader">
-                        <img src="profile.jpg" alt="" id="profile">
+                        <img src={{user.image.url}} alt="" id="profile">
                         <div id="nickname">{{user.nickname}}</div>
                     </div>
                     <div id="descript">
@@ -425,13 +427,16 @@
                 <div id="comment-head" class="comment-row">
                     <span id="comments-count">0</span>건
                 </div>
-                <form class="comment-row">
+               
+                <form action = "{% url 'goods_comment_create' goods.id%}" method="POST">
+                    {% csrf_token %}
                     <textarea name="comment" id="new-comment"  rows="1" cols="100" placeholder="댓글을 입력하세요"></textarea>
                     <button type="submit" onclick="submitComment()">등록</button>
                 </div><hr>
+                </form>
                 {%for c in comment%}
                  <div class="comment-row">
-                    <div class="comment-nickname">{{c.user_id.nickname}}</div>
+                    <div class="comment-nickname">{{ c.user_id.nickname }}</div>
                     <div class="comment-content">{{c.content}}</div>
                     <div class="comment-date">{{c.created}}</div>
                     <hr>

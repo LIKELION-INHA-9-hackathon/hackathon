@@ -18,17 +18,18 @@ def search(req):
         result_user2=[]
         count_user=0
         count_goods=0
-        if u_goods:
-            i = 0
-            for u in u_goods:
-                if i < 3:
-                    result_user1.append(u)
-                elif i < 6:
-                    result_user2.append(u)
-                else:
-                    break
-                i+=1
-                count_user+=1
+        if user:
+            if u_goods:
+                i = 0
+                for u in u_goods:
+                    if i < 3:
+                        result_user1.append(u)
+                    elif i < 6:
+                        result_user2.append(u)
+                    else:
+                        break
+                    i+=1
+                    count_user+=1
         if goods:
             i = 0
             for g in goods:
